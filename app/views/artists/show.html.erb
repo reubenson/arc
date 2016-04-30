@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<article class="artist-page" data-turbolinks-temporary >
+  <section class="artist-profile">
+    <h2>
+      <a href="#" id='body-swap'><%= @artist.first_name %> <%= @artist.last_name %></a>
+    </h2>
+    <!-- <img src="<%= @artist.image_url %>"/> -->
+    <aside class="artist-bio">
+      <%= @artist.bio %>
+    </aside>
+  </section>
+
+  <section class="artist-works">
+    <h3>Works</h3>
+    <% @works.each do |work| %>
+      <h3>
+        <%= link_to work.title, [@artist,work] %>
+      </h3>
+    <% end %>
+  </section>
+</article>

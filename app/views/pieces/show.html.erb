@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Work:</strong>
+  <%= @piece.work_id %>
+</p>
+
+<p>
+  <strong>Track number:</strong>
+  <%= @piece.track_number %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @piece.title %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @piece.duration %>
+</p>
+
+<p>
+  <strong>Complete date:</strong>
+  <%= @piece.complete_date %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @piece.price %>
+</p>
+
+<%= link_to 'Edit', edit_artist_work_piece_path(@artist,@work,@piece) %> |
+<%= link_to 'Back', artist_work_pieces_path(@artist,@work) %>

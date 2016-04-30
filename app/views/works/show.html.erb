@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= link_to @artist.fullname, @artist %>
+</h2>
+<h3>
+  <%= @work.title %>
+</h3>
+<img src="<%= @work.image_url %>"/>
+<section class="work-description">
+  <%= @work.description %>
+</section>
+
+<div class="work-tracklist">
+  <% @work.pieces.each do |piece| %>
+    <%= piece.title %> (<%= piece.duration %>)
+    <a class="fa fa-play" aria-hidden="false" data-pieceId=<%= piece.id %>></a>
+    <a class="fa fa-info" aria-hidden="false"></a>
+  <% end %>
+</div>

@@ -1,0 +1,23 @@
+.audio-player {
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  border-top: solid black 2px;
+  background-color: white;
+  z-index: 5;
+
+  svg {
+
+    circle {
+      stroke: "black";
+      stroke-width: 3;
+      fill: "red";
+    }
+
+    line {
+      stroke: rgb(255,0,0);
+      stroke-width: 2;
+    }
+  }
+}

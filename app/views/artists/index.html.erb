@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Artists</h1>
+
+<table>
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr>
+        <h2>
+          <a href="<%= artist_path(artist) %>"><%= artist.fullname %></a>
+        </h2>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

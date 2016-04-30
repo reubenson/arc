@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  work_id: 1
+  track_number: 1
+  title: MyString
+  duration: 2016-04-16 10:05:08
+  complete_date: 2016-04-16
+  price: 1
+
+two:
+  work_id: 1
+  track_number: 1
+  title: MyString
+  duration: 2016-04-16 10:05:08
+  complete_date: 2016-04-16
+  price: 1

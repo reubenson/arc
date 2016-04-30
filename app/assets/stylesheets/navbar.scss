@@ -1,0 +1,14 @@
+nav.navbar {
+  position: relative;
+  height: 4em;
+  // font-size: 2em;
+  border-bottom: solid black 2px;
+
+  .navbar-link {
+    line-height: 100%;
+    position: relative;
+    font-size: 3em;
+    font-weight: 700;
+    margin-right: 0.5em;
+  }
+}
