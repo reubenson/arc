@@ -1,0 +1,38 @@
+<!--
+<%= react_component('Piece', {piece_id: piece.id, piece_duration: piece.duration_formatted, piece_title: piece.title}, {tag: 'tbody', class: 'piece-container', prerender: false}) %>
+
+react component nixed here for now for SEO / render optimization reasons
+-->
+
+<!-- table version -->
+<!-- <tbody class="piece" data-pieceId=<%= piece.id %> >
+  <tr>
+    <td class='piece-title'><%= 1 + piece.track_number %>. <%= piece.title %> (<%= piece.duration_formatted %>)</td>
+    <td><a class="add-piece-to-player-btn">Play</a></td>
+    <td><a class="add-piece-to-cart-btn">Add to Cart ($<%= piece.price_string %>)</a></td>
+    <% if piece.description %>
+      <td><a class="toggle-piece-description-btn">Show Description</a></td>
+    <% end %>
+  </tr>
+  <tr class="piece-description" aria-hidden=true>
+    <td class="piece-description-show"><%= piece.description %></td>
+  </tr>
+</tbody> -->
+
+<div class="piece" data-pieceId=<%= piece.id %> >
+  <!-- <div> -->
+    <div class='piece-title'>
+      <%= 1 + piece.track_number %>. <%= piece.title %> (<%= piece.duration_formatted %>)
+    </div>
+    <div class="piece-ctas-container">
+      <a class="add-piece-to-player-btn">Play</a>
+      <a class="add-piece-to-cart-btn">Add to Cart ($<%= piece.price_string %>)</a>
+    </div>
+    <% if piece.description %>
+      <div><a class="toggle-piece-description-btn">Show Description</a></div>
+    <% end %>
+  <!-- </div> -->
+  <div class="piece-description" aria-hidden=true>
+    <div class="piece-description-show"><%= piece.description %></div>
+  </div>
+</div>

@@ -1,3 +1,30 @@
 // Place all the styles related to the pieces controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.piece {
+  display: flex;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+  // min-width: 400px;
+  // position: relative;
+
+  .piece-title {
+    min-width: 300px;
+  }
+
+  .piece-ctas-container {
+    min-width: 190px;
+    text-align: right;
+    a:nth-child(1) {
+      margin-right: 10px;
+    }
+    // float: right;
+    // margin-left: 10px;
+    // position: absolute;
+  }
+
+  .toggle-piece-description-btn[aria-hidden="true"] { display: none }
+
+  .piece-description[aria-hidden="true"] { display: none; }
+}

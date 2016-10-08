@@ -7,14 +7,17 @@
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,500,700,800' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://js.braintreegateway.com/js/braintree-2.24.0.min.js"></script>
 </head>
 <body>
   <%= render 'layouts/navbar' %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
   <div id="main">
     <%= yield %>
   </div>
-  <div id="audio-player" class="audio-player">
-    <%= react_component('AudioPlayer', {currentArtist: 'Eli Keszler', currentTitle: 'Railsback Curve', currentSource: 'https://s3.amazonaws.com/reubenson-portfolio/Sheet_metal.mp3', isPlaying: false}, {tag: 'div', class: 'audio-player-component', prerender: true}) %>
-  </div>
+  <%= react_component('Cart', {}, {tag: 'div', class: 'cart-container hidden', prerender: false}) %>
+  <%= react_component('AudioPlayer', {}, {tag: 'div', class: 'audio-player', aria:{hidden:true}, prerender: false}) %>
 </body>
 </html>

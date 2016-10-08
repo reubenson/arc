@@ -1,0 +1,72 @@
+// Place all the styles related to the squareformat layout here
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Responsive layout currently works mobile-first
+// Mobile and tablet styling relies of flexbox to re-order components differently than the order the exist in the DOM
+// Desktop styling removes flexbox and instead relies on the order of components in the DOM
+
+$grey: #333;
+
+.work.squareformat {
+  margin: 70px 20px auto;
+
+  .work-image-container {
+    order: 1;
+    margin-top: 10px;
+    padding: 0;
+    width: 100%;
+  }
+  .work-header-container {
+    order: 2;
+  }
+  .work-cta-container {
+    order: 3;
+  }
+  .work-description-container {
+    order: 4;
+  }
+  .work-tracklist-container {
+    order: 5;
+  }
+  .work-details-container {
+    order: 6;
+  }
+  .work-section{
+    align-self: flex-start;
+    width: 100%;
+  }
+
+  .work-header-title {
+    color: $grey
+  }
+
+  .lede-image {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  // tablet viewport widths and up
+  @media screen and (min-width: 600px) {
+    .lede-image {
+      max-width: 600px;
+    }
+    .work-header-container {
+      width: 40%;
+    }
+    .work-cta-container {
+      width: 40%;
+    }
+  }
+
+  // desktop viewport widths and up
+  @media screen and (min-width: 1024px) {
+    display: block;
+
+    .work-image-container {
+      float: right;
+      width: 50%;
+    }
+  }
+}

@@ -2,7 +2,21 @@
   <!-- <div class="navbar-links"> -->
     <%= link_to "ARC", root_path, class: "navbar-link" %>
     <%= link_to "Artists", artists_path, class: "navbar-link" %>
-    <%= link_to "Projects", projects_path, class: "navbar-link" %>
-    <%= link_to "About", root_path, class: "navbar-link" %>
+    <%= link_to "Works", all_works_path, class: "navbar-link" %>
+    <!-- <%= link_to "About", root_path, class: "navbar-link" %> -->
+    <a href="#" class="navbar-link" id="cart-btn">Cart</a>
+
+    <!-- User Accounts -->
+    <!-- <% if !user_signed_in? %>
+      <%= link_to "Sign In", user_session_path, class: "navbar-link" %>
+      or
+      <%= link_to "Sign Up", new_user_registration_path, class: "navbar-link" %>
+    <% else %>
+      <%= link_to "Account", users_account_path, class: "navbar-link" %>
+      <%= form_tag(destroy_user_session_path, method: "delete") do %>
+        <%= submit_tag "Sign Out", class:"navbar-link" %>
+      <% end %>
+    <% end %> -->
+
   <!-- </div> -->
 </nav>

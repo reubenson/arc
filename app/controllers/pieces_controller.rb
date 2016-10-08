@@ -4,18 +4,12 @@ class PiecesController < ApplicationController
   before_action :set_piece, only: [:show, :edit, :update, :destroy]
   layout :pjaxify, only: [:index, :show]
 
-  # temporary route
-  def api
-    @piece = Piece.find(params[:id])
-  end
 
   def index
     @pieces = @work.pieces
-    # render component: 'PiecesIndex', props: {artist: @artist, work: @work, pieces: @pieces}, tag: 'div', class: 'pieces-index'
   end
 
   def show
-    # render component: 'PiecesShow', props: {artist: @artist, work: @artist.work, piece: @piece}, tag: 'div', class: 'pieces-show'
   end
 
   def new

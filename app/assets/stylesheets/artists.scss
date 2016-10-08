@@ -1,3 +1,33 @@
 // Place all the styles related to the artists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.artists-container {
+  margin: 60px auto;
+  width: 90%;
+
+  h1 {
+    font-size: 2em;
+  }
+}
+
+.artist-container {
+  margin: 60px auto;
+  width: 100%;
+
+  h2, h3 {
+    width: 90%;
+    margin: 10px auto 10px;
+  }
+
+  .artist-bio {
+    margin: auto;
+    width: 90%;
+  }
+
+  .artist-works {
+    h3 {
+      font-size: 1.3em;
+    }
+  }
+}

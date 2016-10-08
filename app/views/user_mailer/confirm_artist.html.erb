@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @email %></h1>
+    <p>
+      We would like to confirm that you are responsible for <%= @artist.fullname %> on Arc.
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <%= form_tag(confirm_artist_url, method: "post") do %>
+      <%= hidden_field_tag :artist_id, @artist.id %>
+      <%= hidden_field_tag :confirmation_token, @artist.user_confirmation_token %>
+      <%= hidden_field_tag :email, @email %>
+      <%= submit_tag "This is Me!" %>
+    <% end %>
+    <p>Thanks for confirming and have a great day!</p>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<div class="work-item">
+  <%= link_to [work.artist,work] do %>
+    <img src="<%= work.image_url %>"/>
+    <h4>
+      <% if show_artist %>
+        <%= work.artist.fullname %> -
+      <% end %>
+      <%= work.title %> (<%= work.end_date.year %>)
+    </h4>
+  <% end %>
+</div>

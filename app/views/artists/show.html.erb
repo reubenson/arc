@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<article class="artist-page" data-turbolinks-temporary >
+<div class="artist-container">
   <section class="artist-profile">
     <h2>
-      <a href="#" id='body-swap'><%= @artist.first_name %> <%= @artist.last_name %></a>
+      <%= link_to @artist.fullname, @artist %>
     </h2>
     <!-- <img src="<%= @artist.image_url %>"/> -->
     <aside class="artist-bio">
@@ -13,10 +11,6 @@
 
   <section class="artist-works">
     <h3>Works</h3>
-    <% @works.each do |work| %>
-      <h3>
-        <%= link_to work.title, [@artist,work] %>
-      </h3>
-    <% end %>
+    <%= render partial: "works/index", locals: {works: @artist.works} %>
   </section>
-</article>
+</div>

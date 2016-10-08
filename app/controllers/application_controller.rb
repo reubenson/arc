@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
     artist_id = params[:artist_id] || params[:id]
     @artist = Artist.friendly.find(artist_id)
   end
+
+  def set_work
+    work_id = params[:work_id] || params[:id]
+    @work = Work.friendly.find(work_id)
+  end
 end

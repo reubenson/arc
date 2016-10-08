@@ -1,0 +1,22 @@
+<div class="admin-container">
+
+  <h4>Artists That Need To Be Linked To A User Account</h4>
+  <ol>
+    <% @unconfirmed_artists.each do |artist| %>
+      <li><%= artist.fullname %></li>
+      <%= form_tag(confirm_artist_email_path, method: "post") do %>
+        <%= hidden_field_tag :artist_id, artist.id %>
+        <%= text_field_tag :email %>
+        <%= submit_tag "Send Confirmation Email To Artist" %>
+      <% end %>
+    <% end %>
+  </ol>
+
+  <h4>Artists That Have Been Successfully Linked To A User Account</h4>
+  <ol>
+    <% @confirmed_artists.each do |artist| %>
+      <li><%= artist.fullname %></li>
+    <% end %>
+  </ol>
+
+</div>

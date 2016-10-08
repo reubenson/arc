@@ -1,0 +1,9 @@
+<div class="users-account-container">
+  <h2>Account</h2>
+  <h3>Purchases</h3>
+  <ol>
+    <% @purchases.each do |purchase| %>
+      <li><%= purchase.title %></li>
+    <% end %>
+  </ol>
+</div>

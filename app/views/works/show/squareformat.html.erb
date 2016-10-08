@@ -1,0 +1,60 @@
+<section class="work squareformat" data-workId=<%= @work.id %> >
+
+  <section class="work-image-container work-section">
+    <div class="lede-image">
+      <img src="<%= @work.image_url %>" alt="Album Cover" />
+    </div>
+  </section>
+
+  <section class="work-header-container work-section">
+    <header>
+      <h2 class="work-header-artist"><%= link_to @artist.fullname, @artist %> </h2>
+      <h3 class="work-header-title"> <%= @work.title %> </h3>
+    </header>
+  </section>
+
+  <section class="work-cta-container work-section">
+    <header class="work-header">
+      <a class="add-work-to-player-btn">Play Audio</a>
+    </header>
+    <h4 class="work-header">
+      Purchase Download
+    </h4>
+    <a class="add-work-to-cart-btn">Add to Cart</a>
+  </section>
+
+  <section class="work-tracklist-container work-section">
+    <article class="work-tracklist">
+      <!-- <table> -->
+        <% @work.pieces.each do |piece| %>
+          <%= render partial: "pieces/show", locals: {piece: piece} %>
+        <% end %>
+      <!-- </table> -->
+    </article>
+  </section>
+
+  <section class="work-details-container work-section">
+    <!-- <section class="work-details"> -->
+      <h4 class="work-header">
+        Release Details
+      </h4>
+      <ul class="work-release-details">
+        <li>
+          <span>Label:</span> <%= @work.record_label %>
+        </li>
+        <li>
+          <span>Release Date:</span> <%= @work.end_date %>
+        </li>
+      </ul>
+    <!-- </section> -->
+  </section>
+
+
+
+  <section class="work-description-container work-section">
+    <article class="work-description">
+      <%= raw @work.description %>
+    </article>
+  </section>
+
+</section>

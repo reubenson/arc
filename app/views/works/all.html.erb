@@ -1,0 +1,5 @@
+<div class="works-container">
+  <% @works.each do |work| %>
+    <%= render partial: "works/show", locals: {work: work, show_artist: @include_name} %>
+  <% end %>
+</div>

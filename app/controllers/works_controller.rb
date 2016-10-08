@@ -1,15 +1,27 @@
 class WorksController < ApplicationController
   before_action :set_artist, only: [:index, :show, :new, :edit, :update, :destroy]
   before_action :set_work, only: [:show, :edit, :update, :destroy]
-  layout :pjaxify, only: [:index, :show]
+  layout :pjaxify, only: [:index, :show, :all]
+
+  def all
+    @works = Work.all
+    @include_name = true
+  end
 
   def index
     @works = @artist.works.all
-    # render component: 'WorksIndex', props: {artist: @artist, works: @works}, tag: 'div', class: 'works-index'
+    @include_name = false
   end
 
   def show
-    # render component: 'WorksShow', props: {artist: @artist, work: @work}, tag: 'div', class: 'works-show'
+    case @work.layout
+    when 'squareformat'
+      render "works/show/squareformat"
+    when 'wideformat'
+      render "works/show/wideformat"
+    else
+      render "works/show/wideformat"
+    end
   end
 
   def new
@@ -53,15 +65,6 @@ class WorksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_work
-      @work = Work.find(params[:id])
-    end
-
-    # def set_artist
-    #   @artist = Artist.find(params[:artist_id])
-    # end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def work_params
       params.require(:work).permit(:artist_id, :title, :start_date, :end_date, :image_url, :price, :website_url)

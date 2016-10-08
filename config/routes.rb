@@ -1,18 +1,34 @@
 Rails.application.routes.draw do
 
-  # resources :notes
-  # resources :pieces
-  # resources :works
-  # resources :artists
   root 'artists#index'
+  get 'works' => 'works#all', as: :all_works
   resources :artists do
     resources :works do
       resources :pieces
     end
   end
 
-  resources :projects
-  get 'pieces/:id' => 'pieces#api', :defaults => { :format => :json }
+  namespace :api do
+    namespace :v1 do
+      get 'works/:id/pieces' => 'works#pieces'
+      get 'pieces/:id' => 'pieces#piece'
+
+      post 'add_to_cart' => 'carts#add_to_cart'
+      post 'remove_from_cart' => 'carts#remove_from_cart'
+      get 'initialize_cart' => 'carts#initialize_cart'
+
+      get 'get_token' => 'payments#get_token'
+      get 'checkout' => 'payments#new'
+      post 'checkout' => 'payments#checkout'
+    end
+  end
+
+  devise_for :users
+  get 'users/account' => 'users#account'
+
+  get 'admin' => 'admin#show'
+  post 'confirm_artist_email' => 'admin#confirm_artist_email'
+  post 'confirm_artist' => 'admin#confirm_artist'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

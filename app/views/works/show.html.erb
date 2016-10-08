@@ -1,20 +1,23 @@
-<p id="notice"><%= notice %></p>
+<section class="work" data-workId=<%= @work.id %>>
+  <div class="work-image" style="background-image: url(<%= @work.image_url %>)"></div>
+  <h2> <%= link_to @artist.fullname, @artist %> </h2>
+  <h3> <%= @work.title %> </h3>
 
-<h2>
-  <%= link_to @artist.fullname, @artist %>
-</h2>
-<h3>
-  <%= @work.title %>
-</h3>
-<img src="<%= @work.image_url %>"/>
-<section class="work-description">
-  <%= @work.description %>
+  <aside class="work-buttons">
+    <a class="add-work-to-player-btn">Play Audio</a>
+    <a class="add-work-to-cart-btn">Add to Cart</a>
+  </aside>
+
+  <article class="work-description">
+    <%= @work.description %>
+  </article>
+
+  <article class="work-tracklist">
+    <h4>Tracklisting: </h4>
+    <table>
+      <% @work.pieces.each do |piece| %>
+        <%= render partial: "pieces/show", locals: {piece: piece} %>
+      <% end %>
+    </table>
+  </article>
 </section>
-
-<div class="work-tracklist">
-  <% @work.pieces.each do |piece| %>
-    <%= piece.title %> (<%= piece.duration %>)
-    <a class="fa fa-play" aria-hidden="false" data-pieceId=<%= piece.id %>></a>
-    <a class="fa fa-info" aria-hidden="false"></a>
-  <% end %>
-</div>

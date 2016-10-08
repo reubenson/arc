@@ -1,0 +1,54 @@
+.cart-container {
+  background-color: white;
+  border: solid black 2px;
+  bottom: 0;
+  height: 90%;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  width: 90%;
+  top: 0;
+  z-index: 10;
+
+  .cart {
+    h2 {
+      text-align: center;
+      border-bottom: solid black 2px;
+      width: 45%;
+      margin: 40px auto;
+      padding-bottom: 10px;
+    }
+
+    form#checkout {
+      width: 400px;
+      max-width: 75%;
+      margin: 180px auto;
+      border: solid black 6px;
+      padding: 20px;
+      box-shadow: 12px 12px black;
+    }
+
+    table {
+      margin: auto;
+      border-bottom: solid black 2px;
+      width: 75vw;
+
+      th {
+        text-align: left;
+      }
+    }
+
+    #checkout-total {
+      right: 7.5vw;
+      position: absolute;
+    }
+  }
+
+  .cart-close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+}

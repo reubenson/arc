@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416140624) do
+ActiveRecord::Schema.define(version: 20160522235923) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "artists", force: :cascade do |t|
     t.string   "first_name"
@@ -23,9 +32,23 @@ ActiveRecord::Schema.define(version: 20160416140624) do
     t.string   "image_url"
     t.string   "website_url"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "user_confirmation_token"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.boolean "transaction_completed"
+  end
+
+  create_table "lineitems", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "item_id"
+    t.string  "item_type"
+  end
+
+  add_index "lineitems", ["item_type", "item_id"], name: "index_lineitems_on_item_type_and_item_id", using: :btree
 
   create_table "notes", force: :cascade do |t|
     t.string   "subject_type"
@@ -42,22 +65,50 @@ ActiveRecord::Schema.define(version: 20160416140624) do
     t.string   "title"
     t.string   "duration"
     t.date     "complete_date"
-    t.integer  "price"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.decimal  "price",         precision: 6, scale: 2, default: 1.00
+    t.text     "description"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "works", force: :cascade do |t|
     t.integer  "artist_id"
     t.string   "title"
+    t.string   "slug"
     t.date     "start_date"
     t.date     "end_date"
     t.text     "description"
     t.string   "image_url"
-    t.float    "price"
+    t.decimal  "price",       precision: 6, scale: 2
     t.string   "website_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "layout",      default: 'wide'
+    t.string   "record_label"
   end
 
 end

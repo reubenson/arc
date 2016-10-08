@@ -10,6 +10,8 @@ class CreateArtists < ActiveRecord::Migration
       t.string :image_url
       t.string :website_url
       t.integer :user_id
+      t.string :user_confirmation_token
+
       t.timestamps null: false
     end
   end
