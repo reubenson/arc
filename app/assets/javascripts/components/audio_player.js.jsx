@@ -29,7 +29,8 @@ var AudioPlayer = React.createClass({
     var trackNumber = this.state.playlistTrackNumber - 1;
     trackNumber = Math.max(trackNumber , 0);
     this.setState({
-      playlistTrackNumber: trackNumber
+      isPlaying: true,
+      playlistTrackNumber: trackNumber,
     },function() {
       this.updatePlayer();
     });
@@ -39,10 +40,11 @@ var AudioPlayer = React.createClass({
   incrementTrackNumber: function() {
     var trackNumber = this.state.playlistTrackNumber + 1;
     if (trackNumber >= this.state.playlist.length) {
-      this.setState({isPlaying:false});
+      this.setState({isPlaying: false});
     } else {
       trackNumber = Math.min(trackNumber , this.state.playlist.length-1);
       this.setState({
+        isPlaying: true,
         playlistTrackNumber: trackNumber
       },function() {
         this.updatePlayer();
@@ -293,13 +295,13 @@ var Audio = React.createClass({
   pauseAudio: function() {
     var volume = this._audio.volume;
     var volumeControl = setInterval(function(volume) {
-      this._audio.volume -= 0.1;
+      this._audio.volume -= 0.01;
       if (this._audio.volume <= 0.01) {
-        clearInterval(volumeControl);
         this._audio.pause();
         this._audio.volume = 1.0;
+        clearInterval(volumeControl);
       }
-    }.bind(this),100);
+    }.bind(this),5);
   },
 
   playAudio: function() {
