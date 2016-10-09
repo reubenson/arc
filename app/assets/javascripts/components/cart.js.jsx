@@ -109,7 +109,10 @@ var Cart = React.createClass({
   },
 
   updateCartBtn: function() {
-    this._cartBtn.textContent = 'Cart (' + this.numberOfItems() + ')'
+    var numItems = this.numberOfItems(),
+      numItemsText = ( numItems > 0 ) ? 'Cart (' + numItems + ')' : 'Cart';
+
+    this._cartBtn.textContent = numItemsText;
   },
 
   checkout: function() {
