@@ -11,6 +11,8 @@ class CreateWorks < ActiveRecord::Migration
       t.decimal :price, :precision => 6, :scale => 2
       t.string :website_url
       t.timestamps null: false
+      t.string :layout
+      t.string :record_label
     end
   end
 end
