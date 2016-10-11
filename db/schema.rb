@@ -60,15 +60,15 @@ ActiveRecord::Schema.define(version: 20160522235923) do
 
   create_table "pieces", force: :cascade do |t|
     t.integer  "work_id"
-    t.integer  "track_number",  default: 0
+    t.integer  "track_number",                          default: 1
     t.string   "source_url"
     t.string   "title"
     t.string   "duration"
     t.date     "complete_date"
-    t.decimal  "price",         precision: 6, scale: 2, default: 1.00
+    t.decimal  "price",         precision: 6, scale: 2, default: 1.0
     t.text     "description"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,11 +103,11 @@ ActiveRecord::Schema.define(version: 20160522235923) do
     t.date     "end_date"
     t.text     "description"
     t.string   "image_url"
-    t.decimal  "price",       precision: 6, scale: 2
+    t.decimal  "price",        precision: 6, scale: 2
     t.string   "website_url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "layout",      default: 'wide'
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "layout"
     t.string   "record_label"
   end
 

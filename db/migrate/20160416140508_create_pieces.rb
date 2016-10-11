@@ -7,7 +7,7 @@ class CreatePieces < ActiveRecord::Migration
       t.string :title
       t.string :duration
       t.date :complete_date
-      t.decimal :price, :precision => 6, :scale => 2
+      t.decimal :price, :precision => 6, :scale => 2, :default => 1.00
       t.text :description
 
       t.timestamps null: false
