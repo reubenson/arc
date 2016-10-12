@@ -19,6 +19,8 @@ class WorksController < ApplicationController
       render "works/show/squareformat"
     when 'wideformat'
       render "works/show/wideformat"
+    when "grid"
+      render "works/show/grid"
     else
       render "works/show/wideformat"
     end

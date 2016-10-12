@@ -1,0 +1,68 @@
+<section class="work grid container" data-workId=<%= @work.id %> >
+  <div class="row">
+
+    <div class="row six columns">
+
+      <div class="work-header-container work-section">
+        <header>
+          <h2 class="work-header-artist"><%= link_to @artist.fullname, @artist %> </h2>
+          <h3 class="work-header-title"> <%= @work.title %> </h3>
+        </header>
+      </div>
+
+      <div class="work-cta-container work-section columns">
+        <header class="work-header">
+          <a class="add-work-to-player-btn">Play Audio</a>
+        </header>
+        <h4 class="work-header">
+          Purchase Download
+        </h4>
+        <a class="add-work-to-cart-btn">Add to Cart</a>
+      </div>
+
+      <div class="work-tracklist-container work-section columns">
+        <article class="work-tracklist">
+          <% @work.pieces.each do |piece| %>
+          <%= render partial: "pieces/show", locals: {piece: piece} %>
+          <% end %>
+        </article>
+      </div>
+
+      <div class="work-details-container work-section columns">
+        <h4 class="work-header">
+          Release Details
+        </h4>
+        <ul class="work-release-details">
+          <li>
+            <div>Label:</div> <%= @work.record_label %>
+          </li>
+          <li>
+            <div>Release Date:</div> <%= @work.end_date %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row six columns">
+
+      <div class="row twelve columns">
+        <div class="work-image-container work-section twelve columns">
+          <div class="lede-image">
+            <img src="<%= @work.image_url %>" alt="Album Cover" />
+          </div>
+        </div>
+      </div>
+      <div class="row twelve columns">
+        <div class="work-description-container work-section twelve columns">
+          <article class="work-description">
+            <%= raw @work.description %>
+          </article>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</section>
