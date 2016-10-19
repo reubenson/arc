@@ -6,7 +6,8 @@
 // Mobile and tablet styling relies of flexbox to re-order components differently than the order the exist in the DOM
 // Desktop styling removes flexbox and instead relies on the order of components in the DOM
 
-$grey: #333;
+// $grey: #333;
+@import "variables";
 
 .work.squareformat {
   margin: 70px 20px auto;
@@ -67,6 +68,10 @@ $grey: #333;
     .work-image-container {
       float: right;
       width: 50%;
+    }
+
+    .work-tracklist {
+      width: calc(50% - 20px);
     }
   }
 }

@@ -13,7 +13,7 @@
     </header>
   </section>
 
-  <section class="work-cta-container work-section">
+  <!-- <section class="work-cta-container work-section">
     <header class="work-header">
       <a class="add-work-to-player-btn">Play Audio</a>
     </header>
@@ -21,16 +21,22 @@
       Purchase Download
     </h4>
     <a class="add-work-to-cart-btn">Add to Cart</a>
-  </section>
+  </section> -->
 
   <section class="work-tracklist-container work-section">
-    <article class="work-tracklist">
-      <!-- <table> -->
-        <% @work.pieces.each do |piece| %>
-          <%= render partial: "pieces/show", locals: {piece: piece} %>
-        <% end %>
-      <!-- </table> -->
-    </article>
+      <table class="work-tracklist">
+        <thead>
+          <th><button class="add-work-to-player-btn button-primary">Play All</button></th>
+          <th></th>
+          <th><%= @work.duration_formatted %></th>
+          <th><button class="add-work-to-cart-btn button-primary">Add to Cart ($<%= (@work.price_formatted) %>)</button></th>
+        </thead>
+        <tbody>
+          <% @work.pieces.each do |piece| %>
+            <%= render partial: "pieces/show", locals: {piece: piece} %>
+          <% end %>
+        </tbody>
+      </table>
   </section>
 
   <section class="work-details-container work-section">

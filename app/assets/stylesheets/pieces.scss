@@ -3,14 +3,32 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .piece {
-  display: flex;
-  padding-bottom: 10px;
+  // display: flex;
   flex-wrap: wrap;
   // min-width: 400px;
   // position: relative;
 
+  tr {
+    width: 100%;
+  }
+  td {
+    padding: 5px 5px;
+  }
+
+  .piece-duration {
+    text-align: right;
+  }
+  .piece-play {
+    width: 10px;
+  }
+  .piece-purchase {
+    min-width: 150px;
+    text-align: right;
+    width: 10%;
+  }
   .piece-title {
-    min-width: 300px;
+    min-width: 150px;
+    width: 60%;
   }
 
   .piece-ctas-container {
@@ -24,7 +42,8 @@
     // position: absolute;
   }
 
-  .toggle-piece-description-btn[aria-hidden="true"] { display: none }
 
-  .piece-description[aria-hidden="true"] { display: none; }
 }
+
+.toggle-piece-description-btn[aria-hidden="true"] { display: none }
+.piece-description[aria-hidden="true"] { display: none; }

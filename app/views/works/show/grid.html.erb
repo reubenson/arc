@@ -20,13 +20,23 @@
         <a class="add-work-to-cart-btn">Add to Cart</a>
       </div>
 
-      <div class="work-tracklist-container work-section columns">
-        <article class="work-tracklist">
-          <% @work.pieces.each do |piece| %>
-          <%= render partial: "pieces/show", locals: {piece: piece} %>
-          <% end %>
-        </article>
-      </div>
+      <section class="work-tracklist-container work-section">
+          <table class="work-tracklist">
+            <thead>
+              <th><button class="add-work-to-player-btn button-primary">Play All</button></th>
+              <th></th>
+              <th><%= @work.duration_formatted %></th>
+              <th><button class="add-work-to-cart-btn button-primary">Add to Cart ($<%= (@work.price_formatted) %>)</button></th>
+            </thead>
+            <tbody>
+              <% @work.pieces.each do |piece| %>
+                <%= render partial: "pieces/show", locals: {piece: piece} %>
+              <% end %>
+            </tbody>
+          </table>
+      </section>
+
+
 
       <div class="work-details-container work-section columns">
         <h4 class="work-header">
