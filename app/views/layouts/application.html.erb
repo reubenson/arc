@@ -19,5 +19,7 @@
   </div>
   <%= react_component('Cart', {}, {tag: 'div', class: 'cart-container hidden', prerender: false}) %>
   <%= react_component('AudioPlayer', {}, {tag: 'div', class: 'audio-player', aria:{hidden:true}, prerender: false}) %>
+
+  <div id="audio-player-buffer" aria-hidden='true'></div>
 </body>
 </html>

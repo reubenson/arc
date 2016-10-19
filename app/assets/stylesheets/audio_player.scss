@@ -1,12 +1,18 @@
+@import "variables";
+
 .audio-player {
   background-color: white;
   border-top: solid black 2px;
   bottom: 0;
-  height: 180px;
+  height: $audioPlayerHeight;
   position: fixed;
   text-align: center;
   width: 100%;
   z-index: 5;
+
+  button {
+    margin: 5px;
+  }
 
   .audio-player-close-btn {
     position: absolute;
@@ -22,9 +28,39 @@
     }
 
     line {
-      stroke: rgb(255,0,0);
+      stroke: $grey2;
       stroke-width: 2;
     }
+    .progress-bar {
+      stroke: red;
+    }
+
+  }
+  .audio-player-info {
+    position: absolute;
+    margin: 20px;
+    text-align: left;
+  }
+  .audio-player-nav-buttons {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+  }
+  .audio-player-progress-bar {
+    position: absolute;
+    left: 0;
+    width: 500px;
+    margin: auto;
+    right: 0;
+    top: 20px;
+  }
+  .audio-player-time-display {
+    position: absolute;
+    left: 510px;
+    margin: auto;
+    right: 0;
+    top: 20px
   }
 }
 .audio-player[aria-hidden="true"] {

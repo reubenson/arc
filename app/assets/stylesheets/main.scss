@@ -1,3 +1,5 @@
+@import "variables";
+
 body, nav {
   background-color: #fff;
   color: #333;
@@ -93,4 +95,11 @@ img {
     font-size: 12px;
     list-style: square;
   }
+}
+
+#audio-player-buffer {
+  height: $audioPlayerHeight;
+}
+#audio-player-buffer[aria-hidden="true"] {
+  display: none;
 }

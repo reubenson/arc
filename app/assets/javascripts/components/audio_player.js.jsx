@@ -60,6 +60,7 @@ var AudioPlayer = React.createClass({
   componentDidMount: function() {
     _audioPlayer = ReactDOM.findDOMNode(this).parentElement;
     document.getElementById('main').addEventListener('click', this.handleClick);
+    _audioPlayerBuffer = document.getElementById('audio-player-buffer');
   },
 
   currentTrackDuration: function() {
@@ -118,6 +119,7 @@ var AudioPlayer = React.createClass({
 
   hidePlayer: function() {
     _audioPlayer.setAttribute('aria-hidden', true);
+    _audioPlayerBuffer.setAttribute('aria-hidden', true);
   },
 
   pauseTimer: function() {
@@ -135,6 +137,7 @@ var AudioPlayer = React.createClass({
 
   showPlayer: function() {
     _audioPlayer.setAttribute('aria-hidden', false);
+    _audioPlayerBuffer.setAttribute('aria-hidden', false);
   },
 
   tick: function() {
@@ -162,11 +165,13 @@ var AudioPlayer = React.createClass({
         <Playlist playlist={this.state.playlist} trackNumber={this.state.playlistTrackNumber}/>
         <TimeDisplay elapsedTime={this.state.elapsedTime} duration={this.currentTrackDuration()}/>
         <ProgressBar elapsedTime={this.state.elapsedTime} duration={this.currentTrackDuration()}/>
-        <button onClick={this.decrementTrackNumber}>Previous Piece</button>
-        <PlayButton togglePlayFn={this.togglePlay} isPlaying={this.state.isPlaying}/>
-        <button onClick={this.incrementTrackNumber}>Next Piece</button>
+        <div className="audio-player-nav-buttons">
+          <button onClick={this.decrementTrackNumber}> &#60;&#60; </button>
+          <PlayButton togglePlayFn={this.togglePlay} isPlaying={this.state.isPlaying}/>
+          <button onClick={this.incrementTrackNumber}> &#62;&#62; </button>
+        </div>
         <Audio currentSource={this.state.currentSource} isPlaying={this.state.isPlaying} incrementTrackNumber={this.incrementTrackNumber} />
-        <button onClick={this.closePlayer} className="audio-player-close-btn">Close</button>
+        <button onClick={this.closePlayer} className="audio-player-close-btn">x</button>
       </div>
     );
   }
@@ -201,7 +206,16 @@ var Playlist = React.createClass({
   },
 
   render: function() {
-    return <div> {this.artist()} - {this.piece()} </div>
+    return (
+      <div className="audio-player-info">
+        <div className="audio-player-info-artist">
+          {this.artist()}
+        </div>
+        <div className="audio-player-info-title">
+          {this.piece()}
+        </div>
+      </div>
+    )
   }
 });
 
@@ -231,10 +245,11 @@ var ProgressBar = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="audio-player-progress-bar">
         <svg width="400" height="10">
           <line x1="0" y1="5" x2="800" y2="5" />
-          <circle onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler} cx={this.fractionComplete()*400} cy="5" r="4" />
+          <line className="progress-bar" x1="0" y1="5" x2={this.fractionComplete()*800} y2="5" />
+          {/*<circle onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler} cx={this.fractionComplete()*400} cy="5" r="4" />*/}
         </svg>
       </div>
     )
@@ -247,7 +262,7 @@ var TimeDisplay = React.createClass({
     var minutes = parseInt(this.props.elapsedTime / 60);
     var hours = parseInt(minutes / 60);
 
-    if (minutes < 10) { minutes = "0" + minutes }
+    if (hours > 0 && minutes < 10) { minutes = "0" + minutes }
     if (seconds < 10) { seconds = "0" + seconds }
     hours = hours > 0 ? hours + ":" : "";
     return hours + minutes + ':' + seconds;
@@ -255,7 +270,9 @@ var TimeDisplay = React.createClass({
 
   render: function() {
     return (
-        <div>{this.currentTime()}|{this.props.duration}</div>
+        <div className="audio-player-time-display">
+          {this.currentTime()} / {this.props.duration}
+        </div>
     )
   }
 });
