@@ -8,6 +8,7 @@
 
 // $grey: #333;
 @import "variables";
+$rightColWidth: 60%;
 
 .work.squareformat {
   margin: 70px 20px auto;
@@ -44,14 +45,14 @@
 
   .lede-image {
     margin: 0 auto;
-    max-width: 600px;
+    // max-width: 600px;
     width: 100%;
   }
 
   // tablet viewport widths and up
   @media screen and (min-width: 600px) {
     .lede-image {
-      max-width: 600px;
+      // max-width: 600px;
     }
     .work-header-container {
       width: 40%;
@@ -65,13 +66,16 @@
   @media screen and (min-width: 1024px) {
     display: block;
 
-    .work-image-container {
+    .work-image-container,
+    .work-description-container
+     {
       float: right;
-      width: 50%;
+      width: calc(#{$rightColWidth} - 40px);
     }
 
-    .work-tracklist {
-      width: calc(50% - 20px);
+    .work-tracklist-container {
+      width: calc(100% - #{$rightColWidth} - 40px);
     }
+
   }
 }
