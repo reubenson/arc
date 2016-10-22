@@ -1,25 +1,19 @@
 <section class="work grid container" data-workId=<%= @work.id %> >
+
+
   <div class="row">
-
-    <div class="row six columns">
-
+      <div class="twelve columns">
       <div class="work-header-container work-section">
         <header>
-          <h2 class="work-header-artist"><%= link_to @artist.fullname, @artist %> </h2>
-          <h3 class="work-header-title"> <%= @work.title %> </h3>
+          <p class="work-header-artist"><%= link_to @artist.fullname, @artist %> </p>
+          <p class="work-header-title"> <%= @work.title %></p>
         </header>
       </div>
-
-      <div class="work-cta-container work-section columns">
-        <header class="work-header">
-          <a class="add-work-to-player-btn">Play Audio</a>
-        </header>
-        <h4 class="work-header">
-          Purchase Download
-        </h4>
-        <a class="add-work-to-cart-btn">Add to Cart</a>
       </div>
+   </div>
 
+  <div class="row">
+    <div class="four columns">
       <section class="work-tracklist-container work-section">
           <table class="work-tracklist">
             <thead>
@@ -36,38 +30,32 @@
           </table>
       </section>
 
-
-
       <div class="work-details-container work-section columns">
         <h4 class="work-header">
           Release Details
         </h4>
         <ul class="work-release-details">
           <li>
-            <div>Label:</div> <%= @work.record_label %>
+            <div>Label: <%= @work.record_label %></div> 
           </li>
           <li>
-            <div>Release Date:</div> <%= @work.end_date %>
+            <div>Release Date: <%= @work.end_date %></div> 
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="row six columns">
+    <div class="eight columns">
 
-      <div class="row twelve columns">
         <div class="work-image-container work-section twelve columns">
           <div class="lede-image">
             <img src="<%= @work.image_url %>" alt="Album Cover" />
           </div>
         </div>
-      </div>
-      <div class="row twelve columns">
-        <div class="work-description-container work-section twelve columns">
+        <div class="work-description-container work-section">
           <article class="work-description">
             <%= raw @work.description %>
           </article>
-        </div>
 
       </div>
     </div>
