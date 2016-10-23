@@ -11,7 +11,7 @@
 $rightColWidth: 60%;
 
 .work.squareformat {
-  margin: 70px 20px auto;
+  margin: 40px 20px auto;
 
   .work-image-container {
     order: 1;
@@ -70,11 +70,11 @@ $rightColWidth: 60%;
     .work-description-container
      {
       float: right;
-      width: calc(#{$rightColWidth} - 40px);
+      width: calc(#{$rightColWidth} - 20px);
     }
 
     .work-tracklist-container {
-      width: calc(100% - #{$rightColWidth} - 40px);
+      width: calc(100% - #{$rightColWidth} - 20px);
     }
 
   }

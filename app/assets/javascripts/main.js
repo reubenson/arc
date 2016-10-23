@@ -19,22 +19,28 @@ $(function(){
 
 function onLoadAndResize(func) {
   window.addEventListener('load', func);
-  window.addEventListener('resize', func)
+  window.addEventListener('resize', func);
+  $(document).on('pjax:complete', func);
 }
 
 function modifyTracklist() {
   // style tracklist for narrow view
   var tracklist = document.querySelector('.work-tracklist'),
-    thresholdWidth = 420;
+    thresholdWidth = 420,
+    modifyFn = function() {
+      var tracklist = document.querySelector('.work-tracklist');
+      if (tracklist.clientWidth < thresholdWidth) {
+        tracklist.classList.add('sm');
+        // var playButton = tracklist.querySelector('.piece-play button');
+      } else{
+        tracklist.classList.remove('sm');
+      }
+      updateTracklist && window.clearInterval(updateTracklist);
 
-  console.log(tracklist.clientWidth);
-  if (tracklist.clientWidth < thresholdWidth) {
-    tracklist.classList.add('sm');
-  } else {
-    tracklist.classList.remove('sm');
-  }
-
-  // console.log('test');
+      return null;
+    },
+    updateTracklist = tracklist ? modifyFn() : window.setInterval(modifyFn,100);
+    console.log(tracklist);
 }
 
 onLoadAndResize(modifyTracklist);
