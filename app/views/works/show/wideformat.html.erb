@@ -12,12 +12,7 @@
     <%= @work.description %>
   </article>
 
-  <article class="work-tracklist">
-    <h4>Tracklisting: </h4>
-    <table>
-      <% @work.pieces.each do |piece| %>
-        <%= render partial: "pieces/show", locals: {piece: piece} %>
-      <% end %>
-    </table>
-  </article>
+  <section class="work-tracklist-container work-section">
+    <%= render partial: "tracklist/show", locals: {work: @work} %>
+  </section>
 </section>

@@ -6,18 +6,18 @@ react component nixed here for now for SEO / render optimization reasons
 
 <!-- table version -->
 <!-- <table> -->
-    <tr class="piece" data-pieceId=<%= piece.id %> >
-      <td class='piece-play'><button class="add-piece-to-player-btn">Play</button></td>
-      <td class='piece-title'><%= 1 + piece.track_number %>. <%= piece.title %></td>
-      <td class='piece-duration'><%= piece.duration_formatted %></td>
-      <td class="piece-purchase"><button class="add-piece-to-cart-btn">Add to Cart ($<%= piece.price_string %>)</button></td>
+    <!-- <div class="piece" data-pieceId=<%= piece.id %> >
+      <div class='piece-play piece-column'><button class="add-piece-to-player-btn">Play</button></div>
+      <div class='piece-title piece-column'><%= 1 + piece.track_number %>. <%= piece.title %></div>
+      <div class='piece-duration piece-column'><%= piece.duration_formatted %></div>
+      <div class="piece-purchase piece-column"><button class="add-piece-to-cart-btn">Add to Cart ($<%= piece.price_string %>)</button></div>
       <% if piece.description %>
-      <td><a class="toggle-piece-description-btn">Show Description</a></td>
+      <div><a class="toggle-piece-description-btn">Show Description</a></div>
       <% end %>
-    </tr>
-    <tr class="piece-description" aria-hidden=true>
+    </div>
+    <div class="piece-description" aria-hidden=true>
       <td class="piece-description-show"><%= piece.description %></td>
-    </tr>
+    </div> -->
   <!-- </tbody> -->
 <!-- </table> -->
 

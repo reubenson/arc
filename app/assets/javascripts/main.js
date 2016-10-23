@@ -16,3 +16,25 @@ $(function(){
     }
   })
 });
+
+function onLoadAndResize(func) {
+  window.addEventListener('load', func);
+  window.addEventListener('resize', func)
+}
+
+function modifyTracklist() {
+  // style tracklist for narrow view
+  var tracklist = document.querySelector('.work-tracklist'),
+    thresholdWidth = 420;
+
+  console.log(tracklist.clientWidth);
+  if (tracklist.clientWidth < thresholdWidth) {
+    tracklist.classList.add('sm');
+  } else {
+    tracklist.classList.remove('sm');
+  }
+
+  // console.log('test');
+}
+
+onLoadAndResize(modifyTracklist);

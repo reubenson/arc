@@ -29,6 +29,9 @@
 
 // work show page
 .work {
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: center;
 
 
   .work-section {
@@ -61,6 +64,7 @@
   //     width: 100px;
   //   }
   // }
+  
 
   .work-description {
     letter-spacing: 0.1em;
@@ -74,41 +78,17 @@
       line-height: 1.5em;
     }
   }
-
-  .work-tracklist {
-    border: 2px solid #333;
-    font-size: 0.8em;
-
-    thead,
-    tbody {
-      width: 100%;
-    }
-    thead {
-      background-color: #E9E9E9;
-    }
-    th {
-      min-width: 50px;
-      padding: 5px;
-      text-align: right;
-    }
-    th:nth-child(1) {
-      max-width: 40px;
-    }
-    // table {
-    //   width: 100%;
-    //   td:nth-child(3) {
-    //     float: right;
-    //   }
-    // }
-  }
 }
 
 // tablet (600px - 1024px)
-@media screen and (min-width: 200px) {
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .work {
+
+  }
 }
 
 // desktop (1024px +)
-@media screen and (min-width: 200spx) {
+@media screen and (min-width: 1024px) {
   .work {
   }
 }

@@ -15,19 +15,7 @@
   <div class="row">
     <div class="four columns">
       <section class="work-tracklist-container work-section">
-          <table class="work-tracklist">
-            <thead>
-              <th><button class="add-work-to-player-btn button-primary">Play All</button></th>
-              <th></th>
-              <th><%= @work.duration_formatted %></th>
-              <th><button class="add-work-to-cart-btn button-primary">Add to Cart ($<%= (@work.price_formatted) %>)</button></th>
-            </thead>
-            <tbody>
-              <% @work.pieces.each do |piece| %>
-                <%= render partial: "pieces/show", locals: {piece: piece} %>
-              <% end %>
-            </tbody>
-          </table>
+        <%= render partial: "tracklist/show", locals: {work: @work} %>
       </section>
 
       <div class="work-details-container work-section columns">
@@ -36,10 +24,10 @@
         </h4>
         <ul class="work-release-details">
           <li>
-            <div>Label: <%= @work.record_label %></div> 
+            <div>Label: <%= @work.record_label %></div>
           </li>
           <li>
-            <div>Release Date: <%= @work.end_date %></div> 
+            <div>Release Date: <%= @work.end_date %></div>
           </li>
         </ul>
       </div>

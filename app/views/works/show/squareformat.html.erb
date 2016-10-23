@@ -24,19 +24,7 @@
   </section> -->
 
   <section class="work-tracklist-container work-section">
-      <table class="work-tracklist">
-        <thead>
-          <th><button class="add-work-to-player-btn button-primary">Play All</button></th>
-          <th></th>
-          <th><%= @work.duration_formatted %></th>
-          <th><button class="add-work-to-cart-btn button-primary">Add to Cart ($<%= (@work.price_formatted) %>)</button></th>
-        </thead>
-        <tbody>
-          <% @work.pieces.each do |piece| %>
-            <%= render partial: "pieces/show", locals: {piece: piece} %>
-          <% end %>
-        </tbody>
-      </table>
+    <%= render partial: "tracklist/show", locals: {work: @work} %>
   </section>
 
   <section class="work-details-container work-section">
