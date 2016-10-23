@@ -1,9 +1,11 @@
 nav.navbar {
+  background-color: white;
   border-bottom: solid black 2px;
   position: fixed;
   height: auto;
   top: 0;
   width: 100%;
+  z-index: 1;
 
   form {
     display: inline;

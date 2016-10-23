@@ -3,16 +3,20 @@
   <h2> <%= link_to @artist.fullname, @artist %> </h2>
   <h3> <%= @work.title %> </h3>
 
-  <aside class="work-buttons">
+  <!-- <aside class="work-buttons">
     <a class="add-work-to-player-btn">Play Audio</a>
     <a class="add-work-to-cart-btn">Add to Cart</a>
-  </aside>
-
-  <article class="work-description">
-    <%= @work.description %>
-  </article>
+  </aside> -->
 
   <section class="work-tracklist-container work-section">
     <%= render partial: "tracklist/show", locals: {work: @work} %>
   </section>
+
+  <div class="work-description-container work-section">
+    <section class="work-description">
+      <%= @work.description %>
+    </section>
+  </div>
+
+
 </section>

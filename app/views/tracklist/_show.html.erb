@@ -1,7 +1,10 @@
 <div class="work-tracklist">
   <div class="work-tracklist-header">
+    <div class="work-tracklist-program-runtime">
+      Program Runtime: <%= @work.duration_formatted %>
+    </div>
     <span class="work-tracklist-play-all"><button class="add-work-to-player-btn button-primary">Play All</button></span>
-    <span class="work-tracklist-total-duration"><%= @work.duration_formatted %></span>
+    <!-- <span class="work-tracklist-total-duration"><%= @work.duration_formatted %></span> -->
     <span class="work-tracklist-purchase-all"><button class="add-work-to-cart-btn button-primary">Add to Cart ($<%= (@work.price_formatted) %>)</button></span>
   </div>
     <% @work.pieces.each do |piece| %>

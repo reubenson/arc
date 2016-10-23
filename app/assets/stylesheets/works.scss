@@ -36,7 +36,9 @@
 
 
   .work-section {
+    box-sizing: border-box;
     margin: 20px 0;
+    padding: 10px;
   }
 
   h2 {
@@ -91,5 +93,6 @@
 // desktop (1024px +)
 @media screen and (min-width: 1024px) {
   .work {
+    // display: block;
   }
 }

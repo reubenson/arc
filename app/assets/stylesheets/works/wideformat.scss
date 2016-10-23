@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .work.wideformat {
+  // display: flex;
+  // flex-wrap:
 
   h2 {
     line-height: 1.7em;
@@ -25,16 +27,25 @@
     width: 100%;
   }
 
-  .work-buttons {
-    margin: 15px auto;
-    text-align: center;
-  }
+  // .work-buttons {
+  //   margin: 15px auto;
+  //   text-align: center;
+  // }
 
   .work-image {
     height: 60vh;
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  .work-tracklist-container {
+    flex-grow: 1;
+    width: 40%;
+  }
+  .work-description-container {
+    flex-grow: 1;
+    width: 40%;
   }
 
   .work-tracklist {

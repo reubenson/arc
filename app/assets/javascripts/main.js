@@ -40,7 +40,6 @@ function modifyTracklist() {
       return null;
     },
     updateTracklist = tracklist ? modifyFn() : window.setInterval(modifyFn,100);
-    console.log(tracklist);
 }
 
 onLoadAndResize(modifyTracklist);
