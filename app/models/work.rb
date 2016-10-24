@@ -43,4 +43,8 @@ class Work < ActiveRecord::Base
     '%.2f' % self.price
   end
 
+  def release_details
+    'Released ' + self.end_date.strftime('%B %d, %Y') + (self.record_label ? " " + self.record_label : "")
+  end
+
 end

@@ -32,13 +32,10 @@
 .work {
   display: flex;
   flex-wrap: wrap;
-  // justify-content: center;
-
 
   .work-section {
     box-sizing: border-box;
-    margin: 20px 0;
-    padding: 10px;
+    margin: 10px 0 0;
   }
 
   h2 {
@@ -57,42 +54,20 @@
   .work-header-title {
     margin: 0;
   }
-
-  // .work-buttons {
-  //   margin: 15px;
-  //   text-align: center;
-  //
-  //   a {
-  //     display: inline-block;
-  //     width: 100px;
-  //   }
-  // }
-
-
   .work-description {
     letter-spacing: 0.1em;
     line-height: 1.5em;
-  }
-
-  .work-release-details {
-    padding: 0;
-
-    li {
-      line-height: 1.5em;
-    }
   }
 }
 
 // tablet (600px - 1024px)
 @media screen and (min-width: 600px) and (max-width: 1024px) {
   .work {
-
   }
 }
 
 // desktop (1024px +)
 @media screen and (min-width: 1024px) {
   .work {
-    // display: block;
   }
 }

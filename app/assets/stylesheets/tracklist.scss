@@ -12,6 +12,7 @@
     text-align: center;
     position: absolute;
   }
+
   .work-tracklist-header {
     height: 70px;
     position: relative;
@@ -49,6 +50,7 @@
     .piece-purchase {
       text-align: right;
       width: 170px;
+      .add-piece-to-cart-btn-sm { display: none }
     }
     .piece-title {
       flex-grow: 1;
@@ -71,19 +73,23 @@
 // sm class added dynamically in main.js
 .work-tracklist.sm {
   .piece-title {
-    margin-left: 10px;
+    // margin-left: 10px;
     order: 1;
-    width: 50%;
+    width: 30%;
   }
   .piece-duration {
     margin-right: 10px;
     order: 2;
   }
   .piece-play {
-    order: 3;
-    width: 30%; // not very precise, tweaking to force line break
+    order: 0;
+    // width: 30%; // not very precise, tweaking to force line break
+    width: auto;
   }
   .piece-purchase {
-    order: 4;
+    order: 3;
+    width: auto;
+    .add-piece-to-cart-btn { display: none }
+    .add-piece-to-cart-btn-sm { display: block }
   }
 }

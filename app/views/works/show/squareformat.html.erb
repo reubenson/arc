@@ -8,8 +8,9 @@
 
   <section class="work-header-container work-section">
     <header>
-      <h2 class="work-header-artist"><%= link_to @artist.fullname, @artist %> </h2>
-      <h3 class="work-header-title"> <%= @work.title %> </h3>
+      <span class="work-header-artist"><%= link_to @artist.fullname, @artist %> </span>
+      <span class="work-header-divider">/</span>
+      <span class="work-header-title"> <%= @work.title %> </span>
     </header>
   </section>
 
@@ -28,22 +29,8 @@
   </section>
 
   <section class="work-details-container work-section">
-    <!-- <section class="work-details"> -->
-      <h4 class="work-header">
-        Release Details
-      </h4>
-      <ul class="work-release-details">
-        <li>
-          <span>Label:</span> <%= @work.record_label %>
-        </li>
-        <li>
-          <span>Release Date:</span> <%= @work.end_date %>
-        </li>
-      </ul>
-    <!-- </section> -->
+    <%= render partial: "works/components/work_details", locals: {work: @work} %>
   </section>
-
-
 
   <section class="work-description-container work-section">
     <article class="work-description">

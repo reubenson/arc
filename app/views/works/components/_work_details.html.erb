@@ -1,0 +1,24 @@
+<section class="work-details">
+  <!-- <h4 class="work-header">
+    Release Details
+  </h4> -->
+    <% if @work.record_label %>
+      <div class="work-detail">
+        <span class="work-detail-label">Label</span>
+        <span class="work-detail-data"><%= @work.record_label %></span>
+      </div>
+    <% end %>
+    <% if @work.end_date %>
+      <div class="work-detail">
+        <span class="work-detail-label"> Release Date</span>
+        <span class="work-detail-data"> <%= @work.end_date.strftime('%B %d, %Y') %> </span>
+      </div>
+    <% end %>
+</section>
+
+<!-- Mobile Layout -->
+<section class="work-details-sm">
+  <p>
+    <%= @work.release_details %>
+  </p>
+</section>

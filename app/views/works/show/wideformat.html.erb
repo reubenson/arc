@@ -8,15 +8,30 @@
     <a class="add-work-to-cart-btn">Add to Cart</a>
   </aside> -->
 
+  <!-- <section class="work-details-container work-section">
+    <p>
+      Released <%= @work.end_date %>
+      <%- if @work.record_label -%>
+        on <%= @work.record_label %>
+      <%- end -%>
+    </p>
+  </section> -->
+
   <section class="work-tracklist-container work-section">
     <%= render partial: "tracklist/show", locals: {work: @work} %>
   </section>
 
   <div class="work-description-container work-section">
-    <section class="work-description">
+    <p class="work-description">
       <%= @work.description %>
-    </section>
+    </p>
   </div>
+  
+  <section class="work-details-container work-section">
+    <%= render partial: "works/components/work_details", locals: {work: @work} %>
+  </section>
+
+
 
 
 </section>

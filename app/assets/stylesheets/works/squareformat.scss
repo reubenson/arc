@@ -11,36 +11,43 @@
 $rightColWidth: 60%;
 
 .work.squareformat {
-  margin: 40px 20px auto;
+  margin: 50px 10px auto;
 
   .work-image-container {
-    order: 1;
+    order: 2;
     margin-top: 10px;
     padding: 0;
     width: 100%;
   }
   .work-header-container {
-    order: 2;
+    order: 1;
+    text-align: center;
   }
   .work-cta-container {
-    order: 3;
-  }
-  .work-description-container {
     order: 4;
   }
-  .work-tracklist-container {
+  .work-description-container {
     order: 5;
   }
-  .work-details-container {
+  .work-tracklist-container {
     order: 6;
   }
+  .work-details-container {
+    order: 3;
+    text-align: center;
+  }
+
   .work-section{
     align-self: flex-start;
+    // padding: 0;
     width: 100%;
   }
 
-  .work-header-title {
+  .work-header {
     color: $grey
+  }
+  .work-header-divider {
+    margin: auto 10px;
   }
 
   .lede-image {
@@ -51,11 +58,16 @@ $rightColWidth: 60%;
 
   // tablet viewport widths and up
   @media screen and (min-width: 600px) {
+    margin: 10px 10px auto;
+
     .lede-image {
       // max-width: 600px;
     }
-    .work-header-container {
-      width: 40%;
+    .work-details {
+      display: flex;
+    }
+    .work-details-sm {
+      display: none;
     }
     .work-cta-container {
       width: 40%;
@@ -66,6 +78,9 @@ $rightColWidth: 60%;
   @media screen and (min-width: 1024px) {
     display: block;
 
+    .work-header-container {
+      width: 40%;
+    }
     .work-image-container,
     .work-description-container
      {
@@ -73,7 +88,8 @@ $rightColWidth: 60%;
       width: calc(#{$rightColWidth} - 20px);
     }
 
-    .work-tracklist-container {
+    .work-tracklist-container,
+    .work-details-container {
       width: calc(100% - #{$rightColWidth} - 20px);
     }
 

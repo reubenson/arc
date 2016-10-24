@@ -1,0 +1,37 @@
+.work-details {
+  display: none;
+
+  .work-detail {
+    border: solid black 2px;
+    flex-grow: 1;
+    text-align: left;
+  }
+  // .work-detail:nth-last-child(1) {
+  //   border-left: none;
+  // }
+  .work-detail-label {
+    border-right: solid black 2px;
+    display: inline-block;
+    padding: 3px 10px;
+    width: 100px;
+  }
+  .work-detail-data {
+    padding-left: 10px;
+  }
+
+  @media screen and (min-width: 600px) {
+    // display: block;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.work-details-sm {
+  display: block;
+  font-size: 0.9em;
+  font-style: italic;
+
+  @media screen and (min-width: 600px) {
+    display: none;
+  }
+}

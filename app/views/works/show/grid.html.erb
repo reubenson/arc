@@ -19,17 +19,9 @@
       </section>
 
       <div class="work-details-container work-section columns">
-        <h4 class="work-header">
-          Release Details
-        </h4>
-        <ul class="work-release-details">
-          <li>
-            <div>Label: <%= @work.record_label %></div>
-          </li>
-          <li>
-            <div>Release Date: <%= @work.end_date %></div>
-          </li>
-        </ul>
+        <section class="work-details-container work-section">
+          <%= render partial: "works/components/work_details", locals: {work: @work} %>
+        </section>
       </div>
     </div>
 

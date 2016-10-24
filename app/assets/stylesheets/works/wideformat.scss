@@ -21,16 +21,15 @@
 
   h3 {
     letter-spacing: 0.3em;
-    margin: 30px auto 15px;
+    margin: 10px auto 15px;
     text-align: center;
     text-transform: uppercase;
     width: 100%;
   }
-
-  // .work-buttons {
-  //   margin: 15px auto;
-  //   text-align: center;
-  // }
+  .work-section {
+    padding: 10px;
+    width: 100%;
+  }
 
   .work-image {
     height: 60vh;
@@ -41,48 +40,39 @@
 
   .work-tracklist-container {
     flex-grow: 1;
-    width: 40%;
+    width: 100%;
   }
   .work-description-container {
     flex-grow: 1;
-    width: 40%;
+    width: 100%;
   }
 
-  .work-tracklist {
-    margin: auto;
-    max-width: 600px;
-    padding: 10px;
+  // .work-tracklist {
+  //
+  //   .piece-title {
+  //     width: 45%;
+  //   }
+  //
+  //   .piece-description-show {
+  //     // width: 100%;
+  //   }
+  //
+  //   td {
+  //     padding: 5px;
+  //     text-align: center;
+  //   }
+  //
+  //   td:nth-child(1) {
+  //     text-align: left;
+  //   }
+  // }
 
-    h4 {
-      text-align: center;
+  @media screen and (min-width: 768.1px) {
+    .work-tracklist-container {
+      width: 40%;
     }
-
-    table {
-      border-collapse: collapse;
-      margin: auto;
-      width: 100%;
-    }
-
-    tr {
-      border-bottom: solid black 2px;
-      width:auto;
-    }
-
-    .piece-title {
-      width: 45%;
-    }
-
-    .piece-description-show {
-      // width: 100%;
-    }
-
-    td {
-      padding: 5px;
-      text-align: center;
-    }
-
-    td:nth-child(1) {
-      text-align: left;
+    .work-description-container {
+      width: 40%;
     }
   }
 }

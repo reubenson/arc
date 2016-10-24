@@ -1,18 +1,23 @@
 <div class="work-tracklist">
-  <div class="work-tracklist-header">
+  <div class="work-tracklist-header <%= 'hidden' if @work.pieces.length ==1 %>">
     <div class="work-tracklist-program-runtime">
       Program Runtime: <%= @work.duration_formatted %>
     </div>
     <span class="work-tracklist-play-all"><button class="add-work-to-player-btn button-primary">Play All</button></span>
     <!-- <span class="work-tracklist-total-duration"><%= @work.duration_formatted %></span> -->
-    <span class="work-tracklist-purchase-all"><button class="add-work-to-cart-btn button-primary">Add to Cart ($<%= (@work.price_formatted) %>)</button></span>
+    <span class="work-tracklist-purchase-all">
+      <button class="add-work-to-cart-btn button-primary">Add to Cart ($<%= (@work.price_formatted) %>)</button>
+    </span>
   </div>
     <% @work.pieces.each do |piece| %>
       <div class="piece" data-pieceId=<%= piece.id %> >
         <div class='piece-play piece-column'><button class="add-piece-to-player-btn">&#9658;</button></div>
         <div class='piece-title piece-column'><%= 1 + piece.track_number %>. <%= piece.title %></div>
         <div class='piece-duration piece-column'><%= piece.duration_formatted %></div>
-        <div class="piece-purchase piece-column"><button class="add-piece-to-cart-btn">Add to Cart ($<%= piece.price_string %>)</button></div>
+        <div class="piece-purchase piece-column">
+          <button class="add-piece-to-cart-btn">Add to Cart ($<%= piece.price_string %>)</button>
+          <button class="add-piece-to-cart-btn-sm">$<%= piece.price_string %></button>
+        </div>
         <% if piece.description %>
         <div><a class="toggle-piece-description-btn">Show Description</a></div>
         <% end %>
