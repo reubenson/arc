@@ -21,6 +21,8 @@
   }
 
   svg {
+    width: 100%;
+    height: 10px;
     circle {
       stroke: "black";
       stroke-width: 3;
@@ -50,7 +52,7 @@
   .audio-player-progress-bar {
     position: absolute;
     left: 0;
-    width: 500px;
+    width: 400px;
     margin: auto;
     right: 0;
     top: 20px;

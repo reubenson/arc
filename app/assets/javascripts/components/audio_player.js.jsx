@@ -112,7 +112,6 @@ var AudioPlayer = React.createClass({
       var piece = result.piece;
       var prevPiece = this.state.playlist[this.state.playlistTrackNumber];
       var shouldPlay = prevPiece ? (piece.id != prevPiece.id) : true;
-      // console.log(prevPiece);
 
       this.setState({
         playlist: [result.piece],
@@ -166,18 +165,24 @@ var AudioPlayer = React.createClass({
     this.resetTimer();
   },
 
+  updateProgress: function(val) {
+    this.setState({
+      elapsedTime: Math.ceil(val)
+    })
+  },
+
   render: function() {
     return (
       <div>
         <Playlist playlist={this.state.playlist} trackNumber={this.state.playlistTrackNumber}/>
         <TimeDisplay elapsedTime={this.state.elapsedTime} duration={this.currentTrackDuration()}/>
-        <ProgressBar elapsedTime={this.state.elapsedTime} duration={this.currentTrackDuration()}/>
+        <ProgressBar updateProgress={this.updateProgress} elapsedTime={this.state.elapsedTime} duration={this.currentTrackDuration()}/>
         <div className="audio-player-nav-buttons">
           <button onClick={this.decrementTrackNumber}> &#60;&#60; </button>
           <PlayButton togglePlayFn={this.togglePlay} isPlaying={this.state.isPlaying} piece={this.state.playlist[this.state.playlistTrackNumber]} />
           <button onClick={this.incrementTrackNumber}> &#62;&#62; </button>
         </div>
-        <Audio currentSource={this.state.currentSource} isPlaying={this.state.isPlaying} incrementTrackNumber={this.incrementTrackNumber} />
+        <Audio currentSource={this.state.currentSource} isPlaying={this.state.isPlaying} incrementTrackNumber={this.incrementTrackNumber} elapsedTime={this.state.elapsedTime} />
         <button onClick={this.closePlayer} className="audio-player-close-btn">x</button>
       </div>
     );
@@ -243,8 +248,14 @@ var ProgressBar = React.createClass({
     return progress
   },
 
-  mouseDownHandler: function(e, clientX) {
-    console.log(e.clientX);
+  mouseDownHandler: function(e) {
+    var pageX = e.pageX,
+      progressBar = document.querySelector('.audio-player-progress-bar')
+      progressBarRect = progressBar.getBoundingClientRect(),
+      left = pageX - progressBarRect.left,
+      value = left / progressBar.clientWidth;
+
+    this.props.updateProgress( value * this.durationSeconds() );
   },
 
   mouseUpHandler: function(e) {
@@ -253,9 +264,9 @@ var ProgressBar = React.createClass({
   render: function() {
     return (
       <div className="audio-player-progress-bar">
-        <svg width="400" height="10">
-          <line x1="0" y1="5" x2="800" y2="5" />
-          <line className="progress-bar" x1="0" y1="5" x2={this.fractionComplete()*800} y2="5" />
+        <svg onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler}>
+          <line x1="0" y1="5" x2="400" y2="5" />
+          <line className="progress-bar" x1="0" y1="5" x2={this.fractionComplete()*400} y2="5" />
           {/*<circle onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler} cx={this.fractionComplete()*400} cy="5" r="4" />*/}
         </svg>
       </div>
@@ -304,6 +315,9 @@ var Audio = React.createClass({
     if (prevProps.isPlaying != this.props.isPlaying) {
       this.updatePlayerState();
     }
+    if (prevProps.elapsedTime != this.props.elapsedTime) {
+      this.updatePlayerProgress();
+    }
   },
 
   loadMedia: function() {
@@ -333,10 +347,15 @@ var Audio = React.createClass({
   },
 
   shouldComponentUpdate: function(nextProps) {
-    var update = false;
-    update = update || (nextProps.currentSource != this.props.currentSource);
-    update = update || (nextProps.isPlaying != this.props.isPlaying);
-    return update;
+    return (
+      nextProps.currentSource != this.props.currentSource ||
+      nextProps.isPlaying != this.props.isPlaying ||
+      Math.abs(nextProps.elapsedTime- this.props.elapsedTime) > 5
+    )
+  },
+
+  updatePlayerProgress: function() {
+    this._audio.currentTime = this.props.elapsedTime;
   },
 
   updatePlayerState: function() {
