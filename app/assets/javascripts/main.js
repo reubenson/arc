@@ -43,3 +43,33 @@ function modifyTracklist() {
 }
 
 onLoadAndResize(modifyTracklist);
+
+
+// recieve custom events dispatched from the PlayButton React component
+// update UI state dynamically
+var playButton = (function() {
+  var playing = false,
+    currentElement,
+    prevElement;
+
+  window.addEventListener('audio:updated', function(e){
+    var el = document.querySelector('.piece[data-pieceid="'+e.detail.pieceId+'"]'),
+      isPlaying = e.detail.isPlaying;
+
+    setElement(el);
+    setState(isPlaying);
+  }, false);
+
+  function setState (isPlaying) {
+    playing = isPlaying;
+    currentElement.querySelector('.add-piece-to-player-btn').innerHTML = isPlaying ? '&#9614;&#9614;' : '&#9658';
+    if (prevElement) {prevElement.querySelector('.add-piece-to-player-btn').innerHTML = '&#9658';}
+    prevElement = currentElement;
+  }
+
+  function setElement (el) {
+    currentElement = el;
+  }
+
+  return {}
+})();

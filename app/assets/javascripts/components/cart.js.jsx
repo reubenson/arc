@@ -46,11 +46,14 @@ var Cart = React.createClass({
   },
 
   handleClick: function(e) {
-    e.target.classList.contains('add-work-to-cart-btn') && this.addWorkToCart(e);
-    e.target.classList.contains('add-piece-to-cart-btn') && this.addPieceToCart(e);
-
-    if (this.state.cartVisible && e.target.classList.contains('navbar-link') && e.target.id!='cart-btn') {
-      this.hideCart();
+    if (e.target.classList.contains('add-work-to-cart-btn')) {
+      this.addWorkToCart(e);
+    } else if (e.target.classList.contains('add-piece-to-cart-btn')) {
+      this.addPieceToCart(e);
+    } else if (e.target.classList.contains('navbar-link')) {
+      if (this.state.cartVisible && e.target.id!='cart-btn') {
+        this.hideCart();
+      }
     }
   },
 

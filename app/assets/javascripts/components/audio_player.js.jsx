@@ -80,8 +80,11 @@ var AudioPlayer = React.createClass({
   },
 
   handleClick: function(e) {
-    e.target.classList.contains('add-piece-to-player-btn') && this.handlePlayPiece(e);
-    e.target.classList.contains('add-work-to-player-btn') && this.handlePlayAllPieces(e);
+    if (e.target.classList.contains('add-piece-to-player-btn')) {
+      this.handlePlayPiece(e);
+    } else if (e.target.classList.contains('add-work-to-player-btn')) {
+      this.handlePlayAllPieces(e);
+    }
   },
 
   handlePlayAllPieces: function(e) {
@@ -106,11 +109,15 @@ var AudioPlayer = React.createClass({
     var pieceId = _piece.dataset.pieceid;
     var url = window.location.origin = '/api/v1/pieces/' + pieceId;
     this.serverRequest = $.get(url, function (result) {
-      piece = result.piece;
+      var piece = result.piece;
+      var prevPiece = this.state.playlist[this.state.playlistTrackNumber];
+      var shouldPlay = prevPiece ? (piece.id != prevPiece.id) : true;
+      // console.log(prevPiece);
+
       this.setState({
         playlist: [result.piece],
         playlistTrackNumber: 0,
-        isPlaying: true
+        isPlaying: shouldPlay
       }, function(){
         this.updatePlayer();
       });
@@ -167,7 +174,7 @@ var AudioPlayer = React.createClass({
         <ProgressBar elapsedTime={this.state.elapsedTime} duration={this.currentTrackDuration()}/>
         <div className="audio-player-nav-buttons">
           <button onClick={this.decrementTrackNumber}> &#60;&#60; </button>
-          <PlayButton togglePlayFn={this.togglePlay} isPlaying={this.state.isPlaying}/>
+          <PlayButton togglePlayFn={this.togglePlay} isPlaying={this.state.isPlaying} piece={this.state.playlist[this.state.playlistTrackNumber]} />
           <button onClick={this.incrementTrackNumber}> &#62;&#62; </button>
         </div>
         <Audio currentSource={this.state.currentSource} isPlaying={this.state.isPlaying} incrementTrackNumber={this.incrementTrackNumber} />
@@ -353,6 +360,22 @@ var Audio = React.createClass({
 });
 
 var PlayButton = React.createClass({
+  shouldComponentUpdate: function(nextProps) {
+    return this.props.isPlaying != nextProps.isPlaying ||
+      this.props.piece != nextProps.piece;
+  },
+
+  componentDidUpdate: function() {
+    var evt = new CustomEvent('audio:updated',
+    {'detail':
+      {
+        'pieceId': this.props.piece.id,
+        'isPlaying': this.props.isPlaying
+      }
+    });
+    window.dispatchEvent( evt );
+  },
+
   displayBtn: function() {
     return this.props.isPlaying ? 'PAUSE' : 'PLAY';
   },
