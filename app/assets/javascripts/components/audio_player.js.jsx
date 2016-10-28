@@ -72,6 +72,7 @@ var AudioPlayer = React.createClass({
     return {
       isVisible: false,
       isPlaying: false,
+      isErroring: false,
       elapsedTime: 0,
       currentSource: "",
       playlistTrackNumber: -1,
@@ -138,7 +139,7 @@ var AudioPlayer = React.createClass({
   },
 
   resumeTimer: function() {
-    this.setInterval(this.tick, 1000);
+    // this.setInterval(this.tick, 1000);
   },
 
   showPlayer: function() {
@@ -165,6 +166,11 @@ var AudioPlayer = React.createClass({
     this.resetTimer();
   },
 
+  // replace updatePlayer with this?
+  updatePlayerState: function(obj) {
+    this.setState(obj);
+  },
+
   updateProgress: function(val) {
     this.setState({
       elapsedTime: Math.ceil(val)
@@ -174,15 +180,29 @@ var AudioPlayer = React.createClass({
   render: function() {
     return (
       <div>
-        <Playlist playlist={this.state.playlist} trackNumber={this.state.playlistTrackNumber}/>
+        <Playlist
+          playlist={this.state.playlist}
+          trackNumber={this.state.playlistTrackNumber}
+        />
         <TimeDisplay elapsedTime={this.state.elapsedTime} duration={this.currentTrackDuration()}/>
-        <ProgressBar updateProgress={this.updateProgress} elapsedTime={this.state.elapsedTime} duration={this.currentTrackDuration()}/>
+        <ProgressBar
+          isErroring = {this.state.isErroring}
+          updateProgress = {this.updateProgress}
+          elapsedTime = {this.state.elapsedTime}
+          duration = {this.currentTrackDuration()}
+        />
         <div className="audio-player-nav-buttons">
           <button onClick={this.decrementTrackNumber}> &#60;&#60; </button>
           <PlayButton togglePlayFn={this.togglePlay} isPlaying={this.state.isPlaying} piece={this.state.playlist[this.state.playlistTrackNumber]} />
           <button onClick={this.incrementTrackNumber}> &#62;&#62; </button>
         </div>
-        <Audio currentSource={this.state.currentSource} isPlaying={this.state.isPlaying} incrementTrackNumber={this.incrementTrackNumber} elapsedTime={this.state.elapsedTime} />
+        <Audio
+          updatePlayerState = {this.updatePlayerState}
+          currentSource = {this.state.currentSource}
+          isPlaying = {this.state.isPlaying}
+          incrementTrackNumber = {this.incrementTrackNumber}
+          elapsedTime = {this.state.elapsedTime}
+        />
         <button onClick={this.closePlayer} className="audio-player-close-btn">x</button>
       </div>
     );
@@ -262,13 +282,18 @@ var ProgressBar = React.createClass({
   },
 
   render: function() {
+    console.log(this.props.isErroring);
     return (
       <div className="audio-player-progress-bar">
-        <svg onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler}>
-          <line x1="0" y1="5" x2="400" y2="5" />
-          <line className="progress-bar" x1="0" y1="5" x2={this.fractionComplete()*400} y2="5" />
-          {/*<circle onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler} cx={this.fractionComplete()*400} cy="5" r="4" />*/}
-        </svg>
+        {(this.props.isErroring) ?
+          <div className="audio-player-error-message">PLAYBACK ERROR</div>
+          :
+          <svg onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler}>
+            <line x1="0" y1="5" x2="400" y2="5" />
+            <line className="progress-bar" x1="0" y1="5" x2={this.fractionComplete()*400} y2="5" />
+            {/*<circle onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler} cx={this.fractionComplete()*400} cy="5" r="4" />*/}
+          </svg>
+        }
       </div>
     )
   }
@@ -288,24 +313,48 @@ var TimeDisplay = React.createClass({
 
   render: function() {
     return (
-        <div className="audio-player-time-display">
-          {this.currentTime()} / {this.props.duration}
-        </div>
+      <div className="audio-player-time-display">
+        {this.currentTime()} / {this.props.duration}
+      </div>
     )
   }
 });
 
 var Audio = React.createClass({
 
-  attachEndedListener: function() {
-    this._audio.addEventListener('ended',function(){
+  attachAudioEventListeners: function() {
+    var reportError = function(e) {
+      this.props.updatePlayerState({
+        isErroring: true,
+        isPlaying: false
+      });
+
+      // send error message to some undetermined endpoint
+    }.bind(this);
+
+    this._audio.addEventListener('timeupdate', function(e) {
+      this.props.updatePlayerState({
+        elapsedTime: Math.floor(this._audio.currentTime)
+      })
+    }.bind(this));
+    this._audio.addEventListener('ended',function(e){
       this.props.incrementTrackNumber();
+    }.bind(this));
+
+    this._audio.addEventListener('suspended', function(e) {
+      console.log('suspended');
+      reportError(e);
+    }.bind(this));
+
+    this._audio.addEventListener('error', function(e) {
+      console.log('error');
+      reportError(e);
     }.bind(this));
   },
 
   componentDidMount: function() {
     this._audio = ReactDOM.findDOMNode(this);
-    this.attachEndedListener();
+    this.attachAudioEventListeners();
   },
 
   componentDidUpdate: function(prevProps) {
@@ -328,6 +377,16 @@ var Audio = React.createClass({
 
   loadMP3: function() {
     this._audio.load();
+    // if (this._audio.readyState) {
+    //   this.props.updatePlayerState({
+    //     isErroring: false
+    //   });
+    // } else {
+    //   this.props.updatePlayerState({
+    //     isErroring: true
+    //   });
+    //   this.reportError();
+    // }
   },
 
   pauseAudio: function() {
@@ -344,6 +403,12 @@ var Audio = React.createClass({
 
   playAudio: function() {
     this._audio.play();
+  },
+
+  reportError: function() {
+    var networkstate = this._audio.networkState;
+    // report error
+
   },
 
   shouldComponentUpdate: function(nextProps) {
