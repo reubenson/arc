@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   post 'confirm_artist_email' => 'admin#confirm_artist_email'
   post 'confirm_artist' => 'admin#confirm_artist'
 
+  post 'errors' => 'errors#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

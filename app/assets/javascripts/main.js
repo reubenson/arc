@@ -23,6 +23,14 @@ function onLoadAndResize(func) {
   $(document).on('pjax:complete', func);
 }
 
+function findParentElement(e,className) {
+  var _el = e.target.parentElement;
+  while (!_el.classList.contains(className)) {
+    _el = _el.parentElement;
+  }
+  return _el;
+}
+
 function modifyTracklist() {
   // style tracklist for narrow view
   var tracklist = document.querySelector('.work-tracklist'),
@@ -63,7 +71,7 @@ var playButton = (function() {
   function setState (isPlaying) {
     playing = isPlaying;
     currentElement.querySelector('.add-piece-to-player-btn').innerHTML = isPlaying ? '&#9614;&#9614;' : '&#9658';
-    if (prevElement) {prevElement.querySelector('.add-piece-to-player-btn').innerHTML = '&#9658';}
+    if (prevElement && prevElement != currentElement) {prevElement.querySelector('.add-piece-to-player-btn').innerHTML = '&#9658';}
     prevElement = currentElement;
   }
 

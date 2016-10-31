@@ -1,11 +1,3 @@
-function findParentElement(e,className) {
-  var _el = e.target.parentElement;
-  while (!_el.classList.contains(className)) {
-    _el = _el.parentElement;
-  }
-  return _el;
-}
-
 var SetIntervalMixin = {
   componentWillMount: function() {
     this.intervals = [];
@@ -92,7 +84,7 @@ var AudioPlayer = React.createClass({
     this.showPlayer();
     var _work = findParentElement(e,'work');
     var workId = _work.dataset.workid;
-    var url = window.location.origin = '/api/v1/works/' + workId + '/pieces';
+    var url = '/api/v1/works/' + workId + '/pieces';
     this.serverRequest = $.get(url, function (result) {
       this.setState({
         playlist: result.work.pieces,
@@ -108,11 +100,11 @@ var AudioPlayer = React.createClass({
     this.showPlayer();
     var _piece = findParentElement(e,'piece');
     var pieceId = _piece.dataset.pieceid;
-    var url = window.location.origin = '/api/v1/pieces/' + pieceId;
+    var url ='/api/v1/pieces/' + pieceId;
     this.serverRequest = $.get(url, function (result) {
       var piece = result.piece;
       var prevPiece = this.state.playlist[this.state.playlistTrackNumber];
-      var shouldPlay = prevPiece ? (piece.id != prevPiece.id) : true;
+      var shouldPlay = prevPiece ? (piece.id != prevPiece.id || !this.state.isPlaying) : true;
 
       this.setState({
         playlist: [result.piece],
@@ -159,9 +151,9 @@ var AudioPlayer = React.createClass({
   updatePlayer: function() {
     var currentPiece = this.state.playlist[this.state.playlistTrackNumber];
     this.setState({
-      currentSource: currentPiece.source_url,
+      currentSource: currentPiece.source_url
       // trackDuration: currentPiece.duration,
-      elapsedTime: 0
+      // elapsedTime: 0
     });
     this.resetTimer();
   },
@@ -282,7 +274,6 @@ var ProgressBar = React.createClass({
   },
 
   render: function() {
-    console.log(this.props.isErroring);
     return (
       <div className="audio-player-progress-bar">
         {(this.props.isErroring) ?
@@ -330,13 +321,21 @@ var Audio = React.createClass({
       });
 
       // send error message to some undetermined endpoint
+      var url = window.location.origin + '/errors';
+      $.post(url, {
+        error: {
+          error_msg: 'Audio: ' + e.type,
+          error_origin: e.target.currentSrc
+        }
+      })
     }.bind(this);
 
     this._audio.addEventListener('timeupdate', function(e) {
       this.props.updatePlayerState({
         elapsedTime: Math.floor(this._audio.currentTime)
-      })
+      });
     }.bind(this));
+
     this._audio.addEventListener('ended',function(e){
       this.props.incrementTrackNumber();
     }.bind(this));
@@ -350,6 +349,10 @@ var Audio = React.createClass({
       console.log('error');
       reportError(e);
     }.bind(this));
+
+    this._audio.addEventListener('canplaythrough', function(){
+      this.hasLoaded = true;
+    }.bind(this));
   },
 
   componentDidMount: function() {
@@ -362,7 +365,7 @@ var Audio = React.createClass({
       this.loadMedia();
     }
     if (prevProps.isPlaying != this.props.isPlaying) {
-      this.updatePlayerState();
+      this.updateAudioState();
     }
     if (prevProps.elapsedTime != this.props.elapsedTime) {
       this.updatePlayerProgress();
@@ -376,17 +379,22 @@ var Audio = React.createClass({
   },
 
   loadMP3: function() {
+    this.hasLoaded = false;
     this._audio.load();
-    // if (this._audio.readyState) {
-    //   this.props.updatePlayerState({
-    //     isErroring: false
-    //   });
-    // } else {
-    //   this.props.updatePlayerState({
-    //     isErroring: true
-    //   });
-    //   this.reportError();
-    // }
+
+    this.props.updatePlayerState({
+      isErroring: false,
+      isPlaying: true
+    });
+
+    window.setTimeout(function() {
+      !this.hasLoaded && this.reportError({
+        error: {
+          msg: 'Audio not loading',
+          origin: this.props.currentSource
+        }
+      })
+    }.bind(this), 1000); // too short?
   },
 
   pauseAudio: function() {
@@ -405,10 +413,14 @@ var Audio = React.createClass({
     this._audio.play();
   },
 
-  reportError: function() {
-    var networkstate = this._audio.networkState;
-    // report error
+  reportError: function(error) {
+    this.props.updatePlayerState({
+      isErroring: true,
+      isPlaying: false
+    });
 
+    var url = window.location.origin + '/errors';
+    $.post(url, error);
   },
 
   shouldComponentUpdate: function(nextProps) {
@@ -423,7 +435,7 @@ var Audio = React.createClass({
     this._audio.currentTime = this.props.elapsedTime;
   },
 
-  updatePlayerState: function() {
+  updateAudioState: function() {
     if (this.props.currentSource.match(/.mp3/)) {
       this.updateAudioNode();
     }
