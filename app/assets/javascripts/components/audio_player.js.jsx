@@ -14,10 +14,22 @@ var SetIntervalMixin = {
 };
 
 
-var AudioPlayer = React.createClass({
-  mixins: [SetIntervalMixin],
+class AudioPlayer extends React.Component {
+  constructor(props) {
+    super(props);
 
-  decrementTrackNumber: function() {
+    this.state = {
+      isVisible: false,
+      isPlaying: false,
+      isErroring: false,
+      elapsedTime: 0,
+      currentSource: "",
+      playlistTrackNumber: -1,
+      playlist: []
+    };
+  }
+
+  decrementTrackNumber() {
     var trackNumber = this.state.playlistTrackNumber - 1;
     trackNumber = Math.max(trackNumber , 0);
     this.setState({
@@ -26,10 +38,9 @@ var AudioPlayer = React.createClass({
     },function() {
       this.updatePlayer();
     });
+  }
 
-  },
-
-  incrementTrackNumber: function() {
+  incrementTrackNumber() {
     var trackNumber = this.state.playlistTrackNumber + 1;
     if (trackNumber >= this.state.playlist.length) {
       this.setState({isPlaying: false});
@@ -42,45 +53,33 @@ var AudioPlayer = React.createClass({
         this.updatePlayer();
       });
     }
-  },
+  }
 
-  closePlayer: function() {
+  closePlayer() {
     this.setState({ isPlaying: false })
     this.hidePlayer();
-  },
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     _audioPlayer = ReactDOM.findDOMNode(this).parentElement;
-    document.getElementById('main').addEventListener('click', this.handleClick);
+    document.getElementById('main').addEventListener('click', this.handleClick.bind(this));
     _audioPlayerBuffer = document.getElementById('audio-player-buffer');
-  },
+  }
 
-  currentTrackDuration: function() {
+  currentTrackDuration() {
     var currentTrack = this.state.playlist[this.state.playlistTrackNumber];
     return currentTrack ? currentTrack.duration : Infinity;
-  },
+  }
 
-  getInitialState: function(){
-    return {
-      isVisible: false,
-      isPlaying: false,
-      isErroring: false,
-      elapsedTime: 0,
-      currentSource: "",
-      playlistTrackNumber: -1,
-      playlist: []
-    }
-  },
-
-  handleClick: function(e) {
+  handleClick(e) {
     if (e.target.classList.contains('add-piece-to-player-btn')) {
       this.handlePlayPiece(e);
     } else if (e.target.classList.contains('add-work-to-player-btn')) {
       this.handlePlayAllPieces(e);
     }
-  },
+  }
 
-  handlePlayAllPieces: function(e) {
+  handlePlayAllPieces(e) {
     this.showPlayer();
     var _work = findParentElement(e,'work');
     var workId = _work.dataset.workid;
@@ -94,9 +93,9 @@ var AudioPlayer = React.createClass({
         this.updatePlayer();
       });
     }.bind(this));
-  },
+  }
 
-  handlePlayPiece: function(e) {
+  handlePlayPiece(e) {
     this.showPlayer();
     var _piece = findParentElement(e,'piece');
     var pieceId = _piece.dataset.pieceid;
@@ -114,122 +113,142 @@ var AudioPlayer = React.createClass({
         this.updatePlayer();
       });
     }.bind(this));
-  },
+  }
 
-  hidePlayer: function() {
+  hidePlayer() {
     _audioPlayer.setAttribute('aria-hidden', true);
     _audioPlayerBuffer.setAttribute('aria-hidden', true);
-  },
+  }
 
-  pauseTimer: function() {
+  pauseTimer() {
     this.clearInterval();
-  },
+  }
 
-  resetTimer: function() {
+  resetTimer() {
     this.clearInterval();
     this.resumeTimer();
-  },
+  }
 
-  resumeTimer: function() {
+  resumeTimer() {
     // this.setInterval(this.tick, 1000);
-  },
+  }
 
-  showPlayer: function() {
+  showPlayer() {
     _audioPlayer.setAttribute('aria-hidden', false);
     _audioPlayerBuffer.setAttribute('aria-hidden', false);
-  },
+  }
 
-  tick: function() {
+  tick() {
     this.setState( {elapsedTime: this.state.elapsedTime + 1} );
-  },
+  }
 
-  togglePlay: function() {
-    this.state.isPlaying ? this.pauseTimer() : this.resumeTimer();
+  togglePlay() {
+    // this.state.isPlaying ? this.pauseTimer() : this.resumeTimer();
     this.setState({isPlaying: !this.state.isPlaying});
-  },
+  }
 
-  updatePlayer: function() {
+  updatePlayer() {
     var currentPiece = this.state.playlist[this.state.playlistTrackNumber];
     this.setState({
       currentSource: currentPiece.source_url
       // trackDuration: currentPiece.duration,
       // elapsedTime: 0
     });
-    this.resetTimer();
-  },
+    // this.resetTimer();
+  }
 
   // replace updatePlayer with this?
-  updatePlayerState: function(obj) {
+  updatePlayerState(obj) {
     this.setState(obj);
-  },
+  }
 
-  updateProgress: function(val) {
+  updateProgress(val) {
     this.setState({
       elapsedTime: Math.ceil(val)
     })
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div>
         <Playlist
-          playlist={this.state.playlist}
-          trackNumber={this.state.playlistTrackNumber}
+          piece = {this.state.playlist[this.state.playlistTrackNumber]}
         />
-        <TimeDisplay elapsedTime={this.state.elapsedTime} duration={this.currentTrackDuration()}/>
+        <TimeDisplay
+          elapsedTime={this.state.elapsedTime}
+          duration={this.currentTrackDuration()}
+        />
         <ProgressBar
           isErroring = {this.state.isErroring}
-          updateProgress = {this.updateProgress}
+          updateProgress = {this.updateProgress.bind(this)}
           elapsedTime = {this.state.elapsedTime}
           duration = {this.currentTrackDuration()}
-        />
+          />
         <div className="audio-player-nav-buttons">
-          <button onClick={this.decrementTrackNumber}> &#60;&#60; </button>
-          <PlayButton togglePlayFn={this.togglePlay} isPlaying={this.state.isPlaying} piece={this.state.playlist[this.state.playlistTrackNumber]} />
-          <button onClick={this.incrementTrackNumber}> &#62;&#62; </button>
+          <button onClick = {this.decrementTrackNumber.bind(this)}> &#60;&#60; </button>
+          <PlayButton
+            togglePlay = {this.togglePlay.bind(this)}
+            isPlaying = {this.state.isPlaying}
+            piece = {this.state.playlist[this.state.playlistTrackNumber]}
+          />
+          <button onClick = {this.incrementTrackNumber.bind(this)}> &#62;&#62; </button>
         </div>
         <Audio
-          updatePlayerState = {this.updatePlayerState}
+          updatePlayerState = {this.updatePlayerState.bind(this)}
           currentSource = {this.state.currentSource}
           isPlaying = {this.state.isPlaying}
-          incrementTrackNumber = {this.incrementTrackNumber}
+          incrementTrackNumber = {this.incrementTrackNumber.bind(this)}
           elapsedTime = {this.state.elapsedTime}
         />
         <button onClick={this.closePlayer} className="audio-player-close-btn">x</button>
       </div>
     );
   }
-});
+};
 
-var Playlist = React.createClass({
-  propTypes: {
-    playlist: React.PropTypes.array,
-    trackNumber: React.PropTypes.number
-  },
+AudioPlayer.mixins = [SetIntervalMixin];
 
-  artist: function() {
-    var currentItem = this.props.playlist[this.props.trackNumber];
-    var artistUrl = currentItem && currentItem.artist_url;
-    var artistName = currentItem && currentItem.artist_name;
+
+// PLAYLIST
+
+class Playlist extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {};
+  }
+
+  artist() {
+    var currentItem = this.state.currentPiece,
+      artistUrl = currentItem && currentItem.artist_url,
+      artistName = currentItem && currentItem.artist_name;
+
     return (
       <a href={artistUrl}>{artistName}</a>
     )
-  },
+  }
 
-  piece: function() {
-    var currentItem = this.props.playlist[this.props.trackNumber];
-    var workUrl = currentItem && currentItem.work_url;
-    var title = currentItem && currentItem.title;
+  piece() {
+    var currentItem = this.state.currentPiece,
+      workUrl = currentItem && currentItem.work_url;
+      workTitle = currentItem && currentItem.title;
+
     return (
-      <a href={workUrl}>{title}</a>
+      <a href={workUrl}>{workTitle}</a>
     )
-  },
+  }
 
-  shouldComponentUpdate: function(nextProps) {
-    return nextProps.trackNumber != this.props.trackNumber;
-  },
+  shouldComponentUpdate(nextProps) {
+    var currentPiece = this.props.piece,
+      nextPiece = nextProps.piece;
 
-  render: function() {
+    if (currentPiece != nextPiece) {
+      this.state.currentPiece = nextPiece;
+    }
+
+    return currentPiece != nextPiece;
+  }
+
+  render () {
     return (
       <div className="audio-player-info">
         <div className="audio-player-info-artist">
@@ -241,45 +260,64 @@ var Playlist = React.createClass({
       </div>
     )
   }
-});
+};
 
-var ProgressBar = React.createClass({
-  durationSeconds: function() {
+Playlist.propTypes = {
+  playlist: React.PropTypes.array,
+  trackNumber: React.PropTypes.number
+}
+
+
+
+// PROGRESS BAR
+
+class ProgressBar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount(){
+    this.el = ReactDOM.findDOMNode(this);
+  }
+
+  durationSeconds() {
     if (this.props.duration == Infinity) { return }
-    var hms = this.props.duration.split(":");
-    var hours = (hms.length === 3) ? hms[0] : 0;
-    var minutes = (hms.length === 3) ? hms[1] : hms[0];
-    var seconds = (hms.length === 3) ? hms[2] : hms[1];
+    var hms = this.props.duration.split(":"),
+      hours = (hms.length === 3) ? hms[0] : 0,
+      minutes = (hms.length === 3) ? hms[1] : hms[0],
+      seconds = (hms.length === 3) ? hms[2] : hms[1];
+
     seconds = parseInt(seconds) + parseInt(minutes) * 60 + parseInt(hours) * 3600;
     return seconds;
-  },
+  }
 
-  fractionComplete: function() {
+  fractionComplete() {
     var progress = this.props.elapsedTime / this.durationSeconds();
     if ( isNaN(progress) ) progress = 0;
     return progress
-  },
+  }
 
-  mouseDownHandler: function(e) {
+  mouseDownHandler(e) {
     var pageX = e.pageX,
-      progressBar = document.querySelector('.audio-player-progress-bar')
+      progressBar = this.el,
       progressBarRect = progressBar.getBoundingClientRect(),
       left = pageX - progressBarRect.left,
       value = left / progressBar.clientWidth;
 
     this.props.updateProgress( value * this.durationSeconds() );
-  },
+  }
 
-  mouseUpHandler: function(e) {
-  },
+  shouldComponentUpdate(nextProps) {
+    return this.props.elapsedTime != nextProps.elapsedTime;
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="audio-player-progress-bar">
         {(this.props.isErroring) ?
           <div className="audio-player-error-message">PLAYBACK ERROR</div>
           :
-          <svg onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler}>
+          <svg onMouseDown={this.mouseDownHandler.bind(this)}>
             <line x1="0" y1="5" x2="400" y2="5" />
             <line className="progress-bar" x1="0" y1="5" x2={this.fractionComplete()*400} y2="5" />
             {/*<circle onMouseDown={this.mouseDownHandler} onMouseUp={this.mouseUpHandler} cx={this.fractionComplete()*400} cy="5" r="4" />*/}
@@ -288,10 +326,23 @@ var ProgressBar = React.createClass({
       </div>
     )
   }
-});
+};
 
-var TimeDisplay = React.createClass({
-  currentTime: function() {
+ProgressBar.propTypes = {
+  isErroring: React.PropTypes.bool,
+  updateProgress: React.PropTypes.func,
+  elapsedTime: React.PropTypes.number,
+  duration: React.PropTypes.number
+}
+
+
+// TIME DISPLAY
+class TimeDisplay extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  currentTime() {
     var seconds = this.props.elapsedTime % 60;
     var minutes = parseInt(this.props.elapsedTime / 60);
     var hours = parseInt(minutes / 60);
@@ -300,20 +351,34 @@ var TimeDisplay = React.createClass({
     if (seconds < 10) { seconds = "0" + seconds }
     hours = hours > 0 ? hours + ":" : "";
     return hours + minutes + ':' + seconds;
-  },
+  }
 
-  render: function() {
+  shouldComponentUpdate(nextProps) {
+    return this.props.elapsedTime != nextProps.elapsedTime;
+  }
+
+  render() {
     return (
       <div className="audio-player-time-display">
         {this.currentTime()} / {this.props.duration}
       </div>
     )
   }
-});
+};
 
-var Audio = React.createClass({
+TimeDisplay.propTypes = {
+  elapsedTime: React.PropTypes.number,
+  duration: React.PropTypes.string
+}
 
-  attachAudioEventListeners: function() {
+
+// AUDIO
+class Audio extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  attachAudioEventListeners() {
     var reportError = function(e) {
       this.props.updatePlayerState({
         isErroring: true,
@@ -353,14 +418,14 @@ var Audio = React.createClass({
     this._audio.addEventListener('canplaythrough', function(){
       this.hasLoaded = true;
     }.bind(this));
-  },
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     this._audio = ReactDOM.findDOMNode(this);
     this.attachAudioEventListeners();
-  },
+  }
 
-  componentDidUpdate: function(prevProps) {
+  componentDidUpdate(prevProps) {
     if (prevProps.currentSource != this.props.currentSource) {
       this.loadMedia();
     }
@@ -370,15 +435,15 @@ var Audio = React.createClass({
     if (prevProps.elapsedTime != this.props.elapsedTime) {
       this.updatePlayerProgress();
     }
-  },
+  }
 
-  loadMedia: function() {
+  loadMedia() {
     if (this.props.currentSource.match(/.mp3/)) {
       this.loadMP3();
     }
-  },
+  }
 
-  loadMP3: function() {
+  loadMP3() {
     this.hasLoaded = false;
     this._audio.load();
 
@@ -395,9 +460,9 @@ var Audio = React.createClass({
         }
       })
     }.bind(this), 1000); // too short?
-  },
+  }
 
-  pauseAudio: function() {
+  pauseAudio() {
     var volume = this._audio.volume;
     var volumeControl = setInterval(function(volume) {
       this._audio.volume -= 0.01;
@@ -407,13 +472,13 @@ var Audio = React.createClass({
         clearInterval(volumeControl);
       }
     }.bind(this),5);
-  },
+  }
 
-  playAudio: function() {
+  playAudio() {
     this._audio.play();
-  },
+  }
 
-  reportError: function(error) {
+  reportError(error) {
     this.props.updatePlayerState({
       isErroring: true,
       isPlaying: false
@@ -421,66 +486,86 @@ var Audio = React.createClass({
 
     var url = window.location.origin + '/errors';
     $.post(url, error);
-  },
+  }
 
-  shouldComponentUpdate: function(nextProps) {
+  shouldComponentUpdate(nextProps) {
     return (
       nextProps.currentSource != this.props.currentSource ||
       nextProps.isPlaying != this.props.isPlaying ||
       Math.abs(nextProps.elapsedTime- this.props.elapsedTime) > 5
     )
-  },
+  }
 
-  updatePlayerProgress: function() {
+  updatePlayerProgress() {
     this._audio.currentTime = this.props.elapsedTime;
-  },
+  }
 
-  updateAudioState: function() {
+  updateAudioState() {
     if (this.props.currentSource.match(/.mp3/)) {
       this.updateAudioNode();
     }
-  },
+  }
 
-  updateAudioNode: function() {
+  updateAudioNode() {
     this.props.isPlaying ? this.playAudio() : this.pauseAudio();
-  },
+  }
 
-
-  render: function() {
+  render() {
     return (
       <audio autoPlay>
         <source src={this.props.currentSource} type="audio/mpeg"/>
       </audio>
     )
   }
-});
+};
 
-var PlayButton = React.createClass({
-  shouldComponentUpdate: function(nextProps) {
+Audio.propTypes = {
+  updatePlayerState: React.PropTypes.func,
+  currentSource: React.PropTypes.string,
+  isPlaying: React.PropTypes.bool,
+  incrementTrackNumber: React.PropTypes.func,
+  elapsedTime: React.PropTypes.number
+};
+
+
+// PLAY BUTTON
+
+class PlayButton extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  shouldComponentUpdate(nextProps) {
     return this.props.isPlaying != nextProps.isPlaying ||
       this.props.piece != nextProps.piece;
-  },
-
-  componentDidUpdate: function() {
-    var evt = new CustomEvent('audio:updated',
-    {'detail':
-      {
-        'pieceId': this.props.piece.id,
-        'isPlaying': this.props.isPlaying
-      }
-    });
-    window.dispatchEvent( evt );
-  },
-
-  displayBtn: function() {
-    return this.props.isPlaying ? 'PAUSE' : 'PLAY';
-  },
-
-  handleClick: function() {
-    this.props.togglePlayFn();
-  },
-
-  render: function() {
-    return <button onClick={this.handleClick}>{this.displayBtn()}</button>
   }
-});
+
+  componentDidUpdate() {
+    var evt = new CustomEvent('audio:updated',
+      {'detail':
+        {
+          'pieceId': this.props.piece.id,
+          'isPlaying': this.props.isPlaying
+        }
+      });
+    window.dispatchEvent( evt );
+  }
+
+  displayBtn() {
+    return this.props.isPlaying ? 'PAUSE' : 'PLAY';
+  }
+
+  handleClick() {
+    this.props.togglePlay();
+  }
+
+  render() {
+    return <button onClick={this.handleClick.bind(this)}>{this.displayBtn()}</button>
+  }
+};
+
+PlayButton.propTypes = {
+  togglePlay: React.PropTypes.func,
+  isPlaying: React.PropTypes.bool,
+  piece: React.PropTypes.object
+}
