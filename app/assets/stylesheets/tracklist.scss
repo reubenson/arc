@@ -1,13 +1,13 @@
 @import 'variables';
 
 .work-tracklist {
-  border: 2px solid #333;
+  border: 1px solid #eee;
   box-sizing: border-box;
   font-size: 0.8em;
-  padding: 10px 10px 0 10px;
+  padding: 0px 0px 0px 0px;
   width: 100%;
 
-  span {
+  .work-tracklist-header > span {
     margin: auto;
     padding: 10px;
     text-align: center;
@@ -15,7 +15,8 @@
   }
 
   .work-tracklist-header {
-    height: 70px;
+	  height:45px;
+	background-color:#c6c6c6;
     position: relative;
 
     .work-tracklist-purchase-all {
@@ -26,28 +27,37 @@
     }
   }
   .work-tracklist-program-runtime {
-    border-bottom: solid $grey 2px;
+    border-bottom: solid #666 2px;
     font-size: 1.5rem;
-    letter-spacing: 0.5rem;
     text-align: center;
   }
 
   .piece {
-    border-top: solid $grey 1px;
+    border-bottom: solid #eeeeee 1px;
+	padding:0px;
     display: flex;
     flex-wrap: wrap;
+	
 
     .piece-column {
       margin: auto;
-      padding: 5px;
+      padding: 3px;
     }
 
     .piece-duration {
       text-align: right;
       width: 50px;
+	  color:#888;
     }
+	
+    .piece-duration-inline {
+	  color:#bbb;
+    }
+	
+	
     .piece-play {
       width: 40px;
+	  padding-left:5px;
     }
     .piece-purchase {
       text-align: right;
@@ -56,8 +66,9 @@
     }
     .piece-title {
       flex-grow: 1;
-      font-size: 1.4rem;
+      font-size: 1em;
       width: 10%;
+	  line-height:1em;
     }
 
     .piece-ctas-container {
@@ -68,6 +79,14 @@
       }
     }
   }
+  
+.piece:hover{
+	background-color:#eee;
+	cursor:pointer;
+	.piece-title{
+		font-weight:normal;
+	}
+}
 
   .toggle-piece-description-btn[aria-hidden="true"] { display: none }
   .piece-description[aria-hidden="true"] { display: none; }

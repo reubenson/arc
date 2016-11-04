@@ -43,10 +43,10 @@ ActiveRecord::Schema.define(version: 20161031012939) do
   end
 
   create_table "errors", force: :cascade do |t|
-    t.string   "error_msg"
-    t.string   "error_origin"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "msg"
+    t.string   "origin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lineitems", force: :cascade do |t|

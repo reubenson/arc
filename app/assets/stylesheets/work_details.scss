@@ -2,7 +2,7 @@
   display: none;
 
   .work-detail {
-    border: solid black 2px;
+    border: solid black 0px;
     flex-grow: 1;
     font-size: 1.3rem;
     margin: 1px;
@@ -12,10 +12,11 @@
   //   border-left: none;
   // }
   .work-detail-label {
-    border-right: solid black 2px;
+    border-right: solid black 0px;
     display: inline-block;
     padding: 3px 10px;
     width: 100px;
+	font-weight:600;
   }
   .work-detail-data {
     padding-left: 10px;
