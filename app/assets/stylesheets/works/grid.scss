@@ -4,5 +4,111 @@
 
 	.work-header-artist{
 		color:red;
+		margin-bottom:1em;
 	}
+	.work-header-artist a:link,.work-header-artist a:visited{
+		color:#666;
+		font-size:1.5em;
+		font-weight:300;
+	}
+	
+	.work-header-title{
+		color:#333;
+		font-size:2.5em;
+		margin-bottom:.5em;
+		font-weight:400;
+	}
+	
+	.work-description {
+		font-size:1.3em;
+		font-weight:400;
+		line-height:1.4em;
+		letter-spacing:0;
+	}
+	
+	
+	.work-header-details{
+		font-size:.8em;
+		margin-bottom:10px;
+	}
+	
+	.work-detail-label{
+		font-weight:600;
+	}
+	
+
+	
+	
+	.button,
+	button,
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"] {
+	  display: inline-block;
+	  height: 26px;
+	  padding: 0 10px;
+	  color: #555;
+	  text-align: center;
+	  font-size: 11px;
+	  font-weight: 600;
+	  line-height: 26px;
+	  letter-spacing: .1rem;
+	  text-transform: none;
+	  text-decoration: none;
+	  white-space: nowrap;
+	  background-color: transparent;
+	  border:0px solid black;
+	  border-radius: 4px;
+	  cursor: pointer;
+	  box-sizing: border-box; }
+	.button:hover,
+	button:hover,
+	input[type="submit"]:hover,
+	input[type="reset"]:hover,
+	input[type="button"]:hover,
+	.button:focus,
+	button:focus,
+	input[type="submit"]:focus,
+	input[type="reset"]:focus,
+	input[type="button"]:focus {
+	  color: #333;
+	  background-color:transparent;
+	  border-color: none;
+	  outline: 0; }
+	  
+	  
+	.button.button-primary,
+	button.button-primary,
+	input[type="submit"].button-primary,
+	input[type="reset"].button-primary,
+	input[type="button"].button-primary {
+	  color: #FFF;
+	  background-color: none;
+	  border-color: none; }
+	.button.button-primary:hover,
+	button.button-primary:hover,
+	input[type="submit"].button-primary:hover,
+	input[type="reset"].button-primary:hover,
+	input[type="button"].button-primary:hover,
+	.button.button-primary:focus,
+	button.button-primary:focus,
+	input[type="submit"].button-primary:focus,
+	input[type="reset"].button-primary:focus,
+	input[type="button"].button-primary:focus {
+	  color: #FFF;
+	  background-color: red;
+	  border-color: none; }
+	  
+	  
+	  .add-work-to-player-btn,.add-work-to-cart-btn,.add-piece-to-cart-btn{
+		  background-color:#666;
+		  font-weight:400;
+		  color:white;}
+	.add-piece-to-cart-btn:hover{
+		background-color:#333;
+		color:white;
+	}
+	
+	
+	
 }

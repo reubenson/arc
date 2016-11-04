@@ -180,12 +180,12 @@ input[type="button"] {
   font-weight: 600;
   line-height: 26px;
   letter-spacing: .1rem;
-  text-transform: uppercase;
+  text-transform: none;
   text-decoration: none;
   white-space: nowrap;
-  background-color: transparent;
+  background-color: #ddd;
+  border:0px solid black;
   border-radius: 4px;
-  border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box; }
 .button:hover,
@@ -199,7 +199,7 @@ input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
   color: #333;
-  border-color: #888;
+  border-color: none;
   outline: 0; }
 .button.button-primary,
 button.button-primary,
@@ -208,7 +208,7 @@ input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
   background-color: $grey;
-  border-color: $grey; }
+  border-color: none; }
 .button.button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
@@ -220,8 +220,8 @@ input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #FFF;
-  background-color: #1EAEDB;
-  border-color: #1EAEDB; }
+  background-color: red;
+  border-color: none; }
 
 
 /* Forms

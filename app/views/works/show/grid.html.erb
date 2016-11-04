@@ -1,46 +1,103 @@
 <section class="work grid container" data-workId=<%= @work.id %> >
 
 
+
+  <div class="row">
+    <div class="six columns">
+        <div class="work-image-container work-section">
+          <div class="lede-image">
+            <img src="<%= @work.image_url %>" alt="Album Cover" />
+          </div>
+        </div>
+    </div>   
+    <div class="six columns">
+		<br />
+          <p class="work-header-artist"><%= link_to @artist.fullname, @artist %> </p>
+          <p class="work-header-title"> <%= @work.title %></p>
+          <p class="work-header-details">
+          <span class="work-detail-label">Label</span>: <span class="work-detail-data"><%= @work.record_label %></span> &nbsp;&nbsp;&nbsp;&nbsp;
+		  <span class="work-detail-label"> Release Date: </span> <span class="work-detail-data"> <%= @work.end_date.strftime('%B %d, %Y') %> </span>
+		  </p>
+	      <section class="work-tracklist-container work-section">
+	        <%= render partial: "tracklist/show", locals: {work: @work} %>
+	      </section>
+    </div>  
+  </div>
+  
+  <div class="row">
+    <div class="eight columns">
+        <div class="work-description-container work-section">
+          <article class="work-description">
+            <%= raw @work.description %>
+          </article>
+        </div>
+		<br />
+		<p><strong>Album Credits</strong></p>
+		<p>Test test test</p>
+		<p>Test dodoakdk  test</p>
+		<p>Test test roekkr</p>
+		<p>Test test test</p>
+		<p>Testlorem dmdoa test</p>
+    </div>  
+    <div class="four columns"></div>	
+  </div>
+  
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
+
   <div class="row">
       <div class="twelve columns">
       <div class="work-header-container work-section">
         <header>
           <p class="work-header-artist"><%= link_to @artist.fullname, @artist %> </p>
           <p class="work-header-title"> <%= @work.title %></p>
+          <p class="work-header-details">
+          <span class="work-detail-label">Label</span>: <span class="work-detail-data"><%= @work.record_label %></span> &nbsp;&nbsp;&nbsp;&nbsp;
+		  <span class="work-detail-label"> Release Date: </span> <span class="work-detail-data"> <%= @work.end_date.strftime('%B %d, %Y') %> </span>
+		  </p>
         </header>
       </div>
+	  
       </div>
-   </div>
+  </div>
 
   <div class="row">
-    <div class="four columns">
-      <section class="work-tracklist-container work-section">
-        <%= render partial: "tracklist/show", locals: {work: @work} %>
-      </section>
-
-      <div class="work-details-container work-section columns">
-        <section class="work-details-container work-section">
-          <%= render partial: "works/components/work_details", locals: {work: @work} %>
-        </section>
-      </div>
-    </div>
-
-    <div class="eight columns">
-
-        <div class="work-image-container work-section twelve columns">
+    <div class="six columns">
+        <div class="work-image-container work-section">
           <div class="lede-image">
             <img src="<%= @work.image_url %>" alt="Album Cover" />
           </div>
         </div>
+    </div>   
+    <div class="six columns">
+      <section class="work-tracklist-container work-section">
+        <%= render partial: "tracklist/show", locals: {work: @work} %>
+      </section>
+    </div>  
+  </div>
+
+
+  
+  <div class="row">
+    <div class="eight columns">
         <div class="work-description-container work-section">
           <article class="work-description">
             <%= raw @work.description %>
           </article>
-
-      </div>
-    </div>
-
-
+        </div>
+    </div>  
+    <div class="four columns">
+		<p>Test test test</p>
+		<p>Test dodoakdk  test</p>
+		<p>Test test roekkr</p>
+		<p>Test test test</p>
+		<p>Testlorem dmdoa test</p>
+		
+	</div>	
   </div>
+  
+</div>
+  
 
 </section>
