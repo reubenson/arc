@@ -30,14 +30,18 @@ class AudioPlayer extends React.Component {
   }
 
   decrementTrackNumber() {
-    var trackNumber = this.state.playlistTrackNumber - 1;
-    trackNumber = Math.max(trackNumber , 0);
+    var trackNumber = this.state.playlistTrackNumber - 1,
+      elapsedTime = trackNumber < 0 ? 0 : this.state.elapsedTime;
+
     this.setState({
+      elapsedTime: elapsedTime,
       isPlaying: true,
-      playlistTrackNumber: trackNumber,
+      playlistTrackNumber: Math.max(trackNumber , 0)
     },function() {
       this.updatePlayer();
     });
+
+    this.updateProgress(0); // reset time to 0
   }
 
   incrementTrackNumber() {
@@ -97,17 +101,28 @@ class AudioPlayer extends React.Component {
 
   handlePlayPiece(e) {
     this.showPlayer();
-    var _piece = findParentElement(e,'piece');
-    var pieceId = _piece.dataset.pieceid;
-    var url ='/api/v1/pieces/' + pieceId;
-    this.serverRequest = $.get(url, function (result) {
-      var piece = result.piece;
+    var _piece = findParentElement(e,'piece'),
+      pieceId = _piece.dataset.pieceid,
+      _work = findParentElement(e,'work'),
+      workId = _work.dataset.workid,
+      url = '/api/v1/works/' + workId + '/pieces';
+
+    $.get(url, function (result) {
+      var pieces = result.work.pieces,
+        piece = pieces[0],
+        trackNumber = 0;
+
+      while (piece.id != pieceId) {
+        trackNumber++;
+        piece = pieces[trackNumber];
+      }
+
       var prevPiece = this.state.playlist[this.state.playlistTrackNumber];
       var shouldPlay = prevPiece ? (piece.id != prevPiece.id || !this.state.isPlaying) : true;
 
       this.setState({
-        playlist: [result.piece],
-        playlistTrackNumber: 0,
+        playlist: result.work.pieces,
+        playlistTrackNumber: trackNumber,
         isPlaying: shouldPlay
       }, function(){
         this.updatePlayer();
@@ -164,7 +179,7 @@ class AudioPlayer extends React.Component {
 
   updateProgress(val) {
     this.setState({
-      elapsedTime: Math.ceil(val)
+      elapsedTime: Math.floor(val)
     })
   }
 
@@ -200,7 +215,7 @@ class AudioPlayer extends React.Component {
           incrementTrackNumber = {this.incrementTrackNumber.bind(this)}
           elapsedTime = {this.state.elapsedTime}
         />
-        <button onClick={this.closePlayer} className="audio-player-close-btn">x</button>
+        <button onClick={this.closePlayer.bind(this)} className="audio-player-close-btn">x</button>
       </div>
     );
   }
@@ -308,7 +323,8 @@ class ProgressBar extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return this.props.elapsedTime != nextProps.elapsedTime;
+    return this.props.elapsedTime != nextProps.elapsedTime ||
+      this.props.isErroring != nextProps.isErroring;
   }
 
   render() {
@@ -339,7 +355,7 @@ ProgressBar.propTypes = {
 // TIME DISPLAY
 class TimeDisplay extends React.Component {
   constructor(props){
-    super(props);
+    super();
   }
 
   currentTime() {
@@ -354,7 +370,8 @@ class TimeDisplay extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return this.props.elapsedTime != nextProps.elapsedTime;
+    return this.props.elapsedTime != nextProps.elapsedTime ||
+      this.props.duration != nextProps.duration;
   }
 
   render() {
@@ -492,7 +509,7 @@ class Audio extends React.Component {
     return (
       nextProps.currentSource != this.props.currentSource ||
       nextProps.isPlaying != this.props.isPlaying ||
-      Math.abs(nextProps.elapsedTime- this.props.elapsedTime) > 5
+      Math.abs(nextProps.elapsedTime - this.props.elapsedTime) > 2
     )
   }
 
