@@ -1,17 +1,13 @@
 <section class="work squareformat" data-workId=<%= @work.id %> >
 
+
+
   <section class="work-header-container work-section">
     <header>
-      <span class="work-header-artist"><%= link_to @artist.fullname, @artist %> </span>
-      <span class="work-header-divider">/</span>
-      <span class="work-header-title"> <%= @work.title %> </span>
+      <div class="work-header-artist"><%= link_to @artist.fullname, @artist %> </div>
+      <!-- <div class="work-header-divider">/</div> -->
+      <div class="work-header-title"> <%= @work.title %> </div>
     </header>
-  </section>
-
-  <section class="work-image-container work-section">
-    <div class="lede-image">
-      <img src="<%= @work.image_url %>" alt="Album Cover" />
-    </div>
   </section>
 
   <!-- <section class="work-cta-container work-section">
@@ -24,12 +20,18 @@
     <a class="add-work-to-cart-btn">Add to Cart</a>
   </section> -->
 
-  <section class="work-tracklist-container work-section">
-    <%= render partial: "tracklist/show", locals: {work: @work} %>
+  <section class="work-image-container work-section">
+    <div class="lede-image">
+      <img src="<%= @work.image_url %>" alt="Album Cover" />
+    </div>
   </section>
 
   <section class="work-details-container work-section">
     <%= render partial: "works/components/work_details", locals: {work: @work} %>
+  </section>
+
+  <section class="work-tracklist-container work-section">
+    <%= render partial: "tracklist/show", locals: {work: @work} %>
   </section>
 
   <section class="work-description-container work-section">
