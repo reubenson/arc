@@ -2,17 +2,18 @@ nav.navbar {
   background-color: #333;
   font-color:white;
   height: auto;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
-  padding:8px;
+  padding: 8px;
 
   form {
     display: inline;
   }
 
   .navbar-link {
-	color:#eee;
+  	color:#eee;
     line-height: 100%;
     position: relative;
     font-size: 1em;
