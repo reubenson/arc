@@ -15,8 +15,8 @@
   }
 
   .work-tracklist-header {
-	  height:45px;
-	background-color:#c6c6c6;
+	  height:75px;
+  	background-color:#c6c6c6;
     position: relative;
 
     .work-tracklist-purchase-all {
@@ -34,10 +34,10 @@
 
   .piece {
     border-bottom: solid #eeeeee 1px;
-	padding:0px;
+	  padding:0px;
     display: flex;
     flex-wrap: wrap;
-	
+
 
     .piece-column {
       margin: auto;
@@ -47,28 +47,25 @@
     .piece-duration {
       text-align: right;
       width: 50px;
-	  color:#888;
+      color:#bbb;
+
     }
-	
-    .piece-duration-inline {
-	  color:#bbb;
-    }
-	
-	
+
     .piece-play {
       width: 40px;
-	  padding-left:5px;
+	    padding-left:5px;
     }
     .piece-purchase {
       text-align: right;
-      width: 150px;
+      width: 75px;
+
       .add-piece-to-cart-btn-sm { display: none }
     }
     .piece-title {
       flex-grow: 1;
       font-size: 1em;
       width: 10%;
-	  line-height:1em;
+	    line-height:1em;
     }
 
     .piece-ctas-container {
@@ -79,7 +76,7 @@
       }
     }
   }
-  
+
 .piece:hover{
 	background-color:#eee;
 	cursor:pointer;
