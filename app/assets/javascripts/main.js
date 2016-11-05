@@ -23,12 +23,11 @@ function onLoadAndResize(func) {
   $(document).on('pjax:complete', func);
 }
 
-function findParentElement(e,className) {
-  var _el = e.target.parentElement;
-  while (!_el.classList.contains(className)) {
-    _el = _el.parentElement;
-  }
-  return _el;
+function findParentElement(el, className) {
+  var el = el.parentElement,
+    parentFound = el && el.classList.contains(className);
+
+  return (parentFound || !el) ? el : findParentElement(el, className);
 }
 
 function modifyTracklist() {

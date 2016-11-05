@@ -76,7 +76,10 @@ class AudioPlayer extends React.Component {
   }
 
   handleClick(e) {
-    if (e.target.classList.contains('add-piece-to-player-btn')) {
+    var playPiece = e.target.classList.contains('add-piece-to-player-btn') ||
+      (!e.target.classList.contains('add-piece-to-cart-btn') && findParentElement(e.target, 'piece'));
+
+    if (playPiece) {
       this.handlePlayPiece(e);
     } else if (e.target.classList.contains('add-work-to-player-btn')) {
       this.handlePlayAllPieces(e);
@@ -85,7 +88,7 @@ class AudioPlayer extends React.Component {
 
   handlePlayAllPieces(e) {
     this.showPlayer();
-    var _work = findParentElement(e,'work');
+    var _work = findParentElement(e.target,'work');
     var workId = _work.dataset.workid;
     var url = '/api/v1/works/' + workId + '/pieces';
     this.serverRequest = $.get(url, function (result) {
@@ -101,9 +104,9 @@ class AudioPlayer extends React.Component {
 
   handlePlayPiece(e) {
     this.showPlayer();
-    var _piece = findParentElement(e,'piece'),
+    var _piece = findParentElement(e.target,'piece'),
       pieceId = _piece.dataset.pieceid,
-      _work = findParentElement(e,'work'),
+      _work = findParentElement(e.target,'work'),
       workId = _work.dataset.workid,
       url = '/api/v1/works/' + workId + '/pieces';
 

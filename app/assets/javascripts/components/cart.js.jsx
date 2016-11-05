@@ -67,7 +67,7 @@ var Cart = React.createClass({
   },
 
   addWorkToCart: function(e) {
-    var _work = findParentElement(e,'work');
+    var _work = findParentElement(e.target,'work');
     var workId = _work.dataset.workid;
     var url = this.url + '/api/v1/add_to_cart?WorkId=' + workId;
     this.serverRequest = $.post(url, function (result) {
@@ -79,7 +79,7 @@ var Cart = React.createClass({
   },
 
   addPieceToCart: function(e) {
-    var _piece = findParentElement(e,'piece');
+    var _piece = findParentElement(e.target,'piece');
     var pieceId = _piece.dataset.pieceid;
     var url = this.url + '/api/v1/add_to_cart?PieceId=' + pieceId;
     this.serverRequest = $.post(url, function(result) {
