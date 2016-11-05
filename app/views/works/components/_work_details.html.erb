@@ -10,8 +10,14 @@
     <% end %>
     <% if @work.end_date %>
       <div class="work-detail">
-        <span class="work-detail-label"> Release Date</span>
-        <span class="work-detail-data"> <%= @work.end_date.strftime('%B %d, %Y') %> </span>
+        <span class="work-detail-label">Release Date</span>
+        <span class="work-detail-data"><%= @work.end_date.strftime('%B %d, %Y') %></span>
+      </div>
+    <% end %>
+    <% if @work.pieces.length > 1 %>
+      <div class="work-detail">
+        <span class="work-detail-label">Duration</span>
+        <span class="work-detail-data"><%= @work.duration_formatted %></span>
       </div>
     <% end %>
 </section>
