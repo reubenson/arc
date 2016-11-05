@@ -48,12 +48,15 @@
       text-align: right;
       width: 50px;
       color:#bbb;
-
     }
 
     .piece-play {
-      width: 40px;
-	    padding-left:5px;
+      padding-left: 5px;
+      width: 35px;
+
+      button {
+        background-color: transparent;
+      }
     }
     .piece-purchase {
       text-align: right;

@@ -3,8 +3,7 @@
 
   .work-detail {
     border: solid black 0px;
-    flex-grow: 1;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin: 1px;
     text-align: left;
   }
@@ -14,18 +13,21 @@
   .work-detail-label {
     border-right: solid black 0px;
     display: inline-block;
-    padding: 3px 10px;
-    width: 100px;
-	font-weight:600;
+    font-weight: 600;
+    padding: 3px 5px;
   }
   .work-detail-data {
-    padding-left: 10px;
+    // padding-left: 10px;
   }
 
   @media screen and (min-width: 600px) {
-    // display: block;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+
+    .work-details {
+      flex-grow: 1;
+    }
   }
 }
 
