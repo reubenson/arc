@@ -388,7 +388,7 @@ class TimeDisplay extends React.Component {
 
 TimeDisplay.propTypes = {
   elapsedTime: React.PropTypes.number,
-  duration: React.PropTypes.string
+  duration: React.PropTypes.number
 }
 
 
