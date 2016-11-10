@@ -35,19 +35,22 @@ function modifyTracklist() {
   var tracklist = document.querySelector('.work-tracklist'),
     thresholdWidth = 420,
     modifyFn = function() {
-      var tracklist = document.querySelector('.work-tracklist');
-      if (tracklist.clientWidth < thresholdWidth) {
-        tracklist.classList.add('sm');
-        // var playButton = tracklist.querySelector('.piece-play button');
-      } else{
-        tracklist.classList.remove('sm');
-      }
-      updateTracklist && window.clearInterval(updateTracklist);
+      if(tracklist) {
+        if (tracklist.clientWidth < thresholdWidth) {
+          tracklist.classList.add('sm');
+          // var playButton = tracklist.querySelector('.piece-play button');
+        } else {
+          tracklist.classList.remove('sm');
+        }
+        updateTracklist && window.clearInterval(updateTracklist);
 
-      return null;
+        return null;
+      }
     },
     updateTracklist = tracklist ? modifyFn() : window.setInterval(modifyFn,100);
 }
+
+//Todo: Currently modifyTracklist() is called on every page, regardless of whether or not there is a tracklist. Should only be called on pages with an AudioPlayer.
 
 onLoadAndResize(modifyTracklist);
 
