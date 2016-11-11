@@ -351,7 +351,7 @@ ProgressBar.propTypes = {
   isErroring: React.PropTypes.bool,
   updateProgress: React.PropTypes.func,
   elapsedTime: React.PropTypes.number,
-  duration: React.PropTypes.number
+  duration: React.PropTypes.string
 }
 
 
