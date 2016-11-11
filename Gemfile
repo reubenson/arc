@@ -46,7 +46,7 @@ gem 'faker'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec-rails', '~> 3.4'
+  gem 'rspec-rails', '~> 3.5.2'
 end
 
 group :development do
