@@ -72,7 +72,7 @@ class AudioPlayer extends React.Component {
 
   currentTrackDuration() {
     var currentTrack = this.state.playlist[this.state.playlistTrackNumber];
-    return currentTrack ? currentTrack.duration : Infinity;
+    return currentTrack ? currentTrack.duration : "";
   }
 
   handleClick(e) {
@@ -388,7 +388,7 @@ class TimeDisplay extends React.Component {
 
 TimeDisplay.propTypes = {
   elapsedTime: React.PropTypes.number,
-  duration: React.PropTypes.number
+  duration: React.PropTypes.string
 }
 
 
