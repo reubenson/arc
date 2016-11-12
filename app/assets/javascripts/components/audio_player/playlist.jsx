@@ -1,48 +1,33 @@
 class Playlist extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentPiece: null,
+      artistUrl:    null,
+      artistName:   null,
+      workUrl:      null,
+      title:        null
+    };
   }
 
-  artist() {
-    var currentItem = this.state.currentPiece,
-      artistUrl = currentItem && currentItem.artist_url,
-      artistName = currentItem && currentItem.artist_name;
-
-    return (
-      <a href={artistUrl}>{artistName}</a>
-    )
-  }
-
-  piece() {
-    var currentItem = this.state.currentPiece,
-      workUrl = currentItem && currentItem.work_url;
-      workTitle = currentItem && currentItem.title;
-
-    return (
-      <a href={workUrl}>{workTitle}</a>
-    )
-  }
-
-  shouldComponentUpdate(nextProps) {
-    var currentPiece = this.props.piece,
-      nextPiece = nextProps.piece;
-
-    if (currentPiece != nextPiece) {
-      this.state.currentPiece = nextPiece;
-    }
-
-    return currentPiece != nextPiece;
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currentPiece: nextProps.piece,
+      artistUrl:    nextProps.piece.artist_url,
+      artistName:   nextProps.piece.artist_name,
+      workUrl:      nextProps.piece.work_url,
+      title:        nextProps.piece.title
+    });
   }
 
   render () {
     return (
       <div className="audio-player-info">
         <div className="audio-player-info-artist">
-          {this.artist()}
+          <a href={this.state.artistUrl}>{this.state.artistName}</a>
         </div>
         <div className="audio-player-info-title">
-          {this.piece()}
+          <a href={this.state.workUrl}>{this.state.title}</a>
         </div>
       </div>
     )
