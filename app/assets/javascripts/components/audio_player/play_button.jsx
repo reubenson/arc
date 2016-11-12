@@ -1,11 +1,15 @@
 class PlayButton extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      buttonText: this.props.isPlaying ? 'PAUSE' : 'PLAY'
+    }
   }
 
-  shouldComponentUpdate(nextProps) {
-    return this.props.isPlaying != nextProps.isPlaying ||
-      this.props.piece != nextProps.piece;
+componentWillReceiveProps(nextProps) {
+    this.setState({
+      buttonText: nextProps.isPlaying ? 'PAUSE' : 'PLAY'
+    });
   }
 
   componentDidUpdate() {
@@ -19,16 +23,14 @@ class PlayButton extends React.Component {
     window.dispatchEvent( evt );
   }
 
-  displayBtn() {
-    return this.props.isPlaying ? 'PAUSE' : 'PLAY';
-  }
-
   handleClick() {
     this.props.togglePlay();
   }
 
   render() {
-    return <button onClick={this.handleClick.bind(this)}>{this.displayBtn()}</button>
+    return  <button onClick={this.handleClick.bind(this)}>
+              {this.state.buttonText}
+            </button>
   }
 };
 
