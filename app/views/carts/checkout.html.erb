@@ -1,0 +1,15 @@
+<h2>Checkout</h2>
+<table>
+  <% @cart.items.each do |item| %>
+    <tr>
+      <td><%= item.artist.fullname %></td>
+      <td><%= item.title %></td>
+      <td><%= item.price %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td></td>
+    <td>Total: </td>
+    <td><%= @cart.total %></td>
+  </tr>
+</table>

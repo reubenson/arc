@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'checkout' => 'carts#checkout'
+
   devise_for :users
   get 'users/account' => 'users#account'
 
