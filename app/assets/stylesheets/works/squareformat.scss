@@ -6,7 +6,6 @@
 // Mobile and tablet styling relies of flexbox to re-order components differently than the order the exist in the DOM
 // Desktop styling removes flexbox and instead relies on the order of components in the DOM
 
-// $grey: #333;
 @import "variables";
 $rightColWidth: 50%;
 
@@ -96,16 +95,47 @@ $rightColWidth: 50%;
       margin-right: 2%;
       width: calc(100% - #{$rightColWidth} - 6%);
     }
-    .work-header-container,
-    .work-tracklist-container,
-    .work-details-container {
+    // .work-header-container,
+    .work-tracklist-container {
+    // .work-details-container {
       float: right;
       margin-left: 2%;
       margin-right: 4%;
       width: calc(#{$rightColWidth} - 6%);
     }
     .work-description-container {
+      clear: both;
       float: none;
+      margin-left: 4%;
+      width: 60%;
+    }
+    .work-details-container {
+      margin-left: 4%;
+    }
+
+    .work-header-container {
+      margin-left: 4%;
+      text-align: left;
+
+      .work-header-artist {
+        font-size: 1.1em;
+        font-weight: 200;
+        height: 1em;
+        margin-bottom: 5px;
+        a {
+          color: $light-grey;
+        }
+      }
+
+      .work-header-title {
+        font-size: 1.8em;
+        font-weight: 400;
+        height: 1.0em;
+      }
+    }
+
+    .work-image-container {
+      margin-top: 0;
     }
 
   }

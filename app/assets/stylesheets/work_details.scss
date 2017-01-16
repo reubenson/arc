@@ -14,16 +14,17 @@
     border-right: solid black 0px;
     display: inline-block;
     font-weight: 600;
-    padding: 3px 5px;
+    padding: 3px 5px 3px 0;
   }
   .work-detail-data {
+    margin-right: 15px;
     // padding-left: 10px;
   }
 
   @media screen and (min-width: 600px) {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    // justify-content: space-around;
 
     .work-details {
       flex-grow: 1;
