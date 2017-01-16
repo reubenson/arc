@@ -4,6 +4,7 @@
   border: 1px solid #eee;
   box-sizing: border-box;
   font-size: 0.8em;
+  overflow: hidden;
   padding: 0px 0px 0px 0px;
   width: 100%;
 
@@ -51,7 +52,9 @@
     }
 
     .piece-play {
+      opacity: 0;
       padding-left: 5px;
+      transition: opacity 0.25s;
       width: 35px;
 
       button {
@@ -60,7 +63,9 @@
     }
     .piece-purchase {
       text-align: right;
-      width: 75px;
+      transition: width 0.5s, transform 0.5s;
+      transform: translateX(20px);
+      width: 0;
 
       .add-piece-to-cart-btn-sm { display: none }
     }
@@ -80,13 +85,26 @@
     }
   }
 
-.piece:hover{
-	background-color:#eee;
-	cursor:pointer;
-	.piece-title{
-		font-weight:normal;
-	}
-}
+  .piece:hover,
+  .piece-active {
+  	background-color:#eee;
+  	cursor:pointer;
+
+    .piece-play {
+      opacity: 1;
+    }
+
+    .piece-purchase {
+      width: 75px;
+      transform: translateX(0px);
+    }
+  }
+
+  .piece-active {
+    .piece-title {
+      font-weight: bold;
+    }
+  }
 
   .toggle-piece-description-btn[aria-hidden="true"] { display: none }
   .piece-description[aria-hidden="true"] { display: none; }

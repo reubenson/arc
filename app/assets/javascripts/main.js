@@ -67,13 +67,25 @@ var playButton = (function() {
       isPlaying = e.detail.isPlaying;
 
     setElement(el);
+    setActive();
     setState(isPlaying);
   }, false);
+
+  function setActive () {
+    currentElement.classList.add('piece-active');
+  }
+
+  function removeActive () {
+    prevElement.classList.remove('piece-active');
+  }
 
   function setState (isPlaying) {
     playing = isPlaying;
     currentElement.querySelector('.add-piece-to-player-btn').innerHTML = isPlaying ? '&#9614;&#9614;' : '&#9658';
-    if (prevElement && prevElement != currentElement) {prevElement.querySelector('.add-piece-to-player-btn').innerHTML = '&#9658';}
+    if (prevElement && prevElement != currentElement) {
+      removeActive();
+      prevElement.querySelector('.add-piece-to-player-btn').innerHTML = '&#9658';
+    }
     prevElement = currentElement;
   }
 
