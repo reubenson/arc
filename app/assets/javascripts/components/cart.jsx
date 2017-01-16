@@ -58,6 +58,7 @@ var Cart = React.createClass({
   },
 
   hideCart: function() {
+    document.body.classList.remove('hide-overflow');
     this.setState({cartVisible: false});
     this._cartContainer.classList.add('hidden');
   },
@@ -107,6 +108,7 @@ var Cart = React.createClass({
   },
 
   showCart: function() {
+    document.body.classList.add('hide-overflow');
     this.setState({cartVisible: true});
     this._cartContainer.classList.remove('hidden');
   },

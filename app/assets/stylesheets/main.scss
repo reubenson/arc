@@ -12,6 +12,12 @@ body {
   margin: 0;
 }
 
+body.hide-overflow {
+  @media (max-width: 1024px) {
+    overflow: hidden;
+  }
+}
+
 input {
   background: transparent;
   border: none;

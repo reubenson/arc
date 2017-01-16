@@ -1,14 +1,18 @@
+@import "variables";
+
 .cart-container {
   background-color: white;
   border: solid black 2px;
   bottom: 0;
-  height: 90%;
+  box-sizing: border-box;
+  height: calc(100vh - #{$navbar-height});
   left: 0;
-  margin: auto;
+  margin: 0 auto;
+  overflow: scroll;
   position: absolute;
   right: 0;
-  width: 90%;
-  top: 0;
+  top: $navbar-height;
+  width: 100%;
   z-index: 10;
 
   .cart {
@@ -32,7 +36,15 @@
     table {
       margin: auto;
       border-bottom: solid black 2px;
-      width: 75vw;
+      width: 100%;
+
+      td {
+        padding: 8px 10px;
+      }
+
+      td:nth-child(1) {
+        padding-right: 4px;
+      }
 
       th {
         text-align: left;
@@ -51,4 +63,9 @@
     top: 0;
   }
 
+  @media (min-width: 1024px) {
+    height: 500px;
+    margin-right: 0; 
+    width: 500px;
+  }
 }
