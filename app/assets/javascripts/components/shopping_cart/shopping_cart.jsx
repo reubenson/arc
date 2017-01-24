@@ -1,15 +1,20 @@
 class ShoppingCart extends React.Component {
 	constructor(props) {
-		super(props);
+		super();
 
 		this.state = {
-			items: []
+			items: [],
 		};
+
+		if (props.items) {
+			this.state.items = props.items;
+		}
+
 	}
 
-	attachEventHandlers() {
-		document.body.addEventListener('click', this.handleClick.bind(this));
-	}
+	// attachEventHandlers() {
+	// 	document.body.addEventListener('click', this.handleClick.bind(this));
+	// }
 
 	componentDidMount() {
 		var url = '/api/v1/initialize_cart';
@@ -18,7 +23,7 @@ class ShoppingCart extends React.Component {
 		this._cartBtn = document.getElementById('cart-btn');
 		this._checkoutForm = document.getElementById('checkout');
 
-		this.attachEventHandlers();
+		// this.attachEventHandlers();
 
 		this.serverRequest = $.get(url, function (result) {
 			this.setState({items: result.carts});
@@ -36,39 +41,39 @@ class ShoppingCart extends React.Component {
 		}.bind(this));
 	}
 
-	handleClick(e) {
-		if (e.target.classList.contains('add-work-to-cart-btn')) {
-			this.addWorkToCart(e);
-		} else if (e.target.classList.contains('add-piece-to-cart-btn')) {
-			this.addPieceToCart(e);
-		}
-	}
+	// handleClick(e) {
+	// 	if (e.target.classList.contains('add-work-to-cart-btn')) {
+	// 		this.addWorkToCart(e);
+	// 	} else if (e.target.classList.contains('add-piece-to-cart-btn')) {
+	// 		this.addPieceToCart(e);
+	// 	}
+	// }
 
-	addWorkToCart(e) {
-		var _work = findParentElement(e.target,'work'),
-			workId = _work.dataset.workid,
-			url = '/api/v1/add_to_cart?WorkId=' + workId;
+	// addWorkToCart(e) {
+	// 	var _work = findParentElement(e.target,'work'),
+	// 		workId = _work.dataset.workid,
+	// 		url = '/api/v1/add_to_cart?WorkId=' + workId;
+	//
+	// 	this.serverRequest = $.post(url, function (result) {
+	// 		this.setState({
+	// 			items: result.carts,
+	// 		});
+	// 		this.updateCartBtn();
+	// 	}.bind(this));
+	// }
 
-		this.serverRequest = $.post(url, function (result) {
-			this.setState({
-				items: result.carts,
-			});
-			this.updateCartBtn();
-		}.bind(this));
-	}
-
-	addPieceToCart(e) {
-		var _piece = findParentElement(e.target,'piece'),
-			pieceId = _piece.dataset.pieceid,
-			url = '/api/v1/add_to_cart?PieceId=' + pieceId;
-
-		this.serverRequest = $.post(url, function(result) {
-			this.setState({
-				items: result.carts,
-			});
-			this.updateCartBtn();
-		}.bind(this));
-	}
+	// addPieceToCart(e) {
+	// 	var _piece = findParentElement(e.target,'piece'),
+	// 		pieceId = _piece.dataset.pieceid,
+	// 		url = '/api/v1/add_to_cart?PieceId=' + pieceId;
+	//
+	// 	this.serverRequest = $.post(url, function(result) {
+	// 		this.setState({
+	// 			items: result.carts,
+	// 		});
+	// 		this.updateCartBtn();
+	// 	}.bind(this));
+	// }
 
 	removeItemFromCart(e) {
 		var itemType = e.target.dataset.itemType,
@@ -92,6 +97,8 @@ class ShoppingCart extends React.Component {
 			numItemsText = ( numItems > 0 ) ? 'Cart (' + numItems + ')' : 'Cart';
 
 		this._cartBtn.textContent = numItemsText;
+
+		console.log('calculating number', numItemsText);
 	}
 
 	checkout() {
@@ -106,11 +113,7 @@ class ShoppingCart extends React.Component {
 	}
 
 	render() {
-		return (
-			<div>
-				{this.checkout()}
-			</div>
-		);
+		return <div>{this.checkout()}</div>;
 	}
 }
 
@@ -127,7 +130,8 @@ class Contents extends React.Component {
 
   // token: null,
 
-  checkoutTotal() {
+
+	checkoutTotal() {
     return this.props.items.reduce(function(x,y){
       var sum = x.price ? x.price : x;
       sum = parseFloat(sum);
@@ -190,6 +194,6 @@ class Contents extends React.Component {
 
 class EmptyCart extends React.Component {
   render() {
-    return <div id="empty-cart">Your Cart is Empty!</div>
+    return <div id="empty-cart">Your Cart is Empty!</div>;
   }
 };
