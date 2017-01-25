@@ -1,7 +1,4 @@
 class LineItem extends React.Component {
-  handleClick(obj) {
-    this.props.remove(obj);
-  }
 
   itemType() {
     return this.props.item.work_id ? 'Piece' : 'Work';

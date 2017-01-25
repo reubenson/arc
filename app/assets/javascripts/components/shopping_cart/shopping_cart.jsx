@@ -3,13 +3,9 @@ class ShoppingCart extends React.Component {
 		super();
 
 		this.state = {
-			items: [],
+			items: props.items || [],
+			checkoutTotal: this.calculateCheckoutTotal(props.items || [])
 		};
-
-		if (props.items) {
-			this.state.items = props.items;
-		}
-
 	}
 
 	// attachEventHandlers() {
@@ -83,7 +79,7 @@ class ShoppingCart extends React.Component {
 		this.serverRequest = $.post(url, function(result) {
 			this.setState({
 				items: result.carts
-			})
+			});
 			this.updateCartBtn();
 		}.bind(this));
 	}
@@ -92,108 +88,51 @@ class ShoppingCart extends React.Component {
 		return this.state.items.length;
 	}
 
+	componentDidUpdate() {
+		this.updateCheckoutTotal();
+	}
+
+	calculateCheckoutTotal(items) {
+		return items.reduce(function(x,y){
+			var sum = x.price ? x.price : x;
+			sum = parseFloat(sum);
+			return sum + parseFloat(y.price);
+		},0).toFixed(2);
+	}
+
+	updateCheckoutTotal() {
+		var checkoutTotal = this.calculateCheckoutTotal(this.state.items);
+
+		if (this.state.checkoutTotal != checkoutTotal) {
+			this.setState({
+				checkoutTotal: checkoutTotal
+			});
+		}
+	}
+
 	updateCartBtn() {
 		var numItems = this.numberOfItems(),
 			numItemsText = ( numItems > 0 ) ? 'Cart (' + numItems + ')' : 'Cart';
 
 		this._cartBtn.textContent = numItemsText;
-
-		console.log('calculating number', numItemsText);
 	}
 
 	checkout() {
 		return this.numberOfItems() == 0 ?
-			<EmptyCart/> :
-			<Contents
+			<EmptyShoppingCart/> :
+			<ShoppingCartContents
 				items={this.state.items}
 				remove={this.removeItemFromCart.bind(this)}
 				handleCheckout={this.handleCheckout}
 				updateCartBtn={this.updateCartBtn}
+				checkoutTotal={this.state.checkoutTotal}
 			/>
 	}
 
 	render() {
-		return <div>{this.checkout()}</div>;
+		return <div>
+			{this.checkout()}
+			<CheckoutForm checkoutTotal={this.state.checkoutTotal}/>
+			</div>;
 	}
 }
-
-class Contents extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.token = null;
-
-		this.state = {
-			items: []
-		};
-	}
-
-  // token: null,
-
-
-	checkoutTotal() {
-    return this.props.items.reduce(function(x,y){
-      var sum = x.price ? x.price : x;
-      sum = parseFloat(sum);
-      return sum + parseFloat(y.price);
-    },0).toFixed(2);
-  }
-
-  componentDidMount() {
-    var url = '/api/v1/get_token';
-
-    this.serverRequest = $.get(url, function(result) {
-      this.csrf = result.csrf_token;
-      braintree.setup(result.token,
-        "dropin", {
-        container: "payment-form",
-        onPaymentMethodReceived: function(e) {
-          this.handleSubmit(e);
-        }.bind(this)
-      });
-    }.bind(this));
-  }
-
-  handleSubmit(e) {
-    var params = {
-      payment_method_nonce: e.nonce,
-      transaction_amt: this.checkoutTotal(),
-      csrf_token: this.csrf
-    };
-
-    this.props.handleCheckout(params);
-  }
-
-  render() {
-    var remove = this.props.remove;
-
-    return (
-      <section className="cart">
-        <h2>Shopping Cart</h2>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Artist</th>
-              <th>Title</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.items.map(function(item){
-              return <LineItem key={item.type + item.id } item={item} remove={remove}/>
-            })}
-          </tbody>
-        </table>
-        <div id="checkout-total">Total: ${this.checkoutTotal()}</div>
-        <CheckoutForm checkoutTotal={this.checkoutTotal()}/>
-      </section>
-    )
-  }
-};
-
-class EmptyCart extends React.Component {
-  render() {
-    return <div id="empty-cart">Your Cart is Empty!</div>;
-  }
-};
