@@ -8,9 +8,9 @@ class ShoppingCart extends React.Component {
 		};
 	}
 
-	// attachEventHandlers() {
-	// 	document.body.addEventListener('click', this.handleClick.bind(this));
-	// }
+	attachEventHandlers() {
+		document.body.addEventListener('click', this.handleClick.bind(this));
+	}
 
 	componentDidMount() {
 		var url = '/api/v1/initialize_cart';
@@ -19,7 +19,7 @@ class ShoppingCart extends React.Component {
 		this._cartBtn = document.getElementById('cart-btn');
 		this._checkoutForm = document.getElementById('checkout');
 
-		// this.attachEventHandlers();
+		this.attachEventHandlers();
 
 		this.serverRequest = $.get(url, function (result) {
 			this.setState({items: result.carts});
@@ -37,39 +37,39 @@ class ShoppingCart extends React.Component {
 		}.bind(this));
 	}
 
-	// handleClick(e) {
-	// 	if (e.target.classList.contains('add-work-to-cart-btn')) {
-	// 		this.addWorkToCart(e);
-	// 	} else if (e.target.classList.contains('add-piece-to-cart-btn')) {
-	// 		this.addPieceToCart(e);
-	// 	}
-	// }
+	handleClick(e) {
+		if (e.target.classList.contains('add-work-to-cart-btn')) {
+			this.addWorkToCart(e);
+		} else if (e.target.classList.contains('add-piece-to-cart-btn')) {
+			this.addPieceToCart(e);
+		}
+	}
 
-	// addWorkToCart(e) {
-	// 	var _work = findParentElement(e.target,'work'),
-	// 		workId = _work.dataset.workid,
-	// 		url = '/api/v1/add_to_cart?WorkId=' + workId;
-	//
-	// 	this.serverRequest = $.post(url, function (result) {
-	// 		this.setState({
-	// 			items: result.carts,
-	// 		});
-	// 		this.updateCartBtn();
-	// 	}.bind(this));
-	// }
+	addWorkToCart(e) {
+		var _work = findParentElement(e.target,'work'),
+			workId = _work.dataset.workid,
+			url = '/api/v1/add_to_cart?WorkId=' + workId;
 
-	// addPieceToCart(e) {
-	// 	var _piece = findParentElement(e.target,'piece'),
-	// 		pieceId = _piece.dataset.pieceid,
-	// 		url = '/api/v1/add_to_cart?PieceId=' + pieceId;
-	//
-	// 	this.serverRequest = $.post(url, function(result) {
-	// 		this.setState({
-	// 			items: result.carts,
-	// 		});
-	// 		this.updateCartBtn();
-	// 	}.bind(this));
-	// }
+		this.serverRequest = $.post(url, function (result) {
+			this.setState({
+				items: result.carts,
+			});
+			this.updateCartBtn();
+		}.bind(this));
+	}
+
+	addPieceToCart(e) {
+		var _piece = findParentElement(e.target,'piece'),
+			pieceId = _piece.dataset.pieceid,
+			url = '/api/v1/add_to_cart?PieceId=' + pieceId;
+
+		this.serverRequest = $.post(url, function(result) {
+			this.setState({
+				items: result.carts,
+			});
+			this.updateCartBtn();
+		}.bind(this));
+	}
 
 	removeItemFromCart(e) {
 		var itemType = e.target.dataset.itemType,
