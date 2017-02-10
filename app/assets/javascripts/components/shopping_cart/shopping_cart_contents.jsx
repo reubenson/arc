@@ -7,8 +7,7 @@ class ShoppingCartContents extends React.Component {
     var remove = this.props.remove;
 
     return (
-      <section className="cart">
-        <h2>Shopping Cart</h2>
+      <section className="shopping-cart-contents">
         <table>
           <thead>
             <tr>
@@ -22,9 +21,14 @@ class ShoppingCartContents extends React.Component {
             {this.props.items.map(function(item){
               return <LineItem key={item.type + item.id } item={item} remove={remove}/>
             })}
+            <tr>
+              <td></td>
+              <td></td>
+              <td className="shopping-cart-contents-total">Total:</td>
+              <td className="shopping-cart-contents-total-value">${this.props.checkoutTotal}</td>
+            </tr>
           </tbody>
         </table>
-        <div id="checkout-total">Total: ${this.props.checkoutTotal}</div>
       </section>
     )
   }

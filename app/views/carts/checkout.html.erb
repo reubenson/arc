@@ -1,18 +1,4 @@
 <!-- prerender needs to be true because pjax keeps componentDidMount from firing -->
-<%= react_component('ShoppingCart', {items: @items}, {tag: 'div', class: 'checkout-container', prerender: true}) %>
-
-<!-- <h2>Checkout</h2>
-<table>
-  <% @cart.items.each do |item| %>
-    <tr>
-      <td><%= item.artist.fullname %></td>
-      <td><%= item.title %></td>
-      <td><%= item.price %></td>
-    </tr>
-  <% end %>
-  <tr>
-    <td></td>
-    <td>Total: </td>
-    <td><%= @cart.total %></td>
-  </tr>
-</table> -->
+<div class="checkout-container">
+  <%= react_component('ShoppingCart', {items: @items}, {tag: 'div', class: 'shopping-cart-container', prerender: true}) %>
+</div>

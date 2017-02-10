@@ -7,7 +7,7 @@ class LineItem extends React.Component {
   render() {
     return (
       <tr>
-        <td> <a href="#"
+        <td> <a href="#" className="remove-item-from-cart-btn"
 					onClick={this.props.remove}
 					data-item-id={this.props.item.id}
 					data-item-type={this.itemType()}>x</a>

@@ -42,7 +42,9 @@ class ShoppingCart extends React.Component {
 			this.addWorkToCart(e);
 		} else if (e.target.classList.contains('add-piece-to-cart-btn')) {
 			this.addPieceToCart(e);
-		}
+		} else if (e.target.classList.contains('remove-item-from-cart-btn')) {
+      this.removeItemFromCart(e);
+    }
 	}
 
 	addWorkToCart(e) {
@@ -75,6 +77,8 @@ class ShoppingCart extends React.Component {
 		var itemType = e.target.dataset.itemType,
 			itemId = e.target.dataset.itemId,
 			url = '/api/v1/remove_from_cart?item_id=' + itemId + '&item_type=' + itemType;
+
+console.log('remove item from cart');
 
 		this.serverRequest = $.post(url, function(result) {
 			this.setState({
@@ -130,9 +134,12 @@ class ShoppingCart extends React.Component {
 	}
 
 	render() {
-		return <div>
-			{this.checkout()}
-			<CheckoutForm checkoutTotal={this.state.checkoutTotal}/>
-			</div>;
+		return (
+      <div className='shopping-cart'>
+        <h2>Shopping Cart</h2>
+        {this.checkout()}
+        <CheckoutForm checkoutTotal={this.state.checkoutTotal}/>
+      </div>
+    );
 	}
 }

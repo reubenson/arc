@@ -8,12 +8,14 @@ class ShoppingCartModal extends React.Component {
 	}
 
 	attachEventHandlers() {
-    this.cartButton.addEventListener('click', this.toggleCartView.bind(this));
+    this.navCartButton.addEventListener('click', this.toggleCartView.bind(this));
+    this.checkoutButton.addEventListener('click',this.hideCart.bind(this));
 	}
 
 	componentDidMount() {
-		this._cartContainer = document.querySelector('.cart-container');
-		this.cartButton = document.getElementById('cart-btn');
+		this.shoppingCartModal = document.querySelector('.shopping-cart-modal');
+		this.navCartButton = document.getElementById('cart-btn');
+    this.checkoutButton = document.querySelector('.go-to-checkout');
 
 		this.attachEventHandlers();
 	}
@@ -21,7 +23,7 @@ class ShoppingCartModal extends React.Component {
 	hideCart() {
 		document.body.classList.remove('hide-overflow');
 		this.setState({cartVisible: false});
-		this._cartContainer.classList.add('hidden');
+		this.shoppingCartModal.classList.add('hidden');
 	}
 
 	toggleCartView() {
@@ -31,15 +33,15 @@ class ShoppingCartModal extends React.Component {
 	showCart() {
 		document.body.classList.add('hide-overflow');
 		this.setState({cartVisible: true});
-		this._cartContainer.classList.remove('hidden');
+		this.shoppingCartModal.classList.remove('hidden');
 	}
 
 	render() {
 		return (
 			<div>
 				<ShoppingCart/>
-				<a href="/checkout">Go To Checkout</a>
-				<button onClick={this.toggleCartView.bind(this)} className="cart-close-btn">Close Cart</button>
+				<a className="go-to-checkout" href="/checkout">Go To Checkout</a>
+				<button onClick={this.toggleCartView.bind(this)} className="close-cart">Close Cart</button>
 			</div>
 		);
 	}
