@@ -38,16 +38,18 @@
 	  padding:0px;
     display: flex;
     flex-wrap: wrap;
-    height: 35px;
+    height: auto;
+    padding: 5px 0;
 
     .piece-column {
-      height: 15px;
+      // height: 15px;
       margin: auto;
       padding: 3px;
       vertical-align: middle;
     }
 
     .piece-duration {
+      padding-top: 5px;
       text-align: right;
       width: 50px;
       color:#bbb;
@@ -81,6 +83,7 @@
     .piece-title {
       flex-grow: 1;
       font-size: 1em;
+      padding-top: 5px;
       width: 10%;
 	    // line-height:1em;
     }
