@@ -3,15 +3,12 @@
 .shopping-cart-modal {
   background-color: white;
   border: solid black 2px;
-  bottom: 0;
   box-sizing: border-box;
-  height: 500px;
-  // height: calc(100vh - #{$navbar-height});
   margin: 0 auto;
   max-width: 500px;
   overflow: scroll;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   right: 0;
   width: 350px;
   top: $navbar-height;

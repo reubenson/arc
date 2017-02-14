@@ -24,7 +24,8 @@ input {
 }
 
 #main {
-  margin: 30px 0 10px;
+  margin-top: $navbar-height;
+  // margin: 30px 0 10px;
 }
 
 p, ol, ul, td {

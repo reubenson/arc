@@ -1,12 +1,10 @@
 @import "variables";
 
 .shopping-cart {
-  // margin: 10px;
+  max-height: calc(100vh - #{$navbar-height});
 
-  h2 {
-    border-bottom: solid black 2px;
-    margin: 40px auto;
-    padding-bottom: 10px;
+  .shopping-cart-header {
+    margin: 20px auto;
     text-align: center;
     width: 45%;
   }
@@ -47,6 +45,11 @@
 
       th {
         text-align: left;
+      }
+
+      th:last-of-type,
+      td:last-of-type {
+        text-align: right;
       }
 
       .shopping-cart-contents-total {

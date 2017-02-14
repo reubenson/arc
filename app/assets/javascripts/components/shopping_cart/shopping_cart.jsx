@@ -136,7 +136,7 @@ console.log('remove item from cart');
 	render() {
 		return (
       <div className='shopping-cart'>
-        <h2>Shopping Cart</h2>
+        <h3 className="shopping-cart-header">Shopping Cart</h3>
         {this.checkout()}
         <CheckoutForm checkoutTotal={this.state.checkoutTotal}/>
       </div>
