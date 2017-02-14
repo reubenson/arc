@@ -71,25 +71,38 @@ var playButton = (function() {
     setState(isPlaying);
   }, false);
 
-  function setActive () {
+  function setActive() {
     currentElement.classList.add('piece-active');
   }
 
-  function removeActive () {
+  function removeActive() {
     prevElement.classList.remove('piece-active');
   }
 
-  function setState (isPlaying) {
+  function setPlayButton(el) {
+    el.querySelector('.add-piece-to-player-btn').classList.remove('fa-pause');
+    el.querySelector('.add-piece-to-player-btn').classList.add('fa-play');
+  }
+
+  function setPauseButton(el) {
+    el.querySelector('.add-piece-to-player-btn').classList.remove('fa-play');
+    el.querySelector('.add-piece-to-player-btn').classList.add('fa-pause');
+  }
+
+  function setState(isPlaying) {
     playing = isPlaying;
-    currentElement.querySelector('.add-piece-to-player-btn').innerHTML = isPlaying ? '&#9614;&#9614;' : '&#9658';
+
+    playing ? setPauseButton(currentElement) : setPlayButton(currentElement);
+
     if (prevElement && prevElement != currentElement) {
       removeActive();
-      prevElement.querySelector('.add-piece-to-player-btn').innerHTML = '&#9658';
+      setPlayButton(prevElement);
     }
+    
     prevElement = currentElement;
   }
 
-  function setElement (el) {
+  function setElement(el) {
     currentElement = el;
   }
 

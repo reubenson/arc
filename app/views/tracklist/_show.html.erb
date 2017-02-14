@@ -11,7 +11,7 @@
   </div>
     <% @work.pieces.each do |piece| %>
       <div class="piece" data-pieceId=<%= piece.id %> >
-        <div class='piece-play piece-column'><button class="add-piece-to-player-btn">&#9658;</button></div>
+        <div class='piece-play piece-column'><button class="add-piece-to-player-btn fa fa-play"></button></div>
         <div class='piece-title piece-column'><%= 1 + piece.track_number %>. <%= piece.title %></div>
         <div class='piece-duration piece-column'><%= piece.duration_formatted %></div>
         <div class="piece-purchase piece-column">
