@@ -98,7 +98,7 @@ var playButton = (function() {
       removeActive();
       setPlayButton(prevElement);
     }
-    
+
     prevElement = currentElement;
   }
 
@@ -108,3 +108,20 @@ var playButton = (function() {
 
   return {}
 })();
+
+// when scroll the tracklist, main content shouldn't scroll as well
+// (currently behaves somewhat unpredictably - some visual indicator should indicate scroll is locked?)
+$(function() {
+  var tracklistContainer = document.querySelector('.work-tracklist-container');
+
+  function fixBody() {
+    document.body.style.position = 'fixed';
+  }
+
+  function unfixBody() {
+    document.body.style.position = 'relative';
+  }
+
+  tracklistContainer.addEventListener('mouseenter', fixBody);
+  tracklistContainer.addEventListener('mouseleave', unfixBody);
+});

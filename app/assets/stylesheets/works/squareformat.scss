@@ -93,7 +93,8 @@ $rightColWidth: 50%;
       float: left;
       margin-left: 4%;
       margin-right: 2%;
-      width: calc(100% - #{$rightColWidth} - 6%);
+      // width: calc(100% - #{$rightColWidth} - 6%);
+      width: 43vw;
     }
     // .work-header-container,
     .work-tracklist-container {
@@ -101,7 +102,11 @@ $rightColWidth: 50%;
       float: right;
       margin-left: 2%;
       margin-right: 4%;
-      width: calc(#{$rightColWidth} - 6%);
+      // width: calc(#{$rightColWidth} - 6%);
+      width: 43vw;
+      height: 43vw;
+      // height: calc(100% - #{$rightColWidth} - 6%);
+      overflow-y: scroll;
     }
     .work-description-container {
       clear: both;
