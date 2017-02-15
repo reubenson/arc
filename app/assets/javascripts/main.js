@@ -112,14 +112,15 @@ var playButton = (function() {
 // when scrolling the tracklist, main content shouldn't scroll as well
 // (currently behaves somewhat unpredictably - some visual indicator should indicate scroll is locked?)
 $(function() {
-  var tracklistContainer = document.querySelector('.work-tracklist-container');
+  var tracklistContainer = document.querySelector('.work-tracklist-container'),
+    main = document.getElementById('main');
 
   function fixBody() {
-    document.body.style.position = 'fixed';
+    main.style.position = 'fixed';
   }
 
   function unfixBody() {
-    document.body.style.position = 'relative';
+    main.style.position = 'relative';
   }
 
   tracklistContainer.addEventListener('mouseenter', fixBody);
