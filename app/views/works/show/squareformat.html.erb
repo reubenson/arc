@@ -1,7 +1,5 @@
 <section class="work squareformat" data-workId=<%= @work.id %> >
 
-
-
   <section class="work-header-container work-section">
     <header>
       <h2 class="work-header-artist"><%= link_to @artist.fullname, @artist %> </h2>
@@ -32,6 +30,15 @@
 
   <section class="work-tracklist-container work-section">
     <%= render partial: "tracklist/show", locals: {work: @work} %>
+  </section>
+
+  <nav class="work-content-nav">
+    <span class="work-content-nav-item" data-content="credits">Credits</span>
+    <span class="work-content-nav-item" data-content="notes">Liner Notes</span>
+  </nav>
+
+  <section class="work-credits-container">
+    <%= raw @work.credits %>
   </section>
 
   <section class="work-description-container work-section">

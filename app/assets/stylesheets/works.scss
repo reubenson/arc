@@ -58,6 +58,23 @@
     letter-spacing: 0.1em;
     line-height: 1.5em;
   }
+
+  .work-content-nav {
+    clear: both;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    text-align: center;
+
+    span {
+      cursor: pointer;
+      flex-grow: 1;
+    }
+
+    span.active {
+      border-bottom: solid black 2px;
+    }
+  }
 }
 
 // tablet (600px - 1024px)

@@ -13,6 +13,7 @@ class CreateWorks < ActiveRecord::Migration
       t.timestamps null: false
       t.string :layout
       t.string :record_label
+      t.text :credits
     end
   end
 end

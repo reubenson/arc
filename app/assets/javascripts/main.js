@@ -109,7 +109,7 @@ var playButton = (function() {
   return {}
 })();
 
-// when scroll the tracklist, main content shouldn't scroll as well
+// when scrolling the tracklist, main content shouldn't scroll as well
 // (currently behaves somewhat unpredictably - some visual indicator should indicate scroll is locked?)
 $(function() {
   var tracklistContainer = document.querySelector('.work-tracklist-container');
@@ -124,4 +124,58 @@ $(function() {
 
   tracklistContainer.addEventListener('mouseenter', fixBody);
   tracklistContainer.addEventListener('mouseleave', unfixBody);
+});
+
+
+// toggle additional content on a works page via content nav
+$(function(){
+  var contentNav = document.querySelector('.work-content-nav'),
+    contentNavItems = contentNav.querySelectorAll('.work-content-nav-item'),
+    credits = document.querySelector('.work-credits-container'),
+    notes = document.querySelector('.work-description-container'),
+    currentlyDisplaying = credits,
+    activeNavItem = contentNavItems[0];
+
+  function handleClick(e){
+    var target = e.target,
+      content;
+
+    while (!target.classList.contains('work-content-nav-item')) {
+      target = target.parentElement;
+    }
+
+    activeNavItem.classList.remove('active');
+    target.classList.add('active');
+    content = target.getAttribute('data-content');
+
+    hideOldContent();
+    showNewContent(content);
+    activeNavItem = target;
+  }
+
+  function hideOldContent(){
+    currentlyDisplaying.style.display = 'none';
+  }
+
+  function showNewContent(content){
+    var newContent;
+
+    if (content === 'credits') {
+      newContent = credits;
+    } else if (content === 'notes') {
+      newContent = notes;
+    }
+
+    newContent.style.display = 'block';
+    currentlyDisplaying = newContent;
+  }
+
+  function init(){
+    notes.style.display = 'none';
+    contentNav.addEventListener('click', handleClick);
+    activeNavItem.classList.add('active');
+  }
+
+  init();
+
 });

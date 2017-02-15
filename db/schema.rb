@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20161031012939) do
     t.datetime "updated_at",                           null: false
     t.string   "layout"
     t.string   "record_label"
+    t.text     "credits"
   end
 
 end
