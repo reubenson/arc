@@ -111,9 +111,12 @@ var playButton = (function() {
 
 // when scrolling the tracklist, main content shouldn't scroll as well
 // (currently behaves somewhat unpredictably - some visual indicator should indicate scroll is locked?)
-$(function() {
+(function TracklistContainer() {
   var tracklistContainer = document.querySelector('.work-tracklist-container'),
     main = document.getElementById('main');
+
+  window.addEventListener('load', addEventListener);
+  $(document).on('pjax:complete', addEventListener);
 
   function fixBody() {
     main.style.position = 'fixed';
@@ -123,19 +126,28 @@ $(function() {
     main.style.position = 'relative';
   }
 
-  tracklistContainer.addEventListener('mouseenter', fixBody);
-  tracklistContainer.addEventListener('mouseleave', unfixBody);
-});
+  function addEventListener(){
+    tracklistContainer = document.querySelector('.work-tracklist-container');
+    main = document.getElementById('main');
 
+    if (tracklistContainer) {
+      tracklistContainer.addEventListener('mouseenter', fixBody);
+      tracklistContainer.addEventListener('mouseleave', unfixBody);
+    }
+  }
+})();
 
 // toggle additional content on a works page via content nav
-$(function(){
-  var contentNav = document.querySelector('.work-content-nav'),
-    contentNavItems = contentNav.querySelectorAll('.work-content-nav-item'),
-    credits = document.querySelector('.work-credits-container'),
-    notes = document.querySelector('.work-description-container'),
-    currentlyDisplaying = credits,
-    activeNavItem = contentNavItems[0];
+(function ContentNav(){
+  var contentNav,
+    contentNavItems,
+    credits,
+    notes,
+    currentlyDisplaying,
+    activeNavItem;
+
+  window.addEventListener('load', init);
+  $(document).on('pjax:complete', init);
 
   function handleClick(e){
     var target = e.target,
@@ -172,11 +184,20 @@ $(function(){
   }
 
   function init(){
+    contentNav = document.querySelector('.work-content-nav');
+
+    if (!contentNav) {
+      return;
+    }
+
+    contentNavItems = contentNav.querySelectorAll('.work-content-nav-item');
+    credits = document.querySelector('.work-credits-container');
+    notes = document.querySelector('.work-description-container');
+    currentlyDisplaying = credits;
+    activeNavItem = contentNavItems[0];
+
     notes.style.display = 'none';
     contentNav.addEventListener('click', handleClick);
     activeNavItem.classList.add('active');
   }
-
-  init();
-
-});
+})();
