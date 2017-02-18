@@ -113,26 +113,29 @@ var playButton = (function() {
 // (currently behaves somewhat unpredictably - some visual indicator should indicate scroll is locked?)
 (function TracklistContainer() {
   var tracklistContainer,
-    main,
     viewportMin = 1024,
     scrollY = window.scrollY,
-    navbar;
+    main, navbar, audioPlayer, audioPlayerHeight;
 
   window.addEventListener('load', addEventListener);
   $(document).on('pjax:complete', addEventListener);
 
   function fixBody() {
     navbar = navbar || document.querySelector('.navbar');
+    audioPlayer = audioPlayer || document.querySelector('.audio-player');
+    audioPlayerHeight = parseInt(window.getComputedStyle(audioPlayer).height.split('px')[0]);
     scrollY = window.scrollY;
     main.style.position = 'fixed';
     document.body.style.transform = 'translateY(-' + scrollY + 'px)';
     navbar.style.transform = 'translateY(' + scrollY + 'px)';
+    audioPlayer.style.transform = 'translateY(' + (scrollY  + window.innerHeight - audioPlayerHeight) + 'px)';
   }
 
   function unfixBody() {
     document.body.style.transform = '';
     main.style.position = 'relative';
     navbar.style.transform = '';
+    audioPlayer.style.transform = '';
     window.scrollTo(0, scrollY);
   }
 
