@@ -114,17 +114,27 @@ var playButton = (function() {
 (function TracklistContainer() {
   var tracklistContainer,
     main,
-    viewportMin = 1024;
+    viewportMin = 1024,
+    scrollY = window.scrollY,
+    navbar;
 
   window.addEventListener('load', addEventListener);
   $(document).on('pjax:complete', addEventListener);
 
   function fixBody() {
+    navbar = navbar || document.querySelector('.navbar');
+    console.log('navbar', navbar);
+    scrollY = window.scrollY;
     main.style.position = 'fixed';
+    document.body.style.transform = 'translateY(-' + scrollY + 'px)';
+    navbar.style.transform = 'translateY(' + scrollY + 'px)';
   }
 
   function unfixBody() {
+    document.body.style.transform = '';
     main.style.position = 'relative';
+    navbar.style.transform = '';
+    window.scrollTo(0, scrollY);
   }
 
   function addEventListener(){

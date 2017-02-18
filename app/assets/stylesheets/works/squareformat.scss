@@ -4,7 +4,6 @@
 
 // Responsive layout currently works mobile-first
 // Mobile and tablet styling relies of flexbox to re-order components differently than the order the exist in the DOM
-// Desktop styling removes flexbox and instead relies on the order of components in the DOM
 
 @import "variables";
 $rightColWidth: 50%;
