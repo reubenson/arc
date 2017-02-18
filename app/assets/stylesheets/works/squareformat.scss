@@ -10,7 +10,7 @@
 $rightColWidth: 50%;
 
 .work.squareformat {
-  margin: 57px 10px auto;
+  margin: 57px 10px 50px;
   padding: 0 20px;
 
   .work-section {
@@ -41,9 +41,6 @@ $rightColWidth: 50%;
     order: 4;
   }
   .work-description-container {
-    font-size: 1.8rem;
-    font-weight: 300;
-    line-height: 1.5em;
     order: 5;
   }
   .work-tracklist-container {
@@ -59,8 +56,9 @@ $rightColWidth: 50%;
   }
 
   .work-content-nav {
-    background: transparent; // temp?
+    // background: transparent; // temp?
     order: 7;
+    width: 100%;
   }
 
   .work-credits-container {
@@ -112,37 +110,41 @@ $rightColWidth: 50%;
 
   // desktop viewport widths and up
   @media screen and (min-width: 1024px) {
-    display: block;
+    // display: block;
 
     .work-description-container {
       margin: auto;
       width: 80%;
     }
 
-    .work-image-container
-    // .work-description-container
-     {
-      float: left;
+    .work-image-container {
+       margin: auto;
+      // float: left;
       // margin-left: 4vw;
-      margin-right: 1vw;
+      // margin-right: 1vw;
       // width: calc(100% - #{$rightColWidth} - 6%);
-      width: 44.5vw;
+      width: 45vw;
+      max-width: 70vh;
     }
-    // .work-header-container,
+
     .work-tracklist-container {
-    // .work-details-container {
-      float: right;
-      margin-left: 1vw;
+      margin: 0 auto;
+      order: 3;
+      // float: right;
+      // margin-left: 1vw;
       // margin-right: 4%;
       // width: calc(#{$rightColWidth} - 6%);
-      width: 44.5vw;
-      height: 44.5vw;
+      width: 45vw;
+      height: 45vw;
+      max-width: 70vh;
+      max-height: 70vh;
       // height: calc(100% - #{$rightColWidth} - 6%);
       overflow-y: scroll;
     }
     .work-description-container {
       clear: both;
       float: none;
+      order: 7;
       // margin-left: 4%;
       width: 60%;
     }

@@ -54,9 +54,12 @@
   .work-header-title {
     margin: 0;
   }
-  .work-description {
-    letter-spacing: 0.1em;
+  .work-description,
+  .work-credits {
+    font-size: 1.8rem;
+    font-weight: 300;
     line-height: 1.5em;
+    // letter-spacing: 0.1em;
   }
 
   .work-content-nav {

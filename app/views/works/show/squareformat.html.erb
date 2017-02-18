@@ -38,9 +38,11 @@
     <span class="work-content-nav-item" data-content="notes">Liner Notes</span>
   </nav>
 
-  <section class="work-credits-container">
-    <%= raw @work.credits %>
-  </section>
+  <div class="work-credits-container">
+    <section class="work-credits">
+      <%= raw @work.credits %>
+    </section>
+  </div>
 
   <section class="work-description-container work-section">
     <article class="work-description">
