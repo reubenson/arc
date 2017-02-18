@@ -10,6 +10,8 @@ body, nav {
 
 body {
   margin: 0;
+  position: absolute;
+  width: 100vw;
 }
 
 body.hide-overflow {
@@ -24,8 +26,9 @@ input {
 }
 
 #main {
+  position: absolute;
   width: 100%;
-  top: $navbar-height;
+  // top: $navbar-height;
 }
 
 p, ol, ul, td {

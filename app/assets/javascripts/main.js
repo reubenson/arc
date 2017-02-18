@@ -112,8 +112,9 @@ var playButton = (function() {
 // when scrolling the tracklist, main content shouldn't scroll as well
 // (currently behaves somewhat unpredictably - some visual indicator should indicate scroll is locked?)
 (function TracklistContainer() {
-  var tracklistContainer = document.querySelector('.work-tracklist-container'),
-    main = document.getElementById('main');
+  var tracklistContainer,
+    main,
+    viewportMin = 1024;
 
   window.addEventListener('load', addEventListener);
   $(document).on('pjax:complete', addEventListener);
@@ -130,7 +131,7 @@ var playButton = (function() {
     tracklistContainer = document.querySelector('.work-tracklist-container');
     main = document.getElementById('main');
 
-    if (tracklistContainer) {
+    if (tracklistContainer && window.innerWidth >= viewportMin) {
       tracklistContainer.addEventListener('mouseenter', fixBody);
       tracklistContainer.addEventListener('mouseleave', unfixBody);
     }
@@ -144,7 +145,8 @@ var playButton = (function() {
     credits,
     notes,
     currentlyDisplaying,
-    activeNavItem;
+    activeNavItem,
+    viewportMin = 1024;
 
   window.addEventListener('load', init);
   $(document).on('pjax:complete', init);
@@ -186,7 +188,7 @@ var playButton = (function() {
   function init(){
     contentNav = document.querySelector('.work-content-nav');
 
-    if (!contentNav) {
+    if (!contentNav || window.innerWidth < viewportMin) {
       return;
     }
 

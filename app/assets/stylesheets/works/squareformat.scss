@@ -10,13 +10,15 @@
 $rightColWidth: 50%;
 
 .work.squareformat {
-  margin: 50px 10px auto;
+  margin: 57px 10px auto;
+  padding: 0 20px;
 
   .work-section {
     align-self: flex-start;
     margin: 0 auto 10px;
     // margin-bottom: 10px;
     // padding: 0;
+    position: relative;
     width: 100%;
   }
 
@@ -26,9 +28,12 @@ $rightColWidth: 50%;
     padding: 0;
   }
   .work-header-container {
+    border-bottom: solid black 2px;
     font-size: 2rem;
     letter-spacing: 1px;
     order: 1;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
     text-align: center;
     width: 100%;
   }
@@ -45,12 +50,22 @@ $rightColWidth: 50%;
     order: 6;
   }
   .work-details-container {
-    margin-bottom: 0px;
+    border-bottom: solid black 2px;
+    border-top: solid black 2px;
+    clear: both;
+    margin: 20px auto;
     order: 3;
     text-align: center;
   }
 
+  .work-content-nav {
+    background: transparent; // temp?
+    order: 7;
+  }
 
+  .work-credits-container {
+    order: 8;
+  }
 
   .work-header {
     color: $grey
@@ -63,6 +78,18 @@ $rightColWidth: 50%;
     margin: 0 auto;
     // max-width: 600px;
     width: 100%;
+  }
+
+  .work-image-background {
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px);
+    height: 100%;
+    margin-left: calc(-10px + -14vw);
+    opacity: 0.4;
+    position: absolute;
+    width: 120vw;
+    z-index: -1;
   }
 
   // tablet viewport widths and up
@@ -87,39 +114,44 @@ $rightColWidth: 50%;
   @media screen and (min-width: 1024px) {
     display: block;
 
-    .work-image-container,
-    .work-description-container
+    .work-description-container {
+      margin: auto;
+      width: 80%;
+    }
+
+    .work-image-container
+    // .work-description-container
      {
       float: left;
-      margin-left: 4%;
-      margin-right: 2%;
+      // margin-left: 4vw;
+      margin-right: 1vw;
       // width: calc(100% - #{$rightColWidth} - 6%);
-      width: 43vw;
+      width: 44.5vw;
     }
     // .work-header-container,
     .work-tracklist-container {
     // .work-details-container {
       float: right;
-      margin-left: 2%;
-      margin-right: 4%;
+      margin-left: 1vw;
+      // margin-right: 4%;
       // width: calc(#{$rightColWidth} - 6%);
-      width: 43vw;
-      height: 43vw;
+      width: 44.5vw;
+      height: 44.5vw;
       // height: calc(100% - #{$rightColWidth} - 6%);
       overflow-y: scroll;
     }
     .work-description-container {
       clear: both;
       float: none;
-      margin-left: 4%;
+      // margin-left: 4%;
       width: 60%;
     }
     .work-details-container {
-      margin-left: 4%;
+      // margin-left: 4%;
     }
 
     .work-header-container {
-      margin-left: 4%;
+      // margin-left: 4%;
       text-align: left;
 
       .work-header-artist {
