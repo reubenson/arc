@@ -31,73 +31,73 @@ Cover Illustration by Eli Keszler<br/><br/>
 Thanks to Alex, Stephen, Laura, David, Leila, Geoff, Reuben, Seema, Nolan, Rashad, Amy and Ron'
 }).pieces.create([
   {
-    track_number: 0,
+    track_number: 1,
     title: 'Sudden Laughter',
     duration: "4:22",
     source_url: "https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/01.mp3"
   },
   {
-    track_number: 1,
+    track_number: 2,
     title: 'Corresponding Probably to Quant',
     duration: '4:14',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/02.mp3'
   },
   {
-    track_number: 2,
+    track_number: 3,
     title: 'Streaming Down. Streaming Down',
     duration: '4:56',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/03.mp3'
   },
   {
-    track_number: 3,
+    track_number: 4,
     title: 'The Immense Endless Belt of Faces',
     duration: '8:08',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/04.mp3'
   },
   {
-    track_number: 4,
+    track_number: 5,
     title: 'No Iodine, No Breeze',
     duration: '4:56',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/05.mp3'
   },
   {
-    track_number: 5,
+    track_number: 6,
     title: 'Breaches Breaches',
     duration: '3:36',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/06.mp3'
   },
   {
-    track_number: 6,
+    track_number: 7,
     title: 'The Next Day, In the Afternoon',
     duration: '6:24',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/07.mp3'
   },
   {
-    track_number: 7,
+    track_number: 8,
     title: 'Is Strategist',
     duration: '2:01',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/08.mp3'
   },
   {
-    track_number: 8,
+    track_number: 9,
     title: 'Is Stage Director',
     duration: '5:29',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/09.mp3'
   },
   {
-    track_number: 9,
+    track_number: 10,
     title: 'Holes, Parts Missing',
     duration: '3:41',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/10.mp3'
   },
   {
-    track_number: 10,
+    track_number: 11,
     title: 'Willing to be Open',
     duration: '3:48',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/11.mp3'
   },
   {
-    track_number: 11,
+    track_number: 12,
     title: 'Fusillade of Colors',
     duration: '4:53',
     source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/12.mp3'
@@ -277,7 +277,7 @@ audio_bucket = "https://s3.amazonaws.com/arc-test-audio/"
         price: Faker::Number.decimal(2),
         source_url: audio_bucket + (1+rand(19)).to_s + '.mp3',
         description: Faker::Lorem.sentences(6).join(" "),
-        track_number: work.pieces.count
+        track_number: work.pieces.count + 1
       })
     end
   end
