@@ -123,7 +123,6 @@ var playButton = (function() {
 
   function fixBody() {
     navbar = navbar || document.querySelector('.navbar');
-    console.log('navbar', navbar);
     scrollY = window.scrollY;
     main.style.position = 'fixed';
     document.body.style.transform = 'translateY(-' + scrollY + 'px)';
@@ -156,7 +155,11 @@ var playButton = (function() {
     notes,
     currentlyDisplaying,
     activeNavItem,
-    viewportMin = 1024;
+    viewportMin = 1024,
+    contentMap = {
+      'credits': credits,
+      'notes': notes
+    };
 
   window.addEventListener('load', init);
   $(document).on('pjax:complete', init);
@@ -205,10 +208,23 @@ var playButton = (function() {
     contentNavItems = contentNav.querySelectorAll('.work-content-nav-item');
     credits = document.querySelector('.work-credits-container');
     notes = document.querySelector('.work-description-container');
-    currentlyDisplaying = credits;
-    activeNavItem = contentNavItems[0];
 
-    notes.style.display = 'none';
+    contentMap.credits = credits;
+    contentMap.notes = notes;
+
+    currentlyDisplaying = contentNavItems[0];
+    currentlyDisplaying = contentMap[currentlyDisplaying.getAttribute('data-content')];
+    activeNavItem = currentlyDisplaying;
+
+    _.forEach(contentNavItems, function(item, i) {
+      var itemName = item.getAttribute('data-content'),
+        itemSection = contentMap[itemName];
+
+      if (i > 0) {
+        itemSection.style.display = 'none';
+      }
+    });
+
     contentNav.addEventListener('click', handleClick);
     activeNavItem.classList.add('active');
   }

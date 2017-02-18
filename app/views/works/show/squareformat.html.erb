@@ -34,8 +34,12 @@
   </section>
 
   <nav class="work-content-nav">
-    <span class="work-content-nav-item" data-content="credits">Credits</span>
-    <span class="work-content-nav-item" data-content="notes">Liner Notes</span>
+    <% if @work.credits %>
+      <span class="work-content-nav-item" data-content="credits">Credits</span>
+    <% end %>
+    <% if @work.description %>
+      <span class="work-content-nav-item" data-content="notes">Liner Notes</span>
+    <% end %>
   </nav>
 
   <div class="work-credits-container">
