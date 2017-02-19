@@ -36,6 +36,7 @@
   .work-section {
     box-sizing: border-box;
     margin: 10px 0 0;
+    width: 100%;
   }
 
   h2 {
@@ -62,6 +63,11 @@
     // letter-spacing: 0.1em;
   }
 
+  .work-content-container {
+    flex-grow: 1;
+    width: 40%;
+  }
+
   .work-content-nav {
     clear: both;
     display: flex;
@@ -77,6 +83,13 @@
     span.active {
       border-bottom: solid black 2px;
     }
+  }
+
+  .work-details-container {
+    border-bottom: solid black 2px;
+    border-top: solid black 2px;
+    clear: both;
+    text-align: center;
   }
 }
 

@@ -1,37 +1,49 @@
 <section class="work wideformat" data-workId=<%= @work.id %>>
   <div class="work-image" style="background-image: url(<%= @work.image_url %>)"></div>
-  <h2> <%= link_to @artist.fullname, @artist %> </h2>
-  <h3> <%= @work.title %> </h3>
+
+  <!-- TODO: refactor to work-header-container -->
+  <section class="work-header-container work-section">
+    <header>
+      <h2 class="work-header-artist"><%= link_to @artist.fullname, @artist %> </h2>
+      <!-- <div class="work-header-divider">/</div> -->
+      <h3 class="work-header-title"> <%= @work.title %> </h3>
+    </header>
+  </section>
 
   <!-- <aside class="work-buttons">
     <a class="add-work-to-player-btn">Play Audio</a>
     <a class="add-work-to-cart-btn">Add to Cart</a>
   </aside> -->
 
-  <!-- <section class="work-details-container work-section">
-    <p>
-      Released <%= @work.end_date %>
-      <%- if @work.record_label -%>
-        on <%= @work.record_label %>
-      <%- end -%>
-    </p>
-  </section> -->
+  <section class="work-details-container work-section">
+    <%= render partial: "works/components/work_details", locals: {work: @work} %>
+  </section>
 
   <section class="work-tracklist-container work-section">
     <%= render partial: "tracklist/show", locals: {work: @work} %>
   </section>
 
-  <div class="work-description-container work-section">
-    <p class="work-description">
-      <%= @work.description %>
-    </p>
-  </div>
-  
-  <section class="work-details-container work-section">
-    <%= render partial: "works/components/work_details", locals: {work: @work} %>
+  <section class="work-content-container work-section">
+    <nav class="work-content-nav">
+      <% if @work.credits %>
+      <span class="work-content-nav-item" data-content="credits">Credits</span>
+      <% end %>
+      <% if @work.description %>
+      <span class="work-content-nav-item" data-content="notes">Liner Notes</span>
+      <% end %>
+    </nav>
+
+    <div class="work-credits-container">
+      <section class="work-credits">
+        <%= raw @work.credits %>
+      </section>
+    </div>
+
+    <div class="work-description-container">
+      <p class="work-description">
+        <%= @work.description %>
+      </p>
+    </div>
   </section>
-
-
-
 
 </section>
