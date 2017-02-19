@@ -201,7 +201,7 @@ eli_keszler.works.create({
   {
     duration: "25:48",
     price: 6.50,
-    source_url: "https://s3.amazonaws.com/reubenson-portfolio/Sheet_metal.mp3",
+    source_url: "https://static1.squarespace.com/static/55af1d12e4b0f7c1c9b88ce8/55be6ecce4b0176fcb99d801/55be701ee4b0cdd71a69c08f/1438545362415/Eli+Keszler+Townsley+Battery.mp3",
     title: 'Townsley Battery'
   }
 )
