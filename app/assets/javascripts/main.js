@@ -123,8 +123,6 @@ var playButton = (function() {
   $(document).on('pjax:complete', addEventListener);
 
   function tracklistOverflows() {
-    console.log('tracklist', tracklist.offsetHeight);
-    console.log('container', tracklistContainer.offsetHeight);
     return tracklist.offsetHeight > tracklistContainer.offsetHeight;
   }
 
@@ -229,9 +227,8 @@ var playButton = (function() {
     contentMap.credits = credits;
     contentMap.notes = notes;
 
-    currentlyDisplaying = contentNavItems[0];
-    currentlyDisplaying = contentMap[currentlyDisplaying.getAttribute('data-content')];
-    activeNavItem = currentlyDisplaying;
+    activeNavItem = contentNavItems[0];
+    currentlyDisplaying = contentMap[activeNavItem.getAttribute('data-content')];
 
     _.forEach(contentNavItems, function(item, i) {
       var itemName = item.getAttribute('data-content'),
@@ -244,5 +241,6 @@ var playButton = (function() {
 
     contentNav.addEventListener('click', handleClick);
     activeNavItem.classList.add('active');
+    console.log('activenavitem', activeNavItem);
   }
 })();
