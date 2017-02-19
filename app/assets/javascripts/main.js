@@ -113,34 +113,48 @@ var playButton = (function() {
 // (currently behaves somewhat unpredictably - some visual indicator should indicate scroll is locked?)
 (function TracklistContainer() {
   var tracklistContainer,
+    tracklist,
     viewportMin = 1024,
     scrollY = window.scrollY,
-    main, navbar, audioPlayer, audioPlayerHeight;
+    main, navbar, audioPlayer, audioPlayerHeight,
+    bodyFixed = false;
 
   window.addEventListener('load', addEventListener);
   $(document).on('pjax:complete', addEventListener);
 
+  function tracklistOverflows() {
+    console.log('tracklist', tracklist.offsetHeight);
+    console.log('container', tracklistContainer.offsetHeight);
+    return tracklist.offsetHeight > tracklistContainer.offsetHeight;
+  }
+
   function fixBody() {
-    navbar = navbar || document.querySelector('.navbar');
-    audioPlayer = audioPlayer || document.querySelector('.audio-player');
-    audioPlayerHeight = parseInt(window.getComputedStyle(audioPlayer).height.split('px')[0]);
-    scrollY = window.scrollY;
-    main.style.position = 'fixed';
-    document.body.style.transform = 'translateY(-' + scrollY + 'px)';
-    navbar.style.transform = 'translateY(' + scrollY + 'px)';
-    audioPlayer.style.transform = 'translateY(' + (scrollY  + window.innerHeight - audioPlayerHeight) + 'px)';
+    if ( tracklistOverflows() ) {
+      navbar = navbar || document.querySelector('.navbar');
+      audioPlayer = audioPlayer || document.querySelector('.audio-player');
+      audioPlayerHeight = parseInt(window.getComputedStyle(audioPlayer).height.split('px')[0]);
+      scrollY = window.scrollY;
+      main.style.position = 'fixed';
+      document.body.style.transform = 'translateY(-' + scrollY + 'px)';
+      navbar.style.transform = 'translateY(' + scrollY + 'px)';
+      audioPlayer.style.transform = 'translateY(' + (scrollY  + window.innerHeight - audioPlayerHeight) + 'px)';
+      bodyFixed = true;
+    }
   }
 
   function unfixBody() {
-    document.body.style.transform = '';
-    main.style.position = 'relative';
-    navbar.style.transform = '';
-    audioPlayer.style.transform = '';
-    window.scrollTo(0, scrollY);
+    if (bodyFixed) {
+      document.body.style.transform = '';
+      main.style.position = 'relative';
+      navbar.style.transform = '';
+      audioPlayer.style.transform = '';
+      window.scrollTo(0, scrollY);
+    }
   }
 
   function addEventListener(){
     tracklistContainer = document.querySelector('.work-tracklist-container');
+    tracklist = tracklistContainer.querySelector('.work-tracklist');
     main = document.getElementById('main');
 
     if (tracklistContainer && window.innerWidth >= viewportMin) {
