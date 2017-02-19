@@ -18,8 +18,11 @@
     <a class="add-work-to-cart-btn">Add to Cart</a>
   </section> -->
 
+
   <section class="work-image-container work-section">
-    <div class="work-image-background" style="background-image: url(<%= @work.image_url %>)"></div>
+    <div class="work-image-background-wrapper">
+      <div class="work-image-background" style="background-image: url(<%= @work.image_url %>)"></div>
+    </div>
     <div class="lede-image">
       <img src="<%= @work.image_url %>" alt="Album Cover" />
     </div>
