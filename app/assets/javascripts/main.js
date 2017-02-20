@@ -119,8 +119,13 @@ var playButton = (function() {
     main, navbar, audioPlayer, audioPlayerHeight,
     bodyFixed = false;
 
-  window.addEventListener('load', addEventListener);
-  $(document).on('pjax:complete', addEventListener);
+  window.addEventListener('load', init);
+  $(document).on('pjax:complete', addEventListeners);
+
+  function init() {
+    main = document.getElementById('main');
+    addEventListeners()
+  }
 
   function tracklistOverflows() {
     return tracklist.offsetHeight > tracklistContainer.offsetHeight;
@@ -150,12 +155,11 @@ var playButton = (function() {
     }
   }
 
-  function addEventListener(){
+  function addEventListeners(){
     tracklistContainer = document.querySelector('.work-tracklist-container');
-    tracklist = tracklistContainer.querySelector('.work-tracklist');
-    main = document.getElementById('main');
 
     if (tracklistContainer && window.innerWidth >= viewportMin) {
+      tracklist = tracklistContainer.querySelector('.work-tracklist');
       tracklistContainer.addEventListener('mouseenter', fixBody);
       tracklistContainer.addEventListener('mouseleave', unfixBody);
     }
