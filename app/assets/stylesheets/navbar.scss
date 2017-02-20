@@ -2,7 +2,7 @@
 
 nav.navbar {
   background-color: #333;
-  font-color:white;
+  font-color: white;
   height: $navbar-height;
   position: fixed;
   top: 0;
@@ -14,7 +14,8 @@ nav.navbar {
   }
 
   .navbar-link {
-  	color:#eee;
+  	color: #eee;
+    letter-spacing: 0.1em;
     line-height: 100%;
     position: relative;
     font-size: 1em;
