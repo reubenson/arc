@@ -241,6 +241,5 @@ var playButton = (function() {
 
     contentNav.addEventListener('click', handleClick);
     activeNavItem.classList.add('active');
-    console.log('activenavitem', activeNavItem);
   }
 })();

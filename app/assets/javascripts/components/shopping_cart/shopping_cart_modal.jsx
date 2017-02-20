@@ -38,14 +38,12 @@ class ShoppingCartModal extends React.Component {
 
 	render() {
     var showCheckoutLink = !!this.navCartButton && this.navCartButton.innerHTML !== 'Cart',
-      checkoutLink = showCheckoutLink ?
-        <a className="go-to-checkout" href="/checkout">Go To Checkout</a> :
-        null;
+      hidden = showCheckoutLink ? "" : "hidden";
 
 		return (
 			<div>
 				<ShoppingCart/>
-        {checkoutLink}
+        <a className={"go-to-checkout" + (showCheckoutLink ? '' : ' hidden')} href="/checkout">Go To Checkout</a>
 				<button onClick={this.toggleCartView.bind(this)} className="close-cart">Close Cart</button>
 			</div>
 		);
