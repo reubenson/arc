@@ -243,3 +243,82 @@ var playButton = (function() {
     activeNavItem.classList.add('active');
   }
 })();
+
+
+// Image Carousel on wide-format layout
+(function ImageCarousel(){
+  var imageCarousel, leftButton, rightButton,
+    workImages, activeWorkImage, activeImageLeft, activeImageRight,
+    timeout, previousActiveItem;
+
+  window.addEventListener('load', init);
+  $(document).on('pjax:complete', init);
+
+  function init() {
+    imageCarousel = document.querySelector('.work-image-carousel');
+
+    if (!!imageCarousel) {
+      workImages = imageCarousel.querySelectorAll('.work-image');
+      activeWorkImage = workImages[0];
+      leftButton = imageCarousel.querySelector('.work-image-carousel-left');
+      rightButton = imageCarousel.querySelector('.work-image-carousel-right');
+
+      timeout = window.getComputedStyle(activeWorkImage).transition.match(/[.0-9]+s/)[0]
+        .split('s')[0] * 1000;
+
+      setLeftAndRightImages();
+      attachEventListeners();
+    }
+  }
+
+  function setLeftAndRightImages() {
+    var numImages = workImages.length;
+
+    activeImageLeft = activeWorkImage.previousElementSibling || workImages[numImages-1];
+    activeImageRight = activeWorkImage.nextElementSibling || workImages[0];
+
+    activeImageLeft.style.opacity = 0;
+    activeImageRight.style.opacity = 0;
+
+    previousActiveItem && previousActiveItem.classList.remove('active');
+
+    activeImageLeft.style.transform = 'translateX(-100vw) translateY(0)';
+    activeImageRight.style.transform = 'translateX(100vw) translateY(0)';
+
+  }
+
+  function attachEventListeners() {
+    leftButton.addEventListener('click', handleClick);
+    rightButton.addEventListener('click', handleClick);
+  }
+
+  function handleClick(e) {
+    var target = e.target,
+      clickedLeft;
+
+    while (!target.classList.contains('work-image-carousel-button')) {
+      target = target.parentElement;
+    }
+
+    clickedLeft = target.classList.contains('work-image-carousel-left');
+
+    activeImageLeft.style.opacity = 1;
+    activeImageRight.style.opacity = 1;
+
+    previousActiveItem = activeWorkImage;
+
+    if (clickedLeft) {
+      activeWorkImage.style.transform = 'translateX(100vw)';
+      activeImageLeft.style.transform = 'translateX(0)';
+      activeWorkImage = activeImageLeft;
+    } else {
+      activeWorkImage.style.transform = 'translateX(-100vw)';
+      activeImageRight.style.transform = 'translateX(0)';
+      activeWorkImage = activeImageRight;
+    }
+
+    activeWorkImage.classList.add('active');
+    window.setTimeout(setLeftAndRightImages, timeout);
+  }
+
+}());
