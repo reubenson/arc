@@ -6,7 +6,9 @@
     <header>
       <h2 class="work-header-artist"><%= link_to @artist.fullname, @artist %> </h2>
       <!-- <div class="work-header-divider">/</div> -->
-      <h3 class="work-header-title"> <%= @work.title %> </h3>
+      <h3 class="work-header-title">
+        <span><%= @work.title %></span>
+      </h3>
     </header>
   </section>
 

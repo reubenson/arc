@@ -1,10 +1,16 @@
 // Place all the styles related to the squareformat works layout here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$lede-image-height: 70vh;
+
 
 .work.wideformat {
+  margin: 0 30px 30px;
+  justify-content: space-between;
+
   .work-header-container {
-    margin-top: -50px;
+    margin-top: calc(#{$lede-image-height} - 35px);
+    z-index: 0;
 
     h2 {
       line-height: 1.7em;
@@ -21,22 +27,30 @@
 
     h3 {
       letter-spacing: 0.3em;
-      margin: 10px auto 15px;
+      margin: 5px auto 0;
       text-align: center;
       text-transform: uppercase;
       width: 100%;
+
+      span {
+        background-color: white;
+        padding: 10px;
+      }
     }
   }
 
   .work-section {
-    padding: 10px;
+    // padding: 10px 10px;
   }
 
   .work-image {
-    height: 60vh;
-    width: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
+    height: $lede-image-height;
+    left: 0;
+    position: absolute;
+    width: 100%;
   }
 
   .work-tracklist-container {
@@ -46,6 +60,15 @@
   .work-description-container {
     flex-grow: 1;
     width: 100%;
+  }
+
+  .work-details-container {
+    margin: 20px 0;
+  }
+
+  .work-tracklist-container,
+  .work-content-container {
+    max-width: 47.5%;
   }
 
   @media screen and (min-width: 768.1px) {
