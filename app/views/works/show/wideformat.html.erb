@@ -1,15 +1,17 @@
 <section class="work wideformat" data-workId=<%= @work.id %>>
   <div class="work-image-carousel">
-    <button class="work-image-carousel-left work-image-carousel-button">
-      <i class="fa fa-chevron-left" aria-hidden="false"></i>
-    </button>
-    <button class="work-image-carousel-right work-image-carousel-button">
-      <i class="fa fa-chevron-right" aria-hidden="false"></i>
-    </button>
+    <% if @work.image_urls.length > 1 %>
+      <button class="work-image-carousel-left work-image-carousel-button">
+        <i class="fa fa-chevron-left" aria-hidden="false"></i>
+      </button>
+      <button class="work-image-carousel-right work-image-carousel-button">
+        <i class="fa fa-chevron-right" aria-hidden="false"></i>
+      </button>
+    <% end %>
+
     <div class="work-images">
-      <div class="work-image active" style="background-image: url(<%= @work.image_url %>)"></div>
-      <% @work.image_urls.each do |url| %>
-      <div class="work-image hide" style="background-image: url(<%= url %>)"></div>
+      <% @work.image_urls.each_with_index do |url, i| %>
+        <div class="work-image <%= i == 0 ? 'active' : 'hide' %>" style="background-image: url(<%= url %>)"></div>
       <% end %>
     </div>
   </div>

@@ -6,10 +6,10 @@
     <div class="six columns">
         <div class="work-image-container work-section">
           <div class="lede-image">
-            <img src="<%= @work.image_url %>" alt="Album Cover" />
+            <img src="<%= @work.image_urls[0] %>" alt="Album Cover" />
           </div>
         </div>
-    </div>   
+    </div>
     <div class="six columns">
 		<br />
           <p class="work-header-artist"><%= link_to @artist.fullname, @artist %> </p>
@@ -21,9 +21,9 @@
 	      <section class="work-tracklist-container work-section">
 	        <%= render partial: "tracklist/show", locals: {work: @work} %>
 	      </section>
-    </div>  
+    </div>
   </div>
-  
+
   <div class="row">
     <div class="eight columns">
         <div class="work-description-container work-section">
@@ -38,10 +38,10 @@
 		<p>Test test roekkr</p>
 		<p>Test test test</p>
 		<p>Testlorem dmdoa test</p>
-    </div>  
-    <div class="four columns"></div>	
+    </div>
+    <div class="four columns"></div>
   </div>
-  
+
   <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
 
@@ -58,7 +58,7 @@
 		  </p>
         </header>
       </div>
-	  
+
       </div>
   </div>
 
@@ -66,19 +66,19 @@
     <div class="six columns">
         <div class="work-image-container work-section">
           <div class="lede-image">
-            <img src="<%= @work.image_url %>" alt="Album Cover" />
+            <img src="<%= @work.image_urls[0] %>" alt="Album Cover" />
           </div>
         </div>
-    </div>   
+    </div>
     <div class="six columns">
       <section class="work-tracklist-container work-section">
         <%= render partial: "tracklist/show", locals: {work: @work} %>
       </section>
-    </div>  
+    </div>
   </div>
 
 
-  
+
   <div class="row">
     <div class="eight columns">
         <div class="work-description-container work-section">
@@ -86,18 +86,18 @@
             <%= raw @work.description %>
           </article>
         </div>
-    </div>  
+    </div>
     <div class="four columns">
 		<p>Test test test</p>
 		<p>Test dodoakdk  test</p>
 		<p>Test test roekkr</p>
 		<p>Test test test</p>
 		<p>Testlorem dmdoa test</p>
-		
-	</div>	
+
+	</div>
   </div>
-  
+
 </div>
-  
+
 
 </section>

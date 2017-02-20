@@ -246,10 +246,15 @@ var playButton = (function() {
 
 
 // Image Carousel on wide-format layout
+// TODO:
+//  1) Allow the carousel to accept non-image media (i.e. canvas scripts)
+//  2) Expand into full-screen
+//  3) Debug two-image case
+//  4) Lazy-load images beyond the first active one
 (function ImageCarousel(){
   var imageCarousel, leftButton, rightButton,
     workImages, activeWorkImage, activeImageLeft, activeImageRight,
-    timeout, previousActiveItem;
+    timeout, previousActiveItem, numImages;
 
   window.addEventListener('load', init);
   $(document).on('pjax:complete', init);
@@ -259,6 +264,7 @@ var playButton = (function() {
 
     if (!!imageCarousel) {
       workImages = imageCarousel.querySelectorAll('.work-image');
+      numImages = workImages.length;
       activeWorkImage = workImages[0];
       leftButton = imageCarousel.querySelector('.work-image-carousel-left');
       rightButton = imageCarousel.querySelector('.work-image-carousel-right');
@@ -266,14 +272,14 @@ var playButton = (function() {
       timeout = window.getComputedStyle(activeWorkImage).transition.match(/[.0-9]+s/)[0]
         .split('s')[0] * 1000;
 
-      setLeftAndRightImages();
-      attachEventListeners();
+      if (numImages > 1) {
+        setLeftAndRightImages();
+        attachEventListeners();
+      }
     }
   }
 
   function setLeftAndRightImages() {
-    var numImages = workImages.length;
-
     activeImageLeft = activeWorkImage.previousElementSibling || workImages[numImages-1];
     activeImageRight = activeWorkImage.nextElementSibling || workImages[0];
 
@@ -284,7 +290,6 @@ var playButton = (function() {
 
     activeImageLeft.style.transform = 'translateX(-100vw) translateY(0)';
     activeImageRight.style.transform = 'translateX(100vw) translateY(0)';
-
   }
 
   function attachEventListeners() {

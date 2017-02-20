@@ -7,7 +7,6 @@ class CreateWorks < ActiveRecord::Migration
       t.date :start_date
       t.date :end_date
       t.text :description
-      t.string :image_url
       t.text :image_urls, array: true, default: []
       t.decimal :price, :precision => 6, :scale => 2
       t.string :website_url

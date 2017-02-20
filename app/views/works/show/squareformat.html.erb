@@ -21,10 +21,10 @@
 
   <section class="work-image-container work-section">
     <div class="work-image-background-wrapper">
-      <div class="work-image-background" style="background-image: url(<%= @work.image_url %>)"></div>
+      <div class="work-image-background" style="background-image: url(<%= @work.image_urls[0] %>)"></div>
     </div>
     <div class="lede-image">
-      <img src="<%= @work.image_url %>" alt="Album Cover" />
+      <img src="<%= @work.image_urls[0] %>" alt="Album Cover" />
     </div>
   </section>
 

@@ -1,6 +1,6 @@
 <div class="work-item">
   <%= link_to [work.artist,work] do %>
-    <img src="<%= work.image_url %>"/>
+    <img src="<%= work.image_urls[0] %>"/>
     <h4>
       <% if show_artist %>
         <%= work.artist.fullname %> -
