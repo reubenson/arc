@@ -34,8 +34,8 @@ $rightColWidth: 50%;
     font-size: 2rem;
     letter-spacing: 1px;
     order: 1;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    // margin-bottom: 20px;
+    // padding-bottom: 20px;
     text-align: center;
     width: 100%;
 
@@ -64,7 +64,7 @@ $rightColWidth: 50%;
     // border-bottom: solid black 2px;
     // border-top: solid black 2px;
     // clear: both;
-    margin: 40px auto 20px;
+    margin: 10px auto 20px;
     order: 3;
     // text-align: center;
   }
@@ -211,6 +211,7 @@ $rightColWidth: 50%;
 
     .work-image-container {
       margin-top: 0;
+      order: 3;
     }
 
   }

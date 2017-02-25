@@ -19,6 +19,10 @@
     </div>
   </section>
 
+  <section class="work-details-container work-section">
+    <%= render partial: "works/components/work_details", locals: {work: @work} %>
+  </section>
+
   <!-- <section class="work-cta-container work-section">
     <header class="work-header">
       <a class="add-work-to-player-btn">Play Audio</a>
@@ -41,10 +45,6 @@
 
   <section class="work-tracklist-container work-section">
     <%= render partial: "tracklist/show", locals: {work: @work} %>
-  </section>
-
-  <section class="work-details-container work-section">
-    <%= render partial: "works/components/work_details", locals: {work: @work} %>
   </section>
 
   <nav class="work-content-nav">
