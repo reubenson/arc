@@ -11,14 +11,9 @@
     padding: 0px 0px 0px 0px;
     width: 100%;
 
-    .work-tracklist-header > span {
-      margin: auto;
-      padding: 10px;
-      text-align: center;
-      position: absolute;
-    }
-
     .work-tracklist-header {
+      display: none;
+
   	  height:45px;
     	background-color:#c6c6c6;
       position: relative;
@@ -28,6 +23,13 @@
       }
       .work-tracklist-total-duration {
         right: 175px;
+      }
+
+      span {
+        margin: auto;
+        padding: 10px;
+        text-align: center;
+        position: absolute;
       }
     }
     // .work-tracklist-program-runtime {

@@ -6,6 +6,17 @@
       <!-- <div class="work-header-divider">/</div> -->
       <h3 class="work-header-title"> <%= @work.title %> </h3>
     </header>
+
+    <div class="work-header-cta-container">
+      <div class="work-tracklist-play-all">
+        Play
+        <button class="add-work-to-player-btn button-primary fa fa-play"></button>
+      </div>
+      <div class="work-tracklist-purchase-all">
+        Purchase ($<%= (@work.price_formatted) %>)
+        <button class="add-work-to-cart-btn button-primary fa fa-cart-plus"></button>
+      </div>
+    </div>
   </section>
 
   <!-- <section class="work-cta-container work-section">
