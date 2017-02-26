@@ -40,25 +40,26 @@
     margin: 10px 0 0;
     width: 100%;
   }
+  //
+  // h2 {
+  //   font-size: 1.6em;
+  //   margin-top: 0;
+  // }
+  // h3 {
+  //   font-size: 1.4em;
+  //   margin-top: 0
+  // }
 
-  h2 {
-    font-size: 1.6em;
-    margin-top: 0;
-  }
-  h3 {
-    font-size: 1.4em;
-    margin-top: 0
-  }
   .work-header-container {
     text-align: left;
 
     .work-header {
-      font-size: 1.0em;
+      // font-size: 1.0em;
       margin-bottom: 5px;
     }
 
     .work-header-artist {
-      font-size: 1.1em;
+      font-size: 1.6em;
       font-weight: 200;
       height: 1em;
       margin-bottom: 5px;
@@ -86,7 +87,6 @@
     font-size: 1.8rem;
     font-weight: 300;
     line-height: 1.5em;
-    // letter-spacing: 0.1em;
   }
 
   .work-content-container {

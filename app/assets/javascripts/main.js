@@ -52,7 +52,8 @@ function modifyTracklist() {
 
 //Todo: Currently modifyTracklist() is called on every page, regardless of whether or not there is a tracklist. Should only be called on pages with an AudioPlayer.
 
-onLoadAndResize(modifyTracklist);
+// disable modifyTracklist for now
+// onLoadAndResize(modifyTracklist);
 
 
 // recieve custom events dispatched from the PlayButton React component
