@@ -106,94 +106,19 @@ Thanks to Alex, Stephen, Laura, David, Leila, Geoff, Reuben, Seema, Nolan, Rasha
   }
 ])
 
+# duplicate work for two-column layout
+two_column_album = eli_keszler.works[0].dup
+two_column_album.pieces = eli_keszler.works[0].pieces.map { |child| child.dup }
+two_column_album.layout = 'two-column'
+two_column_album.title = 'Two Column Layout'
+two_column_album.save
 
-# another one for grid
-eli_keszler.works.create({
-  title: 'Last Signs of Speed 2 ',
-  end_date: Date.new(2016,11,17),
-  price: 10.00,
-  image_urls: [
-    'https://f4.bcbits.com/img/a2347488006_10.jpg'
-  ],
-  description: 'Last Signs is Eli’s first solo release since 2012’s <i>Catching Net</i> (PAN Records) and explores a very different side of his unique acoustic universe. One in which the macrocosmic percussive collisions of his earlier work give way to a gradual unfolding of dub-influenced rhythmic constellations. Eli has described <i>Last Signs</i> as his response to playing in club environments over the last few years; an attempt to negotiate a delicate balance between the materiality of his acoustic instrument and the hyper-mediated sonic ecosystem of the club sound system. Coming off like an inspired synthesis between Scientist and Xenakis, <i>Last Signs of Speed</i> is a truly unique work by an artist at the height of his powers.',
-  layout: 'grid',
-  record_label: 'Empty Editions'
-}).pieces.create([
-  {
-    track_number: 0,
-    title: 'Sudden Laughter',
-    duration: "4:22",
-    source_url: "https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/01.mp3"
-  },
-  {
-    track_number: 1,
-    title: 'Corresponding Probably to Quant',
-    duration: '4:14',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/02.mp3'
-  },
-  {
-    track_number: 2,
-    title: 'Streaming Down. Streaming Down',
-    duration: '4:56',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/03.mp3'
-  },
-  {
-    track_number: 3,
-    title: 'The Immense Endless Belt of Faces',
-    duration: '8:08',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/04.mp3'
-  },
-  {
-    track_number: 4,
-    title: 'No Iodine, No Breeze',
-    duration: '4:56',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/05.mp3'
-  },
-  {
-    track_number: 5,
-    title: 'Breaches Breaches',
-    duration: '3:36',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/06.mp3'
-  },
-  {
-    track_number: 6,
-    title: 'The Next Day, In the Afternoon',
-    duration: '6:24',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/07.mp3'
-  },
-  {
-    track_number: 7,
-    title: 'Is Strategist',
-    duration: '2:01',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/08.mp3'
-  },
-  {
-    track_number: 8,
-    title: 'Is Stage Director',
-    duration: '5:29',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/09.mp3'
-  },
-  {
-    track_number: 9,
-    title: 'Holes, Parts Missing',
-    duration: '3:41',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/10.mp3'
-  },
-  {
-    track_number: 10,
-    title: 'Willing to be Open',
-    duration: '3:48',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/11.mp3'
-  },
-  {
-    track_number: 11,
-    title: 'Fusillade of Colors',
-    duration: '4:53',
-    source_url: 'https://s3.amazonaws.com/arc-test-audio/eli_keszler/last_signs_of_speed/12.mp3'
-  }
-])
-
-
+# duplicate work for grid layout
+grid = eli_keszler.works[0].dup
+grid.pieces = eli_keszler.works[0].pieces.map { |child| child.dup }
+grid.layout = 'grid'
+grid.title = 'Grid Layout'
+grid.save
 
 eli_keszler.works.create({
   title: 'Townsley Battery',
