@@ -9,23 +9,36 @@
 $rightColWidth: 50%;
 
 .work.two-column {
-  justify-content: center;
-  margin-top: $navbar-height;
+  justify-content: space-between;
+  margin: $navbar-height auto;
+  position: relative;
+  width: 90%;
+  max-width: 1024px;
 
   .work-column.primary {
     max-width: 80vh;
-    width: 50%;
+    width: 57.5%;
   }
 
   .work-column.secondary {
-    margin-left: 50px;
     max-width: 400px;
     width: 40%;
   }
 
   .work-header-cta-container {
-    flex-direction: row;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+
+    & > div {
+      padding-bottom: 5px;
+    }
+  }
+
+  .work-header-container {
     margin-top: 20px;
+    position: relative;
   }
 
   .work-section-header {
