@@ -127,6 +127,9 @@ $rightColWidth: 50%;
 
   // desktop viewport widths and up
   @media screen and (min-width: 1024px) {
+    margin: calc(#{$navbar-height} + 20px) auto;
+    max-width: 1200px;
+    width: 95%;
     // display: block;
 
     .work-description-container {

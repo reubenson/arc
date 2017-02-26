@@ -35,7 +35,7 @@ class Work < ActiveRecord::Base
       [hours,minutes,seconds].join(":")
     else
       seconds = '0' + seconds if seconds.length == 1
-      [minutes,seconds].join(":")
+      [minutes,seconds].join("'") + '"'
     end
   end
 
