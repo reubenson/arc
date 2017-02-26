@@ -13,7 +13,8 @@ $rightColWidth: 50%;
   margin: $navbar-height auto;
   position: relative;
   width: 90%;
-  max-width: 1024px;
+  // max-width: 1024px;
+  max-width: 1200px;
 
   .work-column.primary {
     max-width: 80vh;
@@ -21,7 +22,7 @@ $rightColWidth: 50%;
   }
 
   .work-column.secondary {
-    max-width: 400px;
+    max-width: 360px;
     width: 40%;
   }
 
@@ -39,6 +40,15 @@ $rightColWidth: 50%;
   .work-header-container {
     margin-top: 20px;
     position: relative;
+  }
+
+  .work-image-container {
+    .lede-image {
+      height: auto;
+      margin: auto;
+      max-width: 60vh;
+      width: 100%;
+    }
   }
 
   .work-section-header {
