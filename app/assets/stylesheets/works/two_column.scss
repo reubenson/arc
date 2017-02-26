@@ -1,0 +1,35 @@
+// Place all the styles related to the squareformat layout here
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Responsive layout currently works mobile-first
+// Mobile and tablet styling relies of flexbox to re-order components differently than the order the exist in the DOM
+
+@import "variables";
+$rightColWidth: 50%;
+
+.work.two-column {
+  justify-content: center;
+  margin-top: $navbar-height;
+
+  .work-column.primary {
+    max-width: 80vh;
+    width: 50%;
+  }
+
+  .work-column.secondary {
+    margin-left: 50px;
+    max-width: 400px;
+    width: 40%;
+  }
+
+  .work-header-cta-container {
+    flex-direction: row;
+    margin-top: 20px;
+  }
+
+  .work-section-header {
+    border-bottom: solid black 2px;
+    margin-top: 40px;
+  }
+}

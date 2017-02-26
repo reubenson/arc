@@ -1,0 +1,76 @@
+<section class="work two-column" data-workId=<%= @work.id %> >
+
+  <div class="work-column primary">
+
+    <section class="work-image-container work-section">
+      <div class="work-image-background-wrapper">
+        <div class="work-image-background" style="background-image: url(<%= @work.image_urls[0] %>)"></div>
+      </div>
+      <div class="lede-image">
+        <img src="<%= @work.image_urls[0] %>" alt="Album Cover" />
+      </div>
+    </section>
+
+    <!-- <nav class="work-content-nav">
+      <% if @work.credits %>
+        <span class="work-content-nav-item" data-content="credits">Credits</span>
+      <% end %>
+      <% if @work.description %>
+        <span class="work-content-nav-item" data-content="notes">Liner Notes</span>
+      <% end %>
+    </nav> -->
+
+    <!-- <div class="work-credits-container">
+      <section class="work-credits">
+        <%= raw @work.credits %>
+      </section>
+    </div> -->
+
+    <section class="work-description-container work-section">
+      <h5 class="work-section-header">Liner Notes</h5>
+      <article class="work-description">
+        <%= raw @work.description %>
+      </article>
+    </section>
+
+  </div>
+
+  <div class="work-column secondary">
+
+    <section class="work-header-container work-section">
+      <header>
+        <h2 class="work-header-artist"><%= link_to @artist.fullname, @artist %> </h2>
+        <!-- <div class="work-header-divider">/</div> -->
+        <h3 class="work-header-title"> <%= @work.title %> </h3>
+      </header>
+
+      <div class="work-header-cta-container">
+        <div class="work-tracklist-play-all">
+          Play
+          <button class="add-work-to-player-btn button-primary fa fa-play"></button>
+        </div>
+        <div class="work-tracklist-purchase-all">
+          Purchase ($<%= (@work.price_formatted) %>)
+          <button class="add-work-to-cart-btn button-primary fa fa-cart-plus"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-details-container work-section">
+      <%= render partial: "works/components/work_details", locals: {work: @work} %>
+    </section>
+
+    <section class="work-tracklist-container work-section">
+      <%= render partial: "tracklist/show", locals: {work: @work} %>
+    </section>
+
+    <div class="work-credits-container">
+      <section class="work-credits">
+        <h5 class="work-section-header">Credits</h5>
+        <%= raw @work.credits %>
+      </section>
+    </div>
+
+  </div>
+
+</section>
