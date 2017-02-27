@@ -100,11 +100,27 @@ var playButton = (function() {
       setPlayButton(prevElement);
     }
 
+    // updateWorkPlayButton();
+
     prevElement = currentElement;
   }
 
   function setElement(el) {
     currentElement = el;
+  }
+
+  function updateWorkPlayButton() {
+    var workPlayButton = document.querySelector('.add-work-to-player-btn');
+
+    if (workPlayButton) {
+      if (playing) {
+        workPlayButton.classList.add('fa-pause');
+        workPlayButton.classList.remove('fa-play');
+      } else {
+        workPlayButton.classList.add('fa-play');
+        workPlayButton.classList.remove('fa-pause');
+      }
+    }
   }
 
   return {}

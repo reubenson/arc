@@ -225,5 +225,3 @@ class AudioPlayer extends React.Component {
 };
 
 AudioPlayer.mixins = [SetIntervalMixin];
-
-

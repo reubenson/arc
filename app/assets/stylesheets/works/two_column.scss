@@ -17,12 +17,12 @@ $rightColWidth: 50%;
   max-width: 1200px;
 
   .work-column.primary {
-    max-width: 80vh;
+    // max-width: 80vh;
     width: 57.5%;
   }
 
   .work-column.secondary {
-    max-width: 360px;
+    // max-width: 360px;
     width: 40%;
   }
 
@@ -46,9 +46,16 @@ $rightColWidth: 50%;
     .lede-image {
       height: auto;
       margin: auto;
+      max-height: 60vh;
       max-width: 60vh;
       width: 100%;
     }
+  }
+
+  .work-image-background {
+    // background-size: cover;
+    filter: blur(100px);
+    opacity: 0.5;
   }
 
   .work-section-header {

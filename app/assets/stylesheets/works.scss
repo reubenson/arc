@@ -120,6 +120,40 @@
     padding-bottom: 10px;
     margin-top: 20px;
   }
+
+  .work-image-container {
+    padding: 20px 0;
+    position: relative;
+  }
+
+  .work-image-background-wrapper {
+    box-sizing: border-box;
+    // display: none;
+    // border: solid black 2px;
+    height: 100%;
+    // margin-top: -20px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    // rough estimate to get background image to fill space
+    // margin-left: -10vw;
+    // width: calc(100vw - 60px);
+    // width: 120vw;
+
+    .work-image-background {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: blur(20px);
+      height: 100%;
+      opacity: 0.8;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+  }
 }
 
 // tablet (600px - 1024px)
