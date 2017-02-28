@@ -26,7 +26,7 @@ input {
 }
 
 #main {
-  margin: auto;
+  margin: $navbar-height auto;
   max-width: $max-width;
   position: relative;
   width: 95%;

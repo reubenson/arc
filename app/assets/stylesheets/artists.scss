@@ -23,19 +23,27 @@
   margin: 60px auto;
   width: 100%;
 
-  h2, h3 {
-    width: 90%;
-    margin: 10px auto 10px;
-  }
+  .artist-profile {
 
+    &-header {
+      font-size: 2em;
+    }
+  }
   .artist-bio {
     margin: auto;
-    width: 90%;
+    // width: 90%;
   }
 
   .artist-works {
-    h3 {
-      font-size: 1.3em;
+    margin-top: 20px;
+
+    &-header {
+      border-bottom: solid black 1px;
+      font-size: 1.5em;
     }
+  }
+
+  .works-container {
+    margin-top: 0;
   }
 }

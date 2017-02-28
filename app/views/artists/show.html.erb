@@ -1,6 +1,6 @@
 <div class="artist-container">
   <section class="artist-profile">
-    <h2>
+    <h2 class="artist-profile-header">
       <%= link_to @artist.fullname, @artist %>
     </h2>
     <!-- <img src="<%= @artist.image_url %>"/> -->
@@ -10,7 +10,7 @@
   </section>
 
   <section class="artist-works">
-    <h3>Works</h3>
+    <h3 class="artist-works-header">Works</h3>
     <%= render partial: "works/index", locals: {works: @artist.works} %>
   </section>
 </div>
