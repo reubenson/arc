@@ -10,7 +10,7 @@ $rightColWidth: 50%;
 
 .work.squareformat {
   justify-content: space-around;
-  margin: 57px 30px 50px;
+  margin: 57px auto 50px;
   overflow: hidden;
   position: relative;
 
@@ -129,8 +129,8 @@ $rightColWidth: 50%;
   // desktop viewport widths and up
   @media screen and (min-width: 1024px) {
     margin: calc(#{$navbar-height} + 20px) auto;
-    max-width: 1200px;
-    width: 95%;
+    // max-width: 1200px;
+    // width: 95%;
     // display: block;
 
     .work-description-container {
@@ -139,29 +139,21 @@ $rightColWidth: 50%;
     }
 
     .work-image-container {
-       margin: auto;
-      // float: left;
-      // margin-left: 4vw;
-      // margin-right: 1vw;
-      // width: calc(100% - #{$rightColWidth} - 6%);
+      margin: auto;
       height: 45vw;
-      max-height: 70vh;
+      max-height: 570px;
       width: 45vw;
-      max-width: 70vh;
+      max-width: 570px;
     }
 
     .work-tracklist-container {
       margin: 0 auto;
       order: 3;
-      // float: right;
-      // margin-left: 1vw;
-      // margin-right: 4%;
-      // width: calc(#{$rightColWidth} - 6%);
       width: 45vw;
       height: 45vw;
-      max-width: 70vh;
-      max-height: 70vh;
-      // height: calc(100% - #{$rightColWidth} - 6%);
+      max-width: 570px;
+      max-height: 570px;
+
       overflow-y: scroll;
     }
     .work-description-container {
