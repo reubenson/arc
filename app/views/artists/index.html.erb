@@ -1,17 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <section class="artists-container">
-  <h1>Artists</h1>
+  <h4>Artists</h4>
 
-  <table>
-    <tbody>
-      <% @artists.each do |artist| %>
-      <tr>
-        <h2>
-          <a href="<%= artist_path(artist) %>"><%= artist.fullname %></a>
-        </h2>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <ul>
+    <% @artists.each do |artist| %>
+      <li>
+        <a href="<%= artist_path(artist) %>"><%= artist.fullname %></a>
+      </li>
+    <% end %>
+  </ul>
+
 </section>

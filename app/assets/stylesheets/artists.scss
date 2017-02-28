@@ -4,10 +4,18 @@
 
 .artists-container {
   margin: 60px auto;
-  width: 90%;
+  width: 100%;
 
-  h1 {
-    font-size: 2em;
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  li {
+    flex-grow: 1;
+    font-size: 1.2em;
+    width: 33.3%;
   }
 }
 
