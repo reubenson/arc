@@ -69,6 +69,8 @@ class Audio extends React.Component {
     }
   }
 
+  // Note: Safari is slow to render audio dynamically
+  // [https://origin-discussions-us.apple.com/thread/6886071]
   loadMP3() {
     this.hasLoaded = false;
     this._audio.load();
@@ -78,14 +80,15 @@ class Audio extends React.Component {
       isPlaying: true
     });
 
+    // report error if audio hasn't loaded within 10 seconds
     window.setTimeout(function() {
       !this.hasLoaded && this.reportError({
         error: {
           msg: 'Audio not loading',
           origin: this.props.currentSource
         }
-      })
-    }.bind(this), 1000); // too short?
+      });
+    }.bind(this), 10000);
   }
 
   pauseAudio() {
