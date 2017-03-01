@@ -1,6 +1,9 @@
 @import "variables";
 
 nav.navbar {
+  display: flex;
+  flex-wrap: row;
+  justify-content: space-between;
   // background-color: #333;
   border-bottom: solid black 1px;
   height: $navbar-height;
@@ -10,7 +13,7 @@ nav.navbar {
   position: fixed;
   right: 0;
   top: 0;
-  width: 95%;
+  width: $main-width;
   z-index: 1;
 
   form {
@@ -23,7 +26,14 @@ nav.navbar {
     position: relative;
     font-size: 1.2em;
     font-weight: 400;
-    margin-right: 30px;
     top: 10px;
+
+    @media screen and (min-width: 600px) {
+      margin-right: 30px;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    justify-content: flex-start;
   }
 }
