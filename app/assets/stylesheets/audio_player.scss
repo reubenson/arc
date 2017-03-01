@@ -39,30 +39,50 @@
 
   }
   .audio-player-info {
-    position: absolute;
-    margin: 20px;
-    text-align: left;
+    .audio-player-info-title {
+      margin-left: 5px;
+
+      @media screen and (min-width: 600px) {
+        margin-left: 0;
+        display: block;
+      }
+    }
+
+    @media screen and (min-width: 600px) {
+      position: absolute;
+      margin: 20px;
+      text-align: left;
+    }
   }
   .audio-player-nav-buttons {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50px;
+
+    @media screen and (min-width: 600px) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50px;
+    }
   }
   .audio-player-progress-bar {
-    position: absolute;
-    left: 0;
-    width: 400px;
     margin: auto;
-    right: 0;
-    top: 20px;
+    width: 70%;
+
+    @media screen and (min-width: 600px) {
+      position: absolute;
+      left: 0;
+      width: 400px;
+      right: 0;
+      top: 20px;
+    }
   }
   .audio-player-time-display {
-    position: absolute;
-    left: 510px;
-    margin: auto;
-    right: 0;
-    top: 20px
+    @media screen and (min-width: 600px) {
+      position: absolute;
+      left: 510px;
+      margin: auto;
+      right: 0;
+      top: 20px
+    }
   }
 }
 .audio-player[aria-hidden="true"] {

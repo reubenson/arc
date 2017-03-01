@@ -23,12 +23,12 @@ class Playlist extends React.Component {
   render () {
     return (
       <div className="audio-player-info">
-        <div className="audio-player-info-artist">
+        <span className="audio-player-info-artist">
           <a href={this.state.artistUrl}>{this.state.artistName}</a>
-        </div>
-        <div className="audio-player-info-title">
+        </span>
+        <span className="audio-player-info-title">
           <a href={this.state.workUrl}>{this.state.title}</a>
-        </div>
+        </span>
       </div>
     )
   }
