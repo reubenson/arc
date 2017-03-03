@@ -41,8 +41,13 @@ class Audio extends React.Component {
       reportError(e);
     }.bind(this));
 
-    this._audio.addEventListener('canplaythrough', function(){
+    this._audio.addEventListener('canplaythrough', function() {
       this.hasLoaded = true;
+
+      this.props.updatePlayerState({
+        isErroring: false
+      });
+
     }.bind(this));
   }
 
@@ -74,11 +79,7 @@ class Audio extends React.Component {
   loadMP3() {
     this.hasLoaded = false;
     this._audio.load();
-
-    this.props.updatePlayerState({
-      isErroring: false,
-      isPlaying: true
-    });
+    this._audio.play();
 
     // report error if audio hasn't loaded within 10 seconds
     window.setTimeout(function() {
@@ -101,10 +102,18 @@ class Audio extends React.Component {
         clearInterval(volumeControl);
       }
     }.bind(this),5);
+
+    this.props.updatePlayerState({
+      isPlaying: false
+    });
   }
 
   playAudio() {
     this._audio.play();
+
+    this.props.updatePlayerState({
+      isPlaying: true
+    });
   }
 
   reportError(error) {
