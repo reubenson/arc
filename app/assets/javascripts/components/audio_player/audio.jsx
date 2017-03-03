@@ -1,4 +1,3 @@
-// AUDIO
 class Audio extends React.Component {
   constructor(props){
     super(props);
@@ -93,19 +92,24 @@ class Audio extends React.Component {
   }
 
   pauseAudio() {
-    var volume = this._audio.volume;
-    var volumeControl = setInterval(function(volume) {
-      this._audio.volume -= 0.01;
-      if (this._audio.volume <= 0.01) {
-        this._audio.pause();
-        this._audio.volume = 1.0;
-        clearInterval(volumeControl);
-      }
-    }.bind(this),5);
+    // iOS disallows volume set dynamically
+    // https://www.ibm.com/developerworks/library/wa-ioshtml5/
+    var volumeCanBeSetDynamically = false,
+      test = this._audio.volume -= 0.01,
+      volumeCanBeSetDynamically = this._audio.volume === test;
 
-    this.props.updatePlayerState({
-      isPlaying: false
-    });
+    if (volumeCanBeSetDynamically) {
+      var volumeControl = setInterval(function(volume) {
+        this._audio.volume -= 0.01;
+        if (this._audio.volume <= 0.01) {
+          this._audio.pause();
+          this._audio.volume = 1.0;
+          clearInterval(volumeControl);
+        }
+      }.bind(this), 5);
+    } else {
+      this._audio.pause();
+    }
   }
 
   playAudio() {
