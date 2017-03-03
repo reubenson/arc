@@ -29,6 +29,12 @@ class AudioPlayer extends React.Component {
     };
   }
 
+  attachEventListeners() {
+    document.getElementById('main').addEventListener('click', this.handleClick.bind(this));
+
+    $(document).on('pjax:complete', this.getWorkPieces.bind(this));
+  }
+
   decrementTrackNumber() {
     var trackNumber = this.state.playlistTrackNumber - 1,
       elapsedTime = trackNumber < 0 ? 0 : this.state.elapsedTime;
@@ -60,19 +66,39 @@ class AudioPlayer extends React.Component {
   }
 
   closePlayer() {
-    this.setState({ isPlaying: false })
+    this.setState({ isPlaying: false });
     this.hidePlayer();
   }
 
   componentDidMount() {
     _audioPlayer = ReactDOM.findDOMNode(this).parentElement;
-    document.getElementById('main').addEventListener('click', this.handleClick.bind(this));
     _audioPlayerBuffer = document.getElementById('audio-player-buffer');
+
+    this.getWorkPieces();
+    this.attachEventListeners();
   }
 
   currentTrackDuration() {
     var currentTrack = this.state.playlist[this.state.playlistTrackNumber];
     return currentTrack ? currentTrack.duration : "";
+  }
+
+  getWorkPieces() {
+    var work = document.querySelector('.work'),
+      workId, url;
+
+    if (work) {
+      workId = work.dataset.workid,
+      url = '/api/v1/works/' + workId + '/pieces';
+
+      this.currentWorkPieces = [];
+
+      this.serverRequest = $.get(url, function (result) {
+        result.work = result.work || {};
+        result.work.pieces = result.work.pieces || [];
+        this.currentWorkPieces = result.work.pieces;
+      }.bind(this));
+    }
   }
 
   handleClick(e) {
@@ -87,50 +113,40 @@ class AudioPlayer extends React.Component {
   }
 
   handlePlayAllPieces(e) {
+    this.setState({
+      playlist: this.currentWorkPieces,
+      playlistTrackNumber: 0,
+      isPlaying: true
+    }, function() {
+      this.updatePlayer();
+    });
     this.showPlayer();
-    var _work = findParentElement(e.target,'work');
-    var workId = _work.dataset.workid;
-    var url = '/api/v1/works/' + workId + '/pieces';
-    this.serverRequest = $.get(url, function (result) {
-      this.setState({
-        playlist: result.work.pieces,
-        playlistTrackNumber: 0,
-        isPlaying: true
-      }, function() {
-        this.updatePlayer();
-      });
-    }.bind(this));
   }
 
   handlePlayPiece(e) {
-    this.showPlayer();
     var _piece = findParentElement(e.target,'piece'),
       pieceId = _piece.dataset.pieceid,
-      _work = findParentElement(e.target,'work'),
-      workId = _work.dataset.workid,
-      url = '/api/v1/works/' + workId + '/pieces';
+      pieces = this.currentWorkPieces,
+      piece = pieces[0],
+      trackNumber = 0,
+      prevPiece, shouldPlay;
 
-    $.get(url, function (result) {
-      var pieces = result.work.pieces,
-        piece = pieces[0],
-        trackNumber = 0;
+    while (piece.id != pieceId) {
+      trackNumber++;
+      piece = pieces[trackNumber];
+    }
 
-      while (piece.id != pieceId) {
-        trackNumber++;
-        piece = pieces[trackNumber];
-      }
+    prevPiece = this.state.playlist[this.state.playlistTrackNumber];
+    shouldPlay = prevPiece ? (piece.id != prevPiece.id || !this.state.isPlaying) : true;
 
-      var prevPiece = this.state.playlist[this.state.playlistTrackNumber];
-      var shouldPlay = prevPiece ? (piece.id != prevPiece.id || !this.state.isPlaying) : true;
-
-      this.setState({
-        playlist: result.work.pieces,
-        playlistTrackNumber: trackNumber,
-        isPlaying: shouldPlay
-      }, function(){
-        this.updatePlayer();
-      });
-    }.bind(this));
+    this.setState({
+      playlist: pieces,
+      playlistTrackNumber: trackNumber,
+      isPlaying: shouldPlay
+    }, function(){
+      this.updatePlayer();
+      this.showPlayer();
+    });
   }
 
   hidePlayer() {
