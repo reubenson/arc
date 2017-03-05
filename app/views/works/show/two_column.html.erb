@@ -1,11 +1,9 @@
 <section class="work two-column" data-workId=<%= @work.id %> >
 
   <%= render partial: "works/components/header", locals: {work: @work} %>
-
   <%= render partial: "works/components/details", locals: {work: @work} %>
 
   <div class="work-column primary">
-
     <section class="work-image-container work-section">
       <div class="work-image-background-wrapper">
         <div class="work-image-background" style="background-image: url(<%= @work.image_urls[0] %>)"></div>
@@ -20,11 +18,8 @@
   </div>
 
   <div class="work-column secondary">
-
     <%= render partial: "works/components/tracklist", locals: {work: @work} %>
-
     <%= render partial: "works/components/credits", locals: {work: @work} %>
-
   </div>
 
 </section>

@@ -17,25 +17,15 @@
   </div>
 
   <%= render partial: "works/components/header", locals: {work: @work} %>
-
   <%= render partial: "works/components/details", locals: {work: @work} %>
 
-  <%= render partial: "works/components/tracklist", locals: {work: @work} %>
-
-  <section class="work-content-container work-section">
-    <nav class="work-content-nav">
-      <% if @work.credits %>
-      <span class="work-content-nav-item" data-content="credits">Credits</span>
-      <% end %>
-      <% if @work.description %>
-      <span class="work-content-nav-item" data-content="notes">Liner Notes</span>
-      <% end %>
-    </nav>
-
-    <%= render partial: "works/components/credits", locals: {work: @work} %>
-
+  <div class="work-column primary">
     <%= render partial: "works/components/description", locals: {work: @work} %>
+  </div>
 
-  </section>
+  <div class="work-column secondary">
+    <%= render partial: "works/components/tracklist", locals: {work: @work} %>
+    <%= render partial: "works/components/credits", locals: {work: @work} %>
+  </div>
 
 </section>

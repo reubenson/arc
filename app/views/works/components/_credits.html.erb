@@ -1,6 +1,8 @@
 <div class="work-credits-container">
+  <% if @work.credits %>
   <section class="work-credits">
     <h5 class="work-section-header">Credits</h5>
     <%= raw @work.credits %>
   </section>
+  <% end %>
 </div>
