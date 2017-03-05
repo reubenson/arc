@@ -30,6 +30,13 @@ input {
   max-width: $max-width;
   position: relative;
   width: 95%;
+
+  &.fixed {
+    left: 0;
+    margin-top: 0;
+    right: 0;
+    position: fixed;
+  }
 }
 
 p, ol, ul, td {

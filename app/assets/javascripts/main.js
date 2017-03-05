@@ -154,7 +154,8 @@ var playButton = (function() {
       audioPlayer = audioPlayer || document.querySelector('.audio-player');
       audioPlayerHeight = parseInt(window.getComputedStyle(audioPlayer).height.split('px')[0]);
       scrollY = window.scrollY;
-      main.style.position = 'fixed';
+      main.classList.add('fixed');
+      // main.style.position = 'fixed';
       document.body.style.transform = 'translateY(-' + scrollY + 'px)';
       navbar.style.transform = 'translateY(' + scrollY + 'px)';
       audioPlayer.style.transform = 'translateY(' + (scrollY  + window.innerHeight - audioPlayerHeight) + 'px)';
@@ -165,7 +166,8 @@ var playButton = (function() {
   function unfixBody() {
     if (bodyFixed) {
       document.body.style.transform = '';
-      main.style.position = 'relative';
+      main.classList.remove('fixed');
+      // main.style.position = 'relative';
       navbar.style.transform = '';
       audioPlayer.style.transform = '';
       window.scrollTo(0, scrollY);
