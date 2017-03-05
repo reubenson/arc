@@ -1,38 +1,8 @@
 <section class="work squareformat" data-workId=<%= @work.id %> >
 
-  <section class="work-header-container work-section">
-    <header>
-      <h2 class="work-header-artist"><%= link_to @artist.fullname, @artist %> </h2>
-      <!-- <div class="work-header-divider">/</div> -->
-      <h3 class="work-header-title"> <%= @work.title %> </h3>
-    </header>
+  <%= render partial: "works/components/header", locals: {work: @work} %>
 
-    <div class="work-header-cta-container">
-      <div class="work-tracklist-play-all">
-        Play
-        <button class="add-work-to-player-btn button-primary fa fa-play"></button>
-      </div>
-      <div class="work-tracklist-purchase-all">
-        Purchase ($<%= (@work.price_formatted) %>)
-        <button class="add-work-to-cart-btn button-primary fa fa-cart-plus"></button>
-      </div>
-    </div>
-  </section>
-
-  <section class="work-details-container work-section">
-    <%= render partial: "works/components/work_details", locals: {work: @work} %>
-  </section>
-
-  <!-- <section class="work-cta-container work-section">
-    <header class="work-header">
-      <a class="add-work-to-player-btn">Play Audio</a>
-    </header>
-    <h4 class="work-header">
-      Purchase Download
-    </h4>
-    <a class="add-work-to-cart-btn">Add to Cart</a>
-  </section> -->
-
+  <%= render partial: "works/components/details", locals: {work: @work} %>
 
   <section class="work-image-container work-section">
     <div class="work-image-background-wrapper">
@@ -43,9 +13,7 @@
     </div>
   </section>
 
-  <section class="work-tracklist-container work-section">
-    <%= render partial: "tracklist/show", locals: {work: @work} %>
-  </section>
+  <%= render partial: "works/components/tracklist", locals: {work: @work} %>
 
   <nav class="work-content-nav">
     <% if @work.credits %>
@@ -56,16 +24,8 @@
     <% end %>
   </nav>
 
-  <div class="work-credits-container">
-    <section class="work-credits">
-      <%= raw @work.credits %>
-    </section>
-  </div>
+  <%= render partial: "works/components/credits", locals: {work: @work} %>
 
-  <section class="work-description-container work-section">
-    <article class="work-description">
-      <%= raw @work.description %>
-    </article>
-  </section>
+  <%= render partial: "works/components/description", locals: {work: @work} %>
 
 </section>
