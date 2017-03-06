@@ -1,18 +1,8 @@
 <section class="work squareformat" data-workId=<%= @work.id %> >
 
   <%= render partial: "works/components/header", locals: {work: @work} %>
-
   <%= render partial: "works/components/details", locals: {work: @work} %>
-
-  <section class="work-image-container work-section">
-    <div class="work-image-background-wrapper">
-      <div class="work-image-background" style="background-image: url(<%= @work.image_urls[0] %>)"></div>
-    </div>
-    <div class="lede-image">
-      <img src="<%= @work.image_urls[0] %>" alt="Album Cover" />
-    </div>
-  </section>
-
+  <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: true} %>
   <%= render partial: "works/components/tracklist", locals: {work: @work} %>
 
   <nav class="work-content-nav">
@@ -25,7 +15,6 @@
   </nav>
 
   <%= render partial: "works/components/credits", locals: {work: @work} %>
-
   <%= render partial: "works/components/description", locals: {work: @work} %>
 
 </section>

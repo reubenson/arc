@@ -4,17 +4,8 @@
   <%= render partial: "works/components/details", locals: {work: @work} %>
 
   <div class="work-column primary">
-    <section class="work-image-container work-section">
-      <div class="work-image-background-wrapper">
-        <div class="work-image-background" style="background-image: url(<%= @work.image_urls[0] %>)"></div>
-      </div>
-      <div class="lede-image">
-        <img src="<%= @work.image_urls[0] %>" alt="Album Cover" />
-      </div>
-    </section>
-
+    <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: false} %>
     <%= render partial: "works/components/description", locals: {work: @work} %>
-
   </div>
 
   <div class="work-column secondary">

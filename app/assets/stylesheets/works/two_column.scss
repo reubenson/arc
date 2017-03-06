@@ -6,7 +6,6 @@
 // Mobile and tablet styling relies of flexbox to re-order components differently than the order the exist in the DOM
 
 @import "variables";
-$rightColWidth: 50%;
 
 .work.two-column {
   justify-content: space-between;
@@ -41,19 +40,10 @@ $rightColWidth: 50%;
   }
 
   .work-image-container {
-    .lede-image {
-      height: auto;
-      margin: auto;
-      max-height: 60vh;
-      max-width: 60vh;
-      width: 100%;
-    }
-  }
-
-  .work-image-background {
-    // background-size: cover;
-    filter: blur(100px);
-    opacity: 0.5;
+    margin: auto;
+    max-height: 60vh;
+    overflow: hidden;
+    width: 100%;
   }
 
   .work-section-header {

@@ -85,30 +85,15 @@ $rightColWidth: 50%;
     height: 100%;
   }
 
-  .work-image-background-wrapper {
-    // box-sizing: border-box;
+  .work-image-carousel {
     border: solid black 2px;
     display: block;
     height: calc(100% + 40px);
     margin-top: -20px;
-    // overflow: hidden;
-    // position: absolute;
 
     // rough estimate to get background image to fill space
     margin-left: -10vw;
-    // width: calc(100vw - 60px);
     width: 120vw;
-
-    // .work-image-background {
-    //   background-size: cover;
-    //   background-position: center;
-    //   filter: blur(20px);
-    //   height: 100%;
-    //   opacity: 0.8;
-    //   position: absolute;
-    //   width: 100%;
-    //   z-index: -1;
-    // }
   }
 
   // tablet viewport widths and up
