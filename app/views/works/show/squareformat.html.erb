@@ -2,7 +2,7 @@
 
   <%= render partial: "works/components/header", locals: {work: @work} %>
   <%= render partial: "works/components/details", locals: {work: @work} %>
-  <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: true} %>
+  <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: true, small: false} %>
   <%= render partial: "works/components/tracklist", locals: {work: @work, small: false} %>
 
   <nav class="work-content-nav">
@@ -15,6 +15,6 @@
   </nav>
 
   <%= render partial: "works/components/credits", locals: {work: @work, small: false} %>
-  <%= render partial: "works/components/description", locals: {work: @work} %>
+  <%= render partial: "works/components/description", locals: {work: @work, small: false} %>
 
 </section>

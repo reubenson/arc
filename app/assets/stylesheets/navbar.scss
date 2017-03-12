@@ -1,7 +1,6 @@
 @import "variables";
 
 nav.navbar {
-  border-bottom: solid black 1px;
   height: $navbar-height;
   left: 0;
   margin: auto;
@@ -16,6 +15,7 @@ nav.navbar {
   }
 
   .navbar-items {
+    border-bottom: solid black 1px;
     display: flex;
     flex-wrap: row;
     height: 100%;

@@ -1,0 +1,37 @@
+@import "variables";
+
+.work .work-header-container {
+  text-align: left;
+
+  .work-header {
+    // font-size: 1.0em;
+    margin-bottom: 5px;
+  }
+
+  .work-header-artist {
+    font-size: 1.6em;
+    font-weight: 200;
+    height: 1em;
+    margin-bottom: 5px;
+    a {
+      color: $light-grey;
+    }
+  }
+
+  .work-header-title {
+    font-size: 1.8em;
+    font-weight: 400;
+    height: 1.0em;
+    margin: 0;
+  }
+}
+
+.work-header-cta-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+
+  @media screen and (min-width: $large) {
+    flex-direction: column;
+  }
+}

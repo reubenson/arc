@@ -8,7 +8,7 @@
 .works-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 60px auto;
   width: 100%;
 
@@ -41,51 +41,6 @@
     // margin: 10px 0 0;
     width: 100%;
   }
-  //
-  // h2 {
-  //   font-size: 1.6em;
-  //   margin-top: 0;
-  // }
-  // h3 {
-  //   font-size: 1.4em;
-  //   margin-top: 0
-  // }
-
-  .work-header-container {
-    text-align: left;
-
-    .work-header {
-      // font-size: 1.0em;
-      margin-bottom: 5px;
-    }
-
-    .work-header-artist {
-      font-size: 1.6em;
-      font-weight: 200;
-      height: 1em;
-      margin-bottom: 5px;
-      a {
-        color: $light-grey;
-      }
-    }
-
-    .work-header-title {
-      font-size: 1.8em;
-      font-weight: 400;
-      height: 1.0em;
-      margin: 0;
-    }
-  }
-
-  .work-header-cta-container {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-
-    @media screen and (min-width: 600px) {
-      flex-direction: column;
-    }
-  }
 
   .work-description,
   .work-credits {
@@ -117,14 +72,14 @@
     }
   }
 
-  .work-details-container {
-    // border-bottom: solid black 2px;
-    border-top: solid black 1px;
-    clear: both;
-    text-align: center;
-    padding-bottom: 10px;
-    margin-top: 20px;
-  }
+  // .work-details-container {
+  //   // border-bottom: solid black 2px;
+  //   border-top: solid black 1px;
+  //   clear: both;
+  //   text-align: center;
+  //   padding-bottom: 10px;
+  //   margin-top: 20px;
+  // }
 }
 
 // tablet (600px - 1024px)

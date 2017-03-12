@@ -15,11 +15,6 @@
 
   .work-column.primary {
     width: 100%;
-    // width: 57.5%;
-  }
-
-  .work-column.secondary {
-    // width: 40%;
   }
 
   .work-header-cta-container {
@@ -27,7 +22,7 @@
       padding-bottom: 5px;
     }
 
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: $large) {
       position: absolute;
       top: 0;
       right: 0;
@@ -38,6 +33,11 @@
   .work-header-container {
     margin-top: 20px;
     position: relative;
+
+    header {
+      margin-bottom: 20px;
+      text-align: center;
+    }
   }
 
   .work-image-container {
@@ -59,6 +59,13 @@
 
     .work-column.secondary {
       width: 40%;
+    }
+
+    .work-header-container {
+      header {
+        margin-bottom: 0;
+        text-align: left;
+      }
     }
   }
 }

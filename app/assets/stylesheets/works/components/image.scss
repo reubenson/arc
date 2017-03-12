@@ -2,7 +2,10 @@
 
 .work .work-image-container {
   position: relative;
-  height: $lede-image-height;
+  // height: 420px;
+  height: auto;
+  // height: 50vw;
+  max-height: 60vh;
   margin-left: calc((100% - 100vw) / 2);
   margin-top: 0;
   width: 100vw;
@@ -61,20 +64,26 @@
 
     img {
       bottom: 0;
-      height: 100%;
+      display: block;
+      height: auto;
+      width: 100%;
+      // max-width: 400px;
+      // height: 100%;
       left: 0;
-      max-height: 400px;
+      // max-height: 400px;
       margin: auto;
-      position: absolute;
+      position: relative;
+      // position: absolute;
       right: 0;
       top: 0;
-      width: auto;
+      // width: auto;
     }
   }
 
   &.cover {
     .lede-image {
-      display: none;
+      visibility: hidden;
+      // display: none;
     }
     .work-images {
       filter: none;
@@ -85,6 +94,25 @@
   &.fill-lede {
     .lede-image img {
       max-height: 100%;
+      // max-width: 400px;
     }
+  }
+
+  @media screen and (min-width: 600px) {
+    height: 50vw;
+    // height: 420px;
+    min-height: 460px;
+    // height: $lede-image-height;
+
+    .lede-image img {
+      max-width: 400px;
+      position: absolute;
+      // max-width: 400px;
+    }
+
+    &.cover .lede-image{
+      display: none;
+    }
+
   }
 }

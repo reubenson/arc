@@ -1,13 +1,16 @@
 <section class="work two-column" data-workId=<%= @work.id %> >
 
   <%= render partial: "works/components/header", locals: {work: @work} %>
+  <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: false, small: true} %>
   <%= render partial: "works/components/details", locals: {work: @work} %>
 
-  <div class="work-column primary">
-    <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: false} %>
-    <%= render partial: "works/components/tracklist", locals: {work: @work, small: true} %>
-    <%= render partial: "works/components/description", locals: {work: @work} %>
-    <%= render partial: "works/components/credits", locals: {work: @work, small: true} %>
+  <%= render partial: "works/components/tracklist", locals: {work: @work, small: true} %>
+  <%= render partial: "works/components/description", locals: {work: @work, small: true} %>
+  <%= render partial: "works/components/credits", locals: {work: @work, small: true} %>
+
+  <div class="work-column primary large">
+    <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: false, small: false} %>
+    <%= render partial: "works/components/description", locals: {work: @work, small: false} %>
   </div>
 
   <div class="work-column secondary large">

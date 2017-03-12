@@ -1,4 +1,4 @@
-<div class="work-image-container work-section<%= cover ? ' cover' : ''  %><%= fillLede ? ' fill-lede' : ''%>">
+<div class="work-image-container work-section<%= ' cover' if cover  %><%= ' fill-lede' if fillLede%><%= ' small' if small %>">
   <div class="work-image-carousel">
     <% if @work.image_urls.length > 1 %>
     <button class="work-image-carousel-left work-image-carousel-button">
