@@ -1,7 +1,7 @@
 @import "variables";
 
 body, nav {
-  background-color: #fff;
+  background-color: $background-color;
   color: #333;
   font-family: "nimbus-sans",'Open Sans',sans-serif;
   font-size: 100%;
@@ -120,4 +120,20 @@ img {
 }
 #audio-player-buffer[aria-hidden="true"] {
   display: none;
+}
+
+// classes used for toggling element viewability by viewport range
+.small {
+  display: block;
+
+  @media screen and (min-width: $large) {
+    display: none;
+  }
+}
+.large {
+  display: none;
+
+  @media screen and (min-width: $large) {
+    display: block;
+  }
 }

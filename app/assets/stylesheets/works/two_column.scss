@@ -14,11 +14,12 @@
   width: 100%;
 
   .work-column.primary {
-    width: 57.5%;
+    width: 100%;
+    // width: 57.5%;
   }
 
   .work-column.secondary {
-    width: 40%;
+    // width: 40%;
   }
 
   .work-header-cta-container {
@@ -49,5 +50,15 @@
   .work-section-header {
     border-bottom: solid black 1px;
     margin-top: 40px;
+  }
+
+  @media screen and (min-width: $large) {
+    .work-column.primary {
+      width: 57.5%;
+    }
+
+    .work-column.secondary {
+      width: 40%;
+    }
   }
 }

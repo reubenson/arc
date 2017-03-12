@@ -1,27 +1,35 @@
 @import "variables";
 
 nav.navbar {
-  display: flex;
-  flex-wrap: row;
-  justify-content: space-between;
-  // background-color: #333;
   border-bottom: solid black 1px;
   height: $navbar-height;
   left: 0;
   margin: auto;
-  max-width: $max-width;
   position: fixed;
   right: 0;
   top: 0;
-  width: $main-width;
-  z-index: 1;
+  width: 100%;
+  z-index: 2;
 
   form {
     display: inline;
   }
 
-  .navbar-link {
-  	// color: #eee;
+  .navbar-items {
+    display: flex;
+    flex-wrap: row;
+    height: 100%;
+    justify-content: space-between;
+    margin: auto;
+    max-width: $max-width;
+    width: 95%;
+
+    @media screen and (min-width: 600px) {
+      justify-content: flex-start;
+    }
+  }
+
+  .navbar-item {
     letter-spacing: 0.1em;
     position: relative;
     font-size: 1.2em;
@@ -33,7 +41,4 @@ nav.navbar {
     }
   }
 
-  @media screen and (min-width: 600px) {
-    justify-content: flex-start;
-  }
 }

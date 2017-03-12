@@ -4,7 +4,7 @@
   justify-content: space-between;
 
   .work-header-container {
-    margin-top: -24px;
+    margin-top: -34px;
     z-index: 0;
 
     .work-header-artist {
@@ -23,6 +23,7 @@
 
     .work-header-title {
       font-size: 1.5em;
+      font-weight: 300;
       letter-spacing: 0.2em;
       margin: 10px auto 0;
       text-align: center;
@@ -42,6 +43,12 @@
 
   .work-section {
     // padding: 10px 10px;
+  }
+
+  .lede-image {
+    @media screen and (min-width: $max-width) {
+      width: 100vw;
+    }
   }
 
 
@@ -68,12 +75,10 @@
     //   width: 40%;
     // }
     .work-column.primary {
-      // max-width: 80vh;
       width: 57.5%;
     }
 
     .work-column.secondary {
-      // max-width: 360px;
       width: 40%;
     }
 
