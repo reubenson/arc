@@ -1,18 +1,16 @@
 @import "../../variables";
 
-.work .work-image-container {
-  position: relative;
-  // height: 420px;
-  height: auto;
-  // height: 50vw;
+.work-image-container {
   max-height: 60vh;
   margin-left: calc((100% - 100vw) / 2);
   margin-top: 0;
+  height: auto;
+  position: relative;
   width: 100vw;
 
   .work-image-carousel {
-    overflow: hidden;
     height: 100%;
+    overflow: hidden;
     position: absolute;
     width: 100vw;
 
@@ -66,24 +64,18 @@
       bottom: 0;
       display: block;
       height: auto;
-      width: 100%;
-      // max-width: 400px;
-      // height: 100%;
       left: 0;
-      // max-height: 400px;
       margin: auto;
       position: relative;
-      // position: absolute;
       right: 0;
       top: 0;
-      // width: auto;
+      width: 100%;
     }
   }
 
   &.cover {
     .lede-image {
       visibility: hidden;
-      // display: none;
     }
     .work-images {
       filter: none;
@@ -94,20 +86,16 @@
   &.fill-lede {
     .lede-image img {
       max-height: 100%;
-      // max-width: 400px;
     }
   }
 
   @media screen and (min-width: 600px) {
     height: 50vw;
-    // height: 420px;
     min-height: 460px;
-    // height: $lede-image-height;
 
     .lede-image img {
       max-width: 400px;
       position: absolute;
-      // max-width: 400px;
     }
 
     &.cover .lede-image{

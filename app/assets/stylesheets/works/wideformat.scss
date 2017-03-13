@@ -65,15 +65,8 @@
     margin: 20px 0;
   }
 
-  .work-tracklist-container,
-  .work-content-container {
-    // max-width: 47.5%;
-  }
 
   @media screen and (min-width: $large) {
-    // .work-tracklist-container {
-    //   width: 40%;
-    // }
     .work-column.primary {
       width: 57.5%;
     }

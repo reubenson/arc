@@ -62,8 +62,23 @@ $rightColWidth: 50%;
   }
 
   .work-content-nav {
+    clear: both;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-top: 50px;
     order: 7;
+    text-align: center;
     width: 100%;
+
+    span {
+      cursor: pointer;
+      flex-grow: 1;
+    }
+
+    span.active {
+      border-bottom: solid black 2px;
+    }
   }
 
   .work-credits-container {

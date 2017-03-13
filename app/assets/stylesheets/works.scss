@@ -38,7 +38,6 @@
   .work-section {
     box-sizing: border-box;
     margin: 0 0 10px;
-    // margin: 10px 0 0;
     width: 100%;
   }
 
@@ -48,38 +47,6 @@
     font-weight: 300;
     line-height: 1.5em;
   }
-
-  .work-content-container {
-    flex-grow: 1;
-    width: 40%;
-  }
-
-  .work-content-nav {
-    clear: both;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-    margin-top: 50px;
-    text-align: center;
-
-    span {
-      cursor: pointer;
-      flex-grow: 1;
-    }
-
-    span.active {
-      border-bottom: solid black 2px;
-    }
-  }
-
-  // .work-details-container {
-  //   // border-bottom: solid black 2px;
-  //   border-top: solid black 1px;
-  //   clear: both;
-  //   text-align: center;
-  //   padding-bottom: 10px;
-  //   margin-top: 20px;
-  // }
 }
 
 // tablet (600px - 1024px)
