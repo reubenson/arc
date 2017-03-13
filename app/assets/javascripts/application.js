@@ -17,4 +17,5 @@
 //= require react_ujs
 //= require components
 //= require pjax
+//= require lodash
 //= require_tree .
