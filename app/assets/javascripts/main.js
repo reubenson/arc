@@ -1,4 +1,35 @@
+function getTracklistContainer() {
+  var tracklistContainers = document.querySelectorAll('.work-tracklist-container'),
+    tracklistContainer;
+
+  if (window.getComputedStyle) {
+    tracklistContainer = _.find(tracklistContainers, function(tracklistContainer) {
+      var style = window.getComputedStyle(tracklistContainer);
+
+      return style.display !== 'none';
+    });
+  }
+
+  return tracklistContainer;
+}
+
+function findParentElement(el, className) {
+  var el = el.parentElement,
+    parentFound = el && el.classList.contains(className);
+
+  return (parentFound || !el) ? el : findParentElement(el, className);
+}
+
+function onLoadAndResize(func) {
+  var throttledFn = _.throttle(func, 30);
+
+  window.addEventListener('load', throttledFn);
+  window.addEventListener('resize', throttledFn);
+  $(document).on('pjax:complete', throttledFn);
+}
+
 $(function(){
+
   $(document).pjax('a', '#main');
   // might consider shifting to https://github.com/thybag/PJAX-Standalone to remove jquery dep
 
@@ -17,18 +48,9 @@ $(function(){
   })
 });
 
-function onLoadAndResize(func) {
-  window.addEventListener('load', func);
-  window.addEventListener('resize', func);
-  $(document).on('pjax:complete', func);
-}
 
-function findParentElement(el, className) {
-  var el = el.parentElement,
-    parentFound = el && el.classList.contains(className);
 
-  return (parentFound || !el) ? el : findParentElement(el, className);
-}
+
 
 function modifyTracklist() {
   // style tracklist for narrow view
@@ -58,19 +80,26 @@ function modifyTracklist() {
 
 // recieve custom events dispatched from the PlayButton React component
 // update UI state dynamically
-var playButton = (function() {
+(function playButton() {
   var playing = false,
     currentElement,
-    prevElement;
+    prevElement,
+    tracklistContainer;
+
+  onLoadAndResize(setTracklistContainer);
 
   window.addEventListener('audio:updated', function(e){
-    var el = document.querySelector('.piece[data-pieceid="'+e.detail.pieceId+'"]'),
+    var el = tracklistContainer.querySelector('.piece[data-pieceid="'+e.detail.pieceId+'"]'),
       isPlaying = e.detail.isPlaying;
 
     setElement(el);
     setActive();
     setState(isPlaying);
   }, false);
+
+  function setTracklistContainer() {
+    tracklistContainer = getTracklistContainer();
+  }
 
   function setActive() {
     currentElement.classList.add('piece-active');
@@ -122,8 +151,6 @@ var playButton = (function() {
       }
     }
   }
-
-  return {}
 })();
 
 // when scrolling the tracklist, main content shouldn't scroll as well

@@ -20,11 +20,16 @@ componentWillReceiveProps(nextProps) {
           'isPlaying': this.props.isPlaying
         }
       });
+
     window.dispatchEvent( evt );
   }
 
   handleClick() {
     this.props.togglePlay();
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return this.props.isPlaying !== nextProps.isPlaying;
   }
 
   render() {
