@@ -132,9 +132,6 @@ $rightColWidth: 50%;
   // desktop viewport widths and up
   @media screen and (min-width: 1024px) {
     margin: calc(#{$navbar-height} + 20px) auto;
-    // max-width: 1200px;
-    // width: 95%;
-    // display: block;
 
     .work-description-container {
       margin: auto;
@@ -147,6 +144,10 @@ $rightColWidth: 50%;
       max-height: 570px;
       width: 45vw;
       max-width: 570px;
+
+      img {
+        max-width: 100%;
+      }
     }
 
     .work-tracklist-container {
@@ -166,12 +167,8 @@ $rightColWidth: 50%;
       // margin-left: 4%;
       width: 60%;
     }
-    .work-details-container {
-      // margin-left: 4%;
-    }
 
     .work-header-container {
-      // margin-left: 4%;
       text-align: left;
 
       .work-header-artist {
