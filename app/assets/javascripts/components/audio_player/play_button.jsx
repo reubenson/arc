@@ -29,7 +29,7 @@ componentWillReceiveProps(nextProps) {
   }
 
   shouldComponentUpdate(nextProps) {
-    return this.props.isPlaying !== nextProps.isPlaying;
+    return this.props!== nextProps;
   }
 
   render() {
