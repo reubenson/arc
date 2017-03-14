@@ -3,6 +3,8 @@
 .work-tracklist-container {
   background-color: white;
   border: 1px solid black;
+  overflow: hidden;
+  position: relative;
 
   .work-tracklist {
     box-sizing: border-box;
@@ -136,6 +138,18 @@
 
     .toggle-piece-description-btn[aria-hidden="true"] { display: none }
     .piece-description[aria-hidden="true"] { display: none; }
+  }
+
+  .work-tracklist-background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 50%;
+    opacity: 0.0;
+    position: absolute;
+    filter: blur(100px);
+    z-index: -1;
   }
 }
 

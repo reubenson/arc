@@ -55,6 +55,11 @@ $rightColWidth: 50%;
   }
   .work-tracklist-container {
     order: 6;
+
+    .work-section-header {
+      text-align: center;
+      background: #eee;
+    }
   }
   .work-details-container {
     margin: 10px auto 20px;

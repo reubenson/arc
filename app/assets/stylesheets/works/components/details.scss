@@ -6,6 +6,10 @@
   text-align: center;
   margin: 10px 0;
 
+  .work-section-header {
+    display: none;
+  }
+
   .work-details {
     display: flex;
     flex-wrap: wrap;
@@ -27,6 +31,5 @@
       font-weight: 600;
       padding: 3px 5px 3px 0;
     }
-
   }
 }

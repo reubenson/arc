@@ -1,8 +1,6 @@
-<section class="work-details-container work-section">
+<section class="work-details-container work-section testing<%= ' small' if small %>">
+  <h5 class="work-section-header">Release Details</h5>
   <div class="work-details">
-    <!-- <h4 class="work-header">
-      Release Details
-    </h4> -->
       <% if @work.record_label %>
         <div class="work-detail">
           <span class="work-detail-label">Label: </span>
