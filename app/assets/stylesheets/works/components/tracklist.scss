@@ -6,6 +6,10 @@
   overflow: hidden;
   position: relative;
 
+  .work-section-header {
+    display: none;
+  }
+
   .work-tracklist {
     box-sizing: border-box;
     font-size: 0.8em;
