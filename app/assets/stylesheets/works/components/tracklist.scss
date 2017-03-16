@@ -95,8 +95,9 @@
         .add-piece-to-cart-btn-sm { display: none }
 
         @media screen and (min-width: 600px) {
-          transform: translateX(20px);
-          width: 0;
+          // styling for moving the purchase button into view
+          // transform: translateX(20px);
+          // width: 0;
         }
       }
       .piece-title {

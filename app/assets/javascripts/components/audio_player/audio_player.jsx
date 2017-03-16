@@ -107,7 +107,7 @@ class AudioPlayer extends React.Component {
 
     if (playPiece) {
       this.handlePlayPiece(e);
-    } else if (e.target.classList.contains('add-work-to-player-btn')) {
+    } else if (findParentElement(e.target, 'add-work-to-player')) {
       this.handlePlayAllPieces(e);
     }
   }

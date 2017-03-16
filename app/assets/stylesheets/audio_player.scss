@@ -87,7 +87,7 @@
   }
 
   @media screen and (min-width: $max-width) {
-    left: calc((100vw - #{$max-width}) / 2);
+    left: calc((100% - #{$max-width}) / 2);
   }
 }
 .audio-player[aria-hidden="true"] {

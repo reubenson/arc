@@ -139,7 +139,7 @@ function modifyTracklist() {
   }
 
   function updateWorkPlayButton() {
-    var workPlayButton = document.querySelector('.add-work-to-player-btn');
+    var workPlayButton = document.querySelector('.add-work-to-player');
 
     if (workPlayButton) {
       if (playing) {

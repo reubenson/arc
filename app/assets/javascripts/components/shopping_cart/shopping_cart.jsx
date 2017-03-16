@@ -38,11 +38,13 @@ class ShoppingCart extends React.Component {
 	}
 
 	handleClick(e) {
-		if (e.target.classList.contains('add-work-to-cart-btn')) {
+    var target = e.target;
+
+		if (findParentElement(target, 'add-work-to-cart')) {
 			this.addWorkToCart(e);
-		} else if (e.target.classList.contains('add-piece-to-cart-btn')) {
+		} else if (target.classList.contains('add-piece-to-cart-btn')) {
 			this.addPieceToCart(e);
-		} else if (e.target.classList.contains('remove-item-from-cart-btn')) {
+		} else if (target.classList.contains('remove-item-from-cart-btn')) {
       this.removeItemFromCart(e);
     }
 	}
