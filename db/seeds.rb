@@ -114,11 +114,11 @@ two_column_album.title = 'Two Column Layout'
 two_column_album.save
 
 # duplicate work for grid layout
-grid = eli_keszler.works[0].dup
-grid.pieces = eli_keszler.works[0].pieces.map { |child| child.dup }
-grid.layout = 'grid'
-grid.title = 'Grid Layout'
-grid.save
+# grid = eli_keszler.works[0].dup
+# grid.pieces = eli_keszler.works[0].pieces.map { |child| child.dup }
+# grid.layout = 'grid'
+# grid.title = 'Grid Layout'
+# grid.save
 
 eli_keszler.works.create({
   title: 'Townsley Battery',
