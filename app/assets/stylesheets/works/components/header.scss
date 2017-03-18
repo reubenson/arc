@@ -1,6 +1,7 @@
 @import "variables";
 
-.work-header-container {
+.work .work-header-container {
+  position: relative;
   text-align: left;
 
   .work-header {
@@ -25,21 +26,50 @@
     margin: 0;
   }
 
-  .work-details-container {
-    float: right;
-    position: absolute;
-    top: 0;
-    height: 100%;
-
-    .work-section-header {
-      display: none;
-    }
-    .work-detail-label {
-      display: inline;
-    }
-    .work-details {
+  .work-section {
+    &.work-cta-container {
+      // float: right;
+      border-bottom: 0;
       flex-direction: column;
+      height: 100%;
+      justify-content: flex-start;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      .work-cta-item {
+        height: 28px;
+        margin-right: 0;
+        margin-top: 6px;
+        padding-bottom: 28px;
+      }
+
+      .cta-content {
+        height: 100%;
+
+        * {
+          font-size: 12px;
+        }
+      }
+    }
+
+    &.work-details-container {
       float: right;
+      position: absolute;
+      top: 0;
+      height: 100%;
+
+      .work-section-header {
+        display: none;
+      }
+      .work-detail-label {
+        display: inline;
+      }
+      .work-details {
+        flex-direction: column;
+        float: right;
+      }
     }
   }
+
 }
