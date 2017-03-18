@@ -3,46 +3,59 @@
 .work.wideformat {
   justify-content: space-between;
 
-  .work-header-container {
-    margin-top: -34px;
-    z-index: 0;
-
-    .work-header-artist {
-      font-size: 1.4em;
-      line-height: 1.7em;
-      letter-spacing: 0.2em;
-      margin: 0 auto;
-      text-align: center;
-      text-transform: uppercase;
-      width: 100%;
-      a {
-        background-color: white;
-        padding: 10px;
-      }
-    }
-
-    .work-header-title {
-      font-size: 1.5em;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      margin: 10px auto 0;
-      text-align: center;
-      text-transform: uppercase;
-      width: 100%;
-
-      span {
-        background-color: white;
-        padding: 10px;
-      }
-    }
-
-    .work-header-cta-container {
-      flex-direction: row;
-    }
-  }
-
   .work-section {
-    // padding: 10px 10px;
+
+    &.work-header-container {
+      margin-top: -34px;
+      z-index: 0;
+
+      .work-header-artist {
+        font-size: 1.4em;
+        line-height: 1.7em;
+        letter-spacing: 0.2em;
+        margin: 0 auto;
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+        a {
+          background-color: white;
+          padding: 10px;
+        }
+      }
+
+      .work-header-title {
+        font-size: 1.5em;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        margin: 10px auto 0;
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+
+        span {
+          background-color: white;
+          padding: 10px;
+        }
+      }
+    }
+
+    &.work-image-container {
+      margin-left: calc((100% - 100vw) / 2);
+    }
+
+    &.work-tracklist-container {
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    &.work-description-container {
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    &.work-details-container {
+      margin: 20px 0;
+    }
   }
 
   .lede-image {
@@ -50,21 +63,6 @@
       width: 100vw;
     }
   }
-
-
-  .work-tracklist-container {
-    flex-grow: 1;
-    width: 100%;
-  }
-  .work-description-container {
-    flex-grow: 1;
-    width: 100%;
-  }
-
-  .work-details-container {
-    margin: 20px 0;
-  }
-
 
   @media screen and (min-width: $large) {
     .work-column.primary {

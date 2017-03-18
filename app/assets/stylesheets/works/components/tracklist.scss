@@ -17,41 +17,6 @@
     padding: 0px 0px 0px 0px;
     width: 100%;
 
-    .work-tracklist-header-container {
-    	background-color:#c6c6c6;
-      position: relative;
-
-      .work-tracklist-header {
-        border-bottom: solid black 1px;
-        font-size: 1.5em;
-        letter-spacing: 0.1em;
-        margin-bottom: 0;
-        padding-top: 5px;
-        text-align: center;
-      }
-
-      .work-tracklist-purchase-all {
-        right: 0;
-      }
-      .work-tracklist-total-duration {
-        right: 175px;
-      }
-
-      span {
-        display: none;
-
-        margin: auto;
-        padding: 10px;
-        text-align: center;
-        position: absolute;
-      }
-    }
-    // .work-tracklist-program-runtime {
-    //   border-bottom: solid #666 2px;
-    //   font-size: 1.5rem;
-    //   text-align: center;
-    // }
-
     .piece {
       border-bottom: solid #eeeeee 1px;
   	  padding:0px;

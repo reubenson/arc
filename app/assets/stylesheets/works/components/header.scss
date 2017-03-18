@@ -4,9 +4,9 @@
   position: relative;
   text-align: left;
 
-  .work-header {
-    margin-bottom: 5px;
-  }
+  // .work-header {
+  //   margin-bottom: 5px;
+  // }
 
   .work-header-artist {
     font-size: 1.6em;
@@ -28,7 +28,6 @@
 
   .work-section {
     &.work-cta-container {
-      // float: right;
       border-bottom: 0;
       flex-direction: column;
       height: 100%;
@@ -54,10 +53,11 @@
     }
 
     &.work-details-container {
-      float: right;
-      position: absolute;
-      top: 0;
       height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: auto;
 
       .work-section-header {
         display: none;

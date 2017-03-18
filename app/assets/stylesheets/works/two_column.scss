@@ -18,15 +18,16 @@
   }
 
   .work-header-container {
-    margin-bottom: 25px;
-    margin-top: 20px;
+    margin-bottom: 0;
+    margin-top: 10px;
     position: relative;
 
-    header {
+    .work-section-header {
+      border-bottom: none;
       margin-bottom: 20px;
       text-align: center;
     }
-    
+
     & > div {
       padding-bottom: 5px;
     }
@@ -39,18 +40,26 @@
     // }
   }
 
-  .work-header-container {
-
+  .work-details-container {
+    // padding: 0 10px;
+    border: none;
+    text-align: left;
   }
 
-  .work-details-container {
-    // .work-section-header {
-    //   display: block;
-    // }
+  .work-tracklist-container {
+    border: none;
+    background: transparent;
+
+    .piece-play {
+      opacity: 1;
+      padding-left: 0;
+    }
+  }
+
+  .work-header-container {
   }
 
   .work-image-container {
-    // margin: auto;
     max-height: 60vh;
     overflow: hidden;
     width: 100%;
@@ -70,63 +79,15 @@
     }
 
     .work-header-container {
-      header {
+      margin-bottom: 25px;
+      margin-top: 20px;
+      border-bottom: solid black 1px;
+      padding-bottom: 20px;
+
+      .work-section-header {
         margin-bottom: 0;
         text-align: left;
       }
     }
   }
-
-  // &.testing {
-    .work-section-header {
-      // font-size: 1.4em;
-    }
-
-    .work-header-container {
-      border-bottom: solid black 1px;
-      padding-bottom: 20px;
-    }
-
-    .work-details-container {
-      // padding: 0 10px;
-      border: none;
-      text-align: left;
-
-      .work-details {
-        // flex-direction: row;
-      }
-
-      .work-detail-label {
-        // display: block;
-      }
-    }
-
-    .work-tracklist-container {
-      border: none;
-      background: transparent;
-
-      .piece-play {
-        opacity: 1;
-        padding-left: 0;
-      }
-
-      .work-section-header {
-        // font-size: 1.6em;
-      }
-    }
-
-    .work-tracklist-header-container  {
-      background-color: transparent;
-      border: none;
-
-      .tracklist-header-container {
-        background: none;
-      }
-
-      .work-tracklist-header {
-        border: none;
-        text-align: left;
-      }
-    }
-  // }
 }
