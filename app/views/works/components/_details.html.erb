@@ -1,6 +1,10 @@
 <section class="work-details-container work-section testing<%= ' small' if small %>">
   <h5 class="work-section-header">Release Details</h5>
   <div class="work-details">
+    <div class="work-detail add-work-to-cart">
+      <span class="work-detail-label">Purchase</span>
+      <span class="work-detail-data">$<%= @work.price_formatted %></span>
+    </div>
       <% if @work.record_label %>
         <div class="work-detail">
           <span class="work-detail-label">Label: </span>

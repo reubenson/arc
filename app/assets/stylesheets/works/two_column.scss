@@ -56,9 +56,6 @@
     }
   }
 
-  .work-header-container {
-  }
-
   .work-image-container {
     max-height: 60vh;
     overflow: hidden;
@@ -79,9 +76,9 @@
     }
 
     .work-header-container {
-      margin-bottom: 25px;
+      // margin-bottom: 25px;
       margin-top: 20px;
-      border-bottom: solid black 1px;
+      // border-bottom: solid black 1px;
       padding-bottom: 20px;
 
       .work-section-header {
@@ -90,4 +87,14 @@
       }
     }
   }
+}
+
+// temporary styling for adding player to header
+.work.two-column .work-header-container .add-work-to-player {
+  height: 65px;
+  position: absolute;
+}
+
+.work.two-column .work-header-container .work-section-header {
+  margin-left: 90px;
 }
