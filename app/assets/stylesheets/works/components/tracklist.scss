@@ -17,13 +17,20 @@
     padding: 0px 0px 0px 0px;
     width: 100%;
 
+
     .piece {
       border-bottom: solid #eeeeee 1px;
-  	  padding:0px;
+      cursor:pointer;
       display: flex;
       flex-wrap: wrap;
       height: auto;
+      // padding:0px;
       padding: 5px 0;
+
+      .add-piece-to-player-btn {
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
 
       .piece-column {
         // height: 15px;
@@ -43,6 +50,7 @@
         height: auto;
         opacity: 0;
         padding-left: 5px;
+        position: relative;
         transition: opacity 0.25s;
         width: 25px;
 
@@ -50,6 +58,19 @@
           background-color: transparent;
         }
       }
+
+      .piece-track-number {
+        bottom: 0;
+        height: 15px;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        transition: opacity 0.3s;
+        width: 12px;
+        top: 0;
+      }
+
       .piece-purchase {
         height: auto;
         text-align: right;
@@ -85,10 +106,17 @@
     .piece:hover,
     .piece-active {
     	background-color:#eee;
-    	cursor:pointer;
+
+      .add-piece-to-player-btn {
+        opacity: 1;
+      }
 
       .piece-play {
         opacity: 1;
+      }
+
+      .piece-track-number {
+        opacity: 0;
       }
 
       .piece-purchase {
