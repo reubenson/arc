@@ -22,6 +22,20 @@
     margin-top: 10px;
     position: relative;
 
+    .add-work-to-cart {
+      font-size: 1.4rem;
+      height: 50px;
+      position: absolute;
+      right: 0;
+      width: 180px;
+      top: 0;
+    }
+
+    .add-work-to-player .button-primary {
+      height: 50px;
+      width: 50px;
+    }
+
     .work-section-header {
       border-bottom: none;
       margin-bottom: 20px;
@@ -98,5 +112,5 @@
 }
 
 .work.two-column .work-header-container .work-section-header {
-  margin-left: 70px;
+  margin-left: 80px;
 }

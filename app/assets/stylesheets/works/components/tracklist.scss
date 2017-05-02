@@ -17,9 +17,12 @@
     padding: 0px 0px 0px 0px;
     width: 100%;
 
+    .piece:first-of-type {
+      border-top: solid #eee 1px
+    }
 
     .piece {
-      border-bottom: solid #eeeeee 1px;
+      border-bottom: solid #eee 1px;
       cursor:pointer;
       display: flex;
       flex-wrap: wrap;

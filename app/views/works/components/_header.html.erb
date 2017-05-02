@@ -2,7 +2,8 @@
   <button class="add-work-to-player work-cta-item primary">
     <div class="cta-content">
       <!-- <span>Play</span> -->
-      <span class="button-primary fa fa-play"></span>
+      <!-- <span class="button-primary fa fa-play"></span> -->
+      <div class="button-primary"><%= image_tag "play-button.svg" %></div>
     </div>
   </button>
   <header class="work-section-header">
@@ -14,6 +15,18 @@
     <%= render partial: "works/components/ctas", locals: {work: @work} %>
   <% elsif embed === "details" %>
     <%= render partial: "works/components/details", locals: {work: @work, small: false} %>
+    <div class="work-detail add-work-to-cart">
+      <span class="work-detail-label">Add To Cart</span>
+      <span class="work-detail-data">$<%= @work.price_formatted %></span>
+    </div>
+
+    <button class="add-work-to-cart work-cta-item">
+      <div class="cta-content">
+        <span class="button-primary fa fa-cart-plus"></span>
+        <span>Purchase ($<%= (@work.price_formatted) %>)</span>
+      </div>
+    </button>
+
   <% end %>
 
 </section>
