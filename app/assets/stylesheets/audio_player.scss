@@ -5,7 +5,7 @@
   border-top: solid black 2px;
   bottom: 0;
   height: $audioPlayerHeight;
-  max-width: $max-width;
+  // max-width: $max-width;
   position: fixed;
   text-align: center;
   width: 100%;
@@ -87,7 +87,7 @@
   }
 
   @media screen and (min-width: $max-width) {
-    left: calc((100% - #{$max-width}) / 2);
+    // left: calc((100% - #{$max-width}) / 2);
   }
 }
 .audio-player[aria-hidden="true"] {

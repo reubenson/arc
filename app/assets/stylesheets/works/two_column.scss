@@ -25,6 +25,7 @@
     .add-work-to-cart {
       font-size: 1.4rem;
       height: 50px;
+      letter-spacing: 0;
       position: absolute;
       right: 0;
       width: 180px;
@@ -77,7 +78,7 @@
   }
 
   .work-section-header {
-    border-bottom: solid black 1px;
+    // border-bottom: solid black 1px;
   }
 
   @media screen and (min-width: $large) {
