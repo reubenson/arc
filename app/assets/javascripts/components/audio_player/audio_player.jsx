@@ -219,13 +219,17 @@ class AudioPlayer extends React.Component {
           duration = {this.currentTrackDuration()}
           />
         <div className="audio-player-nav-buttons">
-          <button onClick = {this.decrementTrackNumber.bind(this)}> &#60;&#60; </button>
+          <button onClick = {this.decrementTrackNumber.bind(this)}>
+            <i className="fa fa-step-backward" aria-hidden="true"></i>
+          </button>
           <PlayButton
             togglePlay = {this.togglePlay.bind(this)}
             isPlaying = {this.state.isPlaying}
             piece = {this.state.playlist[this.state.playlistTrackNumber]}
           />
-          <button onClick = {this.incrementTrackNumber.bind(this)}> &#62;&#62; </button>
+          <button onClick = {this.incrementTrackNumber.bind(this)}>
+            <i className="fa fa-step-forward" aria-hidden="true"></i>
+          </button>
         </div>
         <Audio
           updatePlayerState = {this.updatePlayerState.bind(this)}

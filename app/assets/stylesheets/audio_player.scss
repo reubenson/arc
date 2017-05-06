@@ -16,6 +16,8 @@
   }
 
   .audio-player-close-btn {
+    background: none;
+    margin: 0;
     position: absolute;
     right: 0;
     top: 0;
@@ -51,29 +53,37 @@
 
     @media screen and (min-width: 600px) {
       position: absolute;
-      margin: 20px;
+      top: 30px;
+      margin: auto 20px;
+      // margin: 20px;
       text-align: left;
     }
   }
   .audio-player-nav-buttons {
 
+    button {
+      background: none;
+      font-size: 1.5em;
+    }
+
     @media screen and (min-width: 600px) {
       position: absolute;
-      left: 0;
+      // left: 0;
       right: 0;
-      top: 50px;
+      // top: 50px;
+      top: 30px;
     }
   }
   .audio-player-progress-bar {
     margin: auto;
-    width: 70%;
+    width: 60%;
 
     @media screen and (min-width: 600px) {
       position: absolute;
       left: 0;
       width: 400px;
       right: 0;
-      top: 20px;
+      top: 40px;
     }
   }
   .audio-player-time-display {
@@ -82,7 +92,7 @@
       left: 510px;
       margin: auto;
       right: 0;
-      top: 20px
+      top: 40px;
     }
   }
 

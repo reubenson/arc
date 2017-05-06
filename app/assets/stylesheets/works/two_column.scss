@@ -29,7 +29,8 @@
       position: absolute;
       right: 0;
       width: 180px;
-      top: 0;
+      // top: 0;
+      top: 8px; // needs refactor
     }
 
     .add-work-to-player .button-primary {
@@ -40,25 +41,27 @@
     .work-section-header {
       border-bottom: none;
       margin-bottom: 20px;
-      text-align: center;
+      // text-align: center;
     }
 
     & > div {
       padding-bottom: 5px;
     }
-
-    // @media screen and (min-width: $large) {
-    //   position: absolute;
-    //   top: 0;
-    //   right: 0;
-    //   text-align: right;
-    // }
   }
 
   .work-details-container {
+    left: 0;
+    margin-top: 20px;
+    margin-bottom: 0;
+    // border: none;
+    position: relative;
     // padding: 0 10px;
-    border: none;
     text-align: left;
+
+    .work-details {
+      flex-direction: row;
+      float: none;
+    }
   }
 
   .work-tracklist-container {
@@ -99,6 +102,20 @@
       .work-section-header {
         margin-bottom: 0;
         text-align: left;
+      }
+    }
+  }
+
+  @media screen and (min-width: $desktop) {
+    .work-details-container {
+      border: none;
+      float: right;
+      left: 60%;
+      margin: 0;
+      position: absolute;
+
+      .work-details {
+        flex-direction: column;
       }
     }
   }

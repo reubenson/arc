@@ -2,13 +2,13 @@ class PlayButton extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      buttonText: this.props.isPlaying ? 'PAUSE' : 'PLAY'
+      buttonText: this.props.isPlaying ? 'pause' : 'play'
     }
   }
 
 componentWillReceiveProps(nextProps) {
     this.setState({
-      buttonText: nextProps.isPlaying ? 'PAUSE' : 'PLAY'
+      buttonText: nextProps.isPlaying ? 'pause' : 'play'
     });
   }
 
@@ -33,9 +33,11 @@ componentWillReceiveProps(nextProps) {
   }
 
   render() {
-    return  <button onClick={this.handleClick.bind(this)}>
-              {this.state.buttonText}
-            </button>
+    return (
+      <button onClick={this.handleClick.bind(this)}>
+        <i className={'fa fa-' + this.state.buttonText} aria-hidden="true"></i>
+      </button>
+    )
   }
 };
 
