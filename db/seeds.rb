@@ -111,7 +111,7 @@ two_column_album = eli_keszler.works[0].dup
 two_column_album.pieces = eli_keszler.works[0].pieces.map { |child| child.dup }
 two_column_album.layout = 'two-column'
 two_column_album.title = 'Two Column Layout'
-two_column_album.save
+# two_column_album.save
 
 # duplicate work for grid layout
 # grid = eli_keszler.works[0].dup

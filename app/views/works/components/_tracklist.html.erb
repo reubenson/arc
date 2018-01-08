@@ -22,10 +22,13 @@
           </span>
           <div class='piece-title piece-column'><%= piece.title %></div>
           <div class='piece-duration piece-column'><%= piece.duration_formatted %></div>
+          <!-- Disable purchase for now
           <div class="piece-purchase piece-column">
             <button class="add-piece-to-cart-btn">$<%= piece.price_string %></button>
             <button class="add-piece-to-cart-btn-sm">$<%= piece.price_string %></button>
           </div>
+          -->
+
           <% if piece.description %>
           <div><a class="toggle-piece-description-btn">Show Description</a></div>
           <% end %>

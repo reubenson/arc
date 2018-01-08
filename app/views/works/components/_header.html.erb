@@ -15,6 +15,8 @@
     <%= render partial: "works/components/ctas", locals: {work: @work} %>
   <% elsif embed === "details" %>
     <%= render partial: "works/components/details", locals: {work: @work, small: false} %>
+
+    <!-- Remove Cart Add for now
     <div class="work-detail add-work-to-cart">
       <span class="work-detail-label">Add To Cart</span>
       <span class="work-detail-data">$<%= @work.price_formatted %></span>
@@ -24,6 +26,14 @@
       <div class="cta-content">
         <span class="button-primary fa fa-cart-plus"></span>
         <span>Purchase ($<%= (@work.price_formatted) %>)</span>
+      </div>
+    </button>
+    -->
+
+    <!--  -->
+    <button class="add-work-to-cart work-cta-item">
+      <div class="cta-content">
+        <span>Venmo <%= @artist.first_name %></span>
       </div>
     </button>
 
