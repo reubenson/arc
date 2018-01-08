@@ -120,7 +120,11 @@ console.log('remove item from cart');
 		var numItems = this.numberOfItems(),
 			numItemsText = ( numItems > 0 ) ? 'Cart (' + numItems + ')' : 'Cart';
 
-		this._cartBtn.textContent = numItemsText;
+		try {
+			this._cartBtn.textContent = numItemsText;
+		} catch (e) {
+			console.log('cart button not found:', e)
+		}
 	}
 
 	checkout() {

@@ -8,8 +8,12 @@ class ShoppingCartModal extends React.Component {
 	}
 
 	attachEventHandlers() {
-    this.navCartButton.addEventListener('click', this.toggleCartView.bind(this));
-    this.checkoutButton.addEventListener('click',this.hideCart.bind(this));
+		try {
+			this.navCartButton.addEventListener('click', this.toggleCartView.bind(this));
+			this.checkoutButton.addEventListener('click',this.hideCart.bind(this));
+		} catch (e) {
+			console.log('cart buttons not found:', e);
+		}
 	}
 
 	componentDidMount() {

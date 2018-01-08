@@ -316,6 +316,7 @@ function modifyTracklist() {
       workImages = imageCarousel.querySelectorAll('.work-image');
       numImages = workImages.length;
       activeWorkImage = workImages[0];
+      console.log('activeWorkImage');
       leftButton = imageCarousel.querySelector('.work-image-carousel-left');
       rightButton = imageCarousel.querySelector('.work-image-carousel-right');
 

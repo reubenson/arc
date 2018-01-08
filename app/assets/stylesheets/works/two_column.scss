@@ -132,3 +132,6 @@
 .work.two-column .work-header-container .work-section-header {
   margin-left: 80px;
 }
+
+// override image carousel background blur
+.work.two-column .work-image-container .work-image-carousel .work-image.active { opacity: 0; }
