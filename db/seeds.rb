@@ -158,38 +158,84 @@ eli_keszler.works.create({
 )
 
 
-reuben_son = Artist.create(
-  first_name: 'Reuben',
-  last_name: 'Son',
+# reuben_son = Artist.create(
+#   first_name: 'Reuben',
+#   last_name: 'Son',
+#   image_url: '',
+#   bio: Faker::Lorem.sentences(5).join(" ")
+# )
+#
+# reuben_son.works.create({
+#   title: 'Ambients',
+#   end_date: Date.new(2017),
+#   price: 5.00,
+#   layout: 'two-column',
+#   image_urls: [
+#     'https://scontent-ord1-1.cdninstagram.com/t51.2885-15/e35/14719120_1845857075698535_1167883414024486912_n.jpg'
+#   ],
+#   description: Faker::Lorem.sentences(6).join(" ")
+# }).pieces.create([
+#   {
+#     track_number: 0,
+#     duration: "19:51",
+#     price: 2.50,
+#     source_url: "https://s3.amazonaws.com/arc-test-audio/reuben_son/ambients/01.mp3",
+#     title: '(Untitled)'
+#   },
+#   {
+#     track_number: 1,
+#     duration: "19:46",
+#     price: 2.50,
+#     source_url: "https://s3.amazonaws.com/arc-test-audio/reuben_son/ambients/02.mp3",
+#     title: '(Untitled)'
+#   }]
+# )
+
+# curran mock
+curran = Artist.create(
+  first_name: 'Alvin',
+  last_name: 'Curran',
   image_url: '',
   bio: Faker::Lorem.sentences(5).join(" ")
 )
 
-reuben_son.works.create({
-  title: 'Ambients',
+curran.works.create({
+  title: 'Irrawaddy Blues',
   end_date: Date.new(2017),
   price: 5.00,
-  layout: 'squareformat',
-  image_urls: [
-    'https://scontent-ord1-1.cdninstagram.com/t51.2885-15/e35/14719120_1845857075698535_1167883414024486912_n.jpg'
-  ],
-  description: Faker::Lorem.sentences(6).join(" ")
+  layout: 'two-column',
+  image_urls: [],
+  description: 'The Irrawaddy Blues is a minimal symphony of ambient sounds recorded in Myanmar in 2014/2015 and 2016. Travelling as a tourist with his wife from the northern lakes to Bagan and Mandalay, down the Irrawaddy to Yangon and then making trips to remote islands in the Andaman Sea, Alvin Curran found rich and distinctive sounds everywhere. The composed radio piece is a very personal sound-portrait of Myanmar, which simply lets the sounds “speak” for themselves.',
+  credits: 'Many thanks to Susan Levenstein for her recordings of coral-feeding fish and Angelo-Maria Farro for his fine audio mastering.'
 }).pieces.create([
   {
     track_number: 0,
-    duration: "19:51",
+    duration: "10:34",
     price: 2.50,
-    source_url: "https://s3.amazonaws.com/arc-test-audio/reuben_son/ambients/01.mp3",
-    title: '(Untitled)'
-  },
-  {
-    track_number: 1,
-    duration: "19:46",
-    price: 2.50,
-    source_url: "https://s3.amazonaws.com/arc-test-audio/reuben_son/ambients/02.mp3",
-    title: '(Untitled)'
+    source_url: "https://s3.amazonaws.com/arc-test-audio/alvin_curran/Irrawaddy_Blues.mp3",
+    title: 'Irrawaddy Blues'
   }]
 )
+
+# fure mock
+fure = Artist.create(
+  first_name: 'Ashley',
+  last_name: 'Fure',
+  image_url: '',
+  bio: Faker::Lorem.sentences(5).join(" ")
+)
+
+fure.works.create({
+  title: 'Anima',
+  end_date: Date.new(2017),
+  price: 5.00,
+  layout: 'two-column',
+  image_urls: [],
+  credits: 'Anima, for Augmented String Quartet, by Ashley Fure
+Premiered by Diotima at Festival Les Musiques in Marseille, France on May 15, 2017<br/><br/>Commande GMEM-CNCM-Marseille, Ircam-Centre Pompidou, Scène Nationale d’Orléans, Proquartet / Partie informatique de l’œuvre réalisée dans les studios de l’Ircam-Centre Pompidou et du GMEM-CNCM-Marseille / Réalisation informatique musicale :gmem-CNCM-marseille, Charles Bascou ; Ircam, Vincent Isnard',
+  description: '<iframe src="https://player.vimeo.com/video/219212227" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
+})
+
 
 
 #### Faker ####
