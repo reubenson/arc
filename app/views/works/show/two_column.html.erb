@@ -1,6 +1,4 @@
 <section class="work two-column testing" data-workId=<%= @work.id %> >
-
-  <%= render partial: "works/components/header", locals: {work: @work, embed: "details"} %>
   <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: false, small: true} %>
   <!-- <%= render partial: "works/components/details", locals: {work: @work, small: true} %> -->
 
@@ -9,13 +7,21 @@
   <%= render partial: "works/components/credits", locals: {work: @work, small: true} %>
 
   <div class="work-column primary large">
-    <% if @work.image_urls.length > 0 %>
+    <%= render partial: "works/components/header_two_column", locals: {work: @work, embed: "details"} %>
+    <!-- <% if @work.image_urls.length > 0 %>
       <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: false, small: false} %>
-    <% end %>
+    <% end %> -->
     <%= render partial: "works/components/description", locals: {work: @work, small: false} %>
   </div>
 
   <div class="work-column secondary large">
+    <!-- <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: false, small: false} %> -->
+    <% if @work.image_urls.length > 0 %>
+    <div class="work-section lede-image">
+      <!-- <%= render partial: "works/components/image", locals: {work: @work, cover: false, fillLede: false, small: false} %> -->
+      <img src="<%= @work.image_urls[0] %>" alt="Album Cover" />
+    </div>
+    <% end %>
     <!-- <%= render partial: "works/components/ctas", locals: {work: @work, small: false} %> -->
     <!-- <%= render partial: "works/components/details", locals: {work: @work, small: false} %> -->
     <% if @work.pieces.length > 0 %>

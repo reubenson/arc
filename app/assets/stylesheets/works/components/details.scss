@@ -1,7 +1,7 @@
 @import 'variables';
 
 .work-details-container {
-  border-top: solid black 1px;
+  // border-top: solid black 1px;
   clear: both;
   text-align: center;
   margin: 10px 0;
@@ -22,13 +22,15 @@
     .work-detail {
       border: solid black 0px;
       font-size: 1.3rem;
+      font-weight: 300;
       text-align: left;
     }
 
     .work-detail-label {
       border-right: solid black 0px;
+      color: #666;
       display: inline-block;
-      font-weight: 600;
+      font-weight: 100;
       padding: 3px 5px 3px 0;
     }
   }
