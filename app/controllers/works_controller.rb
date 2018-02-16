@@ -15,6 +15,8 @@ class WorksController < ApplicationController
 
   def show
     case @work.layout
+    when 'two-column-album'
+      render "works/show/two-column-album"
     when 'two-column'
       render "works/show/two_column"
     when 'squareformat'

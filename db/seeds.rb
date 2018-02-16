@@ -21,7 +21,7 @@ eli_keszler.works.create({
     'https://f4.bcbits.com/img/a2347488006_10.jpg'
   ],
   description: 'Eli Keszler’s is a thrillingly unfamiliar musical intelligence.<br/><br/>It’s an intelligence experienced in his compositions, installations, and visual art, but also in his idiosyncratic virtuosity as a percussionist and improviser, and in the patient, meticulous refinement of sonic material that is central to his project.<br/><br/>All signs point to the work as ongoing. One never gets the sense of a particular composition or project as summation, as finish line, as final word in an argument. Discursive though it may be—those multiple voices chattering, weighing in, sometimes in dialogue but just as often in tumult—I’ll be damned if I can summarize his music in terms of narrative, much less in the shaping of an argument. I’m just waiting for the next installment.<br/><br/>Each time that I have seen Eli play solo I leave thinking that solo is the ideal setting for him. His sound world comes across as perfectly self-contained, and hearing him in combination with other musicians would threaten to obscure much of what is most unique: his smallest (and quietest, most brittle, and most irregular) sounds and the self-determination of individual elements in the ecosystem that is his music.<br/><br/>The environment within his playing.<br/><br/>Eli Keszler is a remarkably nimble, dexterous player. But for all of the striking qualities of his musicianship, the thrust of the matter is elsewhere. In a first encounter, a solo performance of his likely dazzles because of the experience of one performer becoming multiple. As with Milford Graves’ playing, what you’re presented with is less polyrhythmic than multiply pulsed, and the continuous shifts in distinct rhythmic registers find their groove in what’s smooth rather than stepwise.<br/><br/>In recordings, solo virtuosity is often represented via subtle but unmistakable markers, whether announced in a title or in credits that make it clear that you will be listening to a real-time recording (insert make and model of microphone, etc.). <br/><br/>This is not to say that Eli is a multiple-take kind of player. He resolutely is not. Still, I’m struck by the way in which his virtuosity is a given, and isn’t designed to blow up your radar. Indeed, where a less modest, less serious musician would take the opportunity to use a release like this to plant a flag advertising one’s solo practice—the LP as grandiose business card—I find it fascinating that Eli has on a number of these tracks added fairly minimal overdubs (piano, glockenspiel, string arrangements, and so on) such that the fetish of the soloist is made inessential.<br/><br/>The overdubs give the listener insight into the possibilities of playing together with Eli. They tend to take the form of spare, irregular loops, harmonic steady states that deepen the already hypnotic effect of the full-drumkit performances. Some of these pieces reference styles (minimal techno, jazz drumming) that exist at some remove from recent projects of Eli’s less oriented toward a single pulse, much less something as familiar as a repeating A/B structure. Similarly, Last Signs of Speed utilizes the amplification of acoustic percussion instruments, both to extend the timbral palette of Eli’s kit and to embrace and build upon his experience of taking his solo percussion performances into live-music venues where amplification is a given. You can approach this recording as yet another productive exchange in the musical dialogue with his friend Rashad Becker, but also in terms of a sensitivity and openness to a multiplicity of sound environments. <br/><br/>I have yet to experience any single example of Eli’s work as defining. As satisfying as it is on its own terms, Last Signs of Speed speaks most compellingly of the role it plays within Eli Keszler’s ongoing practice, although perhaps that’s in the nature of the non-narrative statement—as if anyone could translate the contents of that musical speech. <br/><br/>David Grubbs',
-  layout: 'two-column',
+  layout: 'two-column-album',
   record_label: 'Empty Editions',
   credits: 'Eli Keszler plays drums, percussion, fender rhodes, piano, mellotron, celeste, Vibraceleste, glockenspiel, rocks, gravel, String Orchestra of Brooklyn (A4, D1)<br/>
 Leila Bordreuil Cello (C2)<br/>
@@ -107,11 +107,11 @@ Thanks to Alex, Stephen, Laura, David, Leila, Geoff, Reuben, Seema, Nolan, Rasha
 ])
 
 # duplicate work for two-column layout
-# two_column_album = eli_keszler.works[0].dup
-# two_column_album.pieces = eli_keszler.works[0].pieces.map { |child| child.dup }
-# two_column_album.layout = 'two-column'
-# two_column_album.title = 'Two Column Layout'
-# two_column_album.save
+two_column_album = eli_keszler.works[0].dup
+two_column_album.pieces = eli_keszler.works[0].pieces.map { |child| child.dup }
+two_column_album.layout = 'two-column'
+two_column_album.title = 'Signs of Speed (Regular Two-Column)'
+two_column_album.save
 
 # duplicate work for grid layout
 # grid = eli_keszler.works[0].dup
