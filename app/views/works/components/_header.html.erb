@@ -3,7 +3,9 @@
     <div class="cta-content">
       <!-- <span>Play</span> -->
       <!-- <span class="button-primary fa fa-play"></span> -->
-      <div class="button-primary"><%= image_tag "play-button.svg" %></div>
+      <% if @work.pieces.length > 0 %>
+        <div class="button-primary"><%= image_tag "play-button.svg" %></div>
+      <% end %>
     </div>
   </button>
   <header class="work-section-header">

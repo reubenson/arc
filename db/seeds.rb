@@ -18,7 +18,9 @@ eli_keszler.works.create({
   end_date: Date.new(2016,11,17),
   price: 10.00,
   image_urls: [
-    'https://f4.bcbits.com/img/a2347488006_10.jpg'
+    'https://f4.bcbits.com/img/a2347488006_10.jpg',
+    'https://static1.squarespace.com/static/55af1d12e4b0f7c1c9b88ce8/57f654409de4bb3836ae7c1e/57f654409de4bb3836ae7c1d/1474044418930/Empty+Editions+%28EE01%29+3.jpg',
+    'https://static1.squarespace.com/static/55af1d12e4b0f7c1c9b88ce8/57f654409de4bb3836ae7c1e/57f654409de4bb3836ae7c21/1474221416438/eli+10+.jpg'
   ],
   description: 'Eli Keszler’s is a thrillingly unfamiliar musical intelligence.<br/><br/>It’s an intelligence experienced in his compositions, installations, and visual art, but also in his idiosyncratic virtuosity as a percussionist and improviser, and in the patient, meticulous refinement of sonic material that is central to his project.<br/><br/>All signs point to the work as ongoing. One never gets the sense of a particular composition or project as summation, as finish line, as final word in an argument. Discursive though it may be—those multiple voices chattering, weighing in, sometimes in dialogue but just as often in tumult—I’ll be damned if I can summarize his music in terms of narrative, much less in the shaping of an argument. I’m just waiting for the next installment.<br/><br/>Each time that I have seen Eli play solo I leave thinking that solo is the ideal setting for him. His sound world comes across as perfectly self-contained, and hearing him in combination with other musicians would threaten to obscure much of what is most unique: his smallest (and quietest, most brittle, and most irregular) sounds and the self-determination of individual elements in the ecosystem that is his music.<br/><br/>The environment within his playing.<br/><br/>Eli Keszler is a remarkably nimble, dexterous player. But for all of the striking qualities of his musicianship, the thrust of the matter is elsewhere. In a first encounter, a solo performance of his likely dazzles because of the experience of one performer becoming multiple. As with Milford Graves’ playing, what you’re presented with is less polyrhythmic than multiply pulsed, and the continuous shifts in distinct rhythmic registers find their groove in what’s smooth rather than stepwise.<br/><br/>In recordings, solo virtuosity is often represented via subtle but unmistakable markers, whether announced in a title or in credits that make it clear that you will be listening to a real-time recording (insert make and model of microphone, etc.). <br/><br/>This is not to say that Eli is a multiple-take kind of player. He resolutely is not. Still, I’m struck by the way in which his virtuosity is a given, and isn’t designed to blow up your radar. Indeed, where a less modest, less serious musician would take the opportunity to use a release like this to plant a flag advertising one’s solo practice—the LP as grandiose business card—I find it fascinating that Eli has on a number of these tracks added fairly minimal overdubs (piano, glockenspiel, string arrangements, and so on) such that the fetish of the soloist is made inessential.<br/><br/>The overdubs give the listener insight into the possibilities of playing together with Eli. They tend to take the form of spare, irregular loops, harmonic steady states that deepen the already hypnotic effect of the full-drumkit performances. Some of these pieces reference styles (minimal techno, jazz drumming) that exist at some remove from recent projects of Eli’s less oriented toward a single pulse, much less something as familiar as a repeating A/B structure. Similarly, Last Signs of Speed utilizes the amplification of acoustic percussion instruments, both to extend the timbral palette of Eli’s kit and to embrace and build upon his experience of taking his solo percussion performances into live-music venues where amplification is a given. You can approach this recording as yet another productive exchange in the musical dialogue with his friend Rashad Becker, but also in terms of a sensitivity and openness to a multiplicity of sound environments. <br/><br/>I have yet to experience any single example of Eli’s work as defining. As satisfying as it is on its own terms, Last Signs of Speed speaks most compellingly of the role it plays within Eli Keszler’s ongoing practice, although perhaps that’s in the nature of the non-narrative statement—as if anyone could translate the contents of that musical speech. <br/><br/>David Grubbs',
   layout: 'two-column-album',
@@ -229,8 +231,11 @@ fure.works.create({
   title: 'Anima',
   end_date: Date.new(2017),
   price: 5.00,
-  layout: 'two-column',
-  image_urls: [],
+  layout: 'two-column-album',
+  image_urls: [
+    'https://static1.squarespace.com/static/56526d95e4b0cb70601347bf/t/569e66659cadb6436a9394c2/1453221480110/Something_to_hunt_p8.png',
+    'https://static1.squarespace.com/static/56526d95e4b0cb70601347bf/t/5652768ae4b0b746f0ea8e2b/1448244876992/IMG_6770.JPG'
+  ],
   credits: 'Anima, for Augmented String Quartet, by Ashley Fure
 Premiered by Diotima at Festival Les Musiques in Marseille, France on May 15, 2017<br/><br/>Commande GMEM-CNCM-Marseille, Ircam-Centre Pompidou, Scène Nationale d’Orléans, Proquartet / Partie informatique de l’œuvre réalisée dans les studios de l’Ircam-Centre Pompidou et du GMEM-CNCM-Marseille / Réalisation informatique musicale :gmem-CNCM-marseille, Charles Bascou ; Ircam, Vincent Isnard',
   description: '<iframe src="https://player.vimeo.com/video/219212227" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
@@ -248,12 +253,13 @@ audio_bucket = "https://s3.amazonaws.com/arc-test-audio/"
   })
   4.times do
     work = artist.works.create({
+      layout: 'two-column-album',
       title: Faker::Lorem.words(2+rand(3)).map(&:capitalize).join(" "),
       end_date: Date.new(1970 + rand(40)),
       price: Faker::Number.decimal(2),
       description: Faker::Lorem.sentences(5).join(" "),
       image_urls: [
-        Faker::Placeholdit.image("1600x900", 'jpg')
+        Faker::Placeholdit.image("600x600", 'jpg')
       ]
     })
     number_of_tracks = 2 + rand(8)
@@ -263,7 +269,7 @@ audio_bucket = "https://s3.amazonaws.com/arc-test-audio/"
         duration: Faker::Number.between(1,60).to_s+ ":" + Faker::Number.between(1,60).to_s,
         price: Faker::Number.decimal(2),
         source_url: audio_bucket + (1+rand(19)).to_s + '.mp3',
-        description: Faker::Lorem.sentences(6).join(" "),
+        # description: Faker::Lorem.sentences(6).join(" "),
         track_number: work.pieces.count
       })
     end

@@ -1,160 +1,160 @@
-@import "variables";
-
-.work.two-column .work-header-two-column-container {
-  align-items: center;
-  border-bottom: solid #bbb 1px;
-  // display: flex;
-  display: block;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-  // padding: 40px;
-  position: relative;
-  text-align: left;
-
-  .header-left {
-    flex-basis: 2
-  }
-
-  .header-right {
-    flex-basis: 1
-  }
-
-  // .work-header {
-  //   margin-bottom: 5px;
-  // }
-
-  .lede-image {
-    height: 400px;
-
-    img {
-      height: 100%;
-    }
-  }
-
-  .work-header-artist {
-    font-size: 1.4em;
-    font-weight: 200;
-    height: 1em;
-    margin-bottom: 5px;
-
-    a {
-      color: $light-grey;
-    }
-  }
-
-  .work-header-title {
-    font-size: 1.6em;
-    font-weight: 400;
-    height: 1.0em;
-    margin: 0;
-  }
-
-  // .work-section {
-    .work-cta-container {
-      border-bottom: 0;
-      flex-direction: column;
-      height: 100%;
-      justify-content: flex-start;
-      position: absolute;
-      right: 0;
-      top: 0;
-
-      .work-cta-item {
-        height: 28px;
-        margin-right: 0;
-        margin-top: 6px;
-        padding-bottom: 28px;
-      }
-
-      .cta-content {
-        height: 100%;
-
-        * {
-          font-size: 12px;
-        }
-      }
-    }
-
-    .work-details-container {
-      height: 100%;
-      margin-top: 40px;
-      // position: absolute;
-      // left: 60%;
-      // top: 0;
-      width: auto;
-
-      .work-section-header {
-        display: none;
-      }
-      .work-detail-label {
-        display: inline;
-      }
-      .work-details {
-        // flex-direction: column;
-        // float: right;
-      }
-    }
-
-  // }
-  // margin-bottom: 0;
-  margin-top: 0;
-  position: relative;
-
-  .add-work-to-cart {
-    display: none; // temp
-    font-size: 1.4rem;
-    height: 50px;
-    letter-spacing: 0;
-    // position: absolute;
-    margin-top: 40px;
-    // right: 0;
-    width: 180px;
-    // top: 0;
-    // top: 8px; // needs refactor
-  }
-
-  .add-work-to-player .button-primary {
-    height: 50px;
-    width: 50px;
-    padding-right: 20px;
-  }
-
-  .work-section-header {
-    // border-bottom: none;
-    // margin-bottom: 20px;
-    // text-align: center;
-  }
-
-  & > div {
-    padding-bottom: 5px;
-  }
-
-  // temporary styling for adding player to header
-  .add-work-to-player {
-    background: none;
-    font-size: 40px;
-    float: left;
-    height: 65px;
-    // position: absolute;
-  }
-
-  .work-section-header {
-    // margin-left: 80px;
-  }
-
-
-  @media screen and (min-width: $large) {
-    .work-header-container {
-      // margin-bottom: 25px;
-      margin-top: 40px;
-      // border-bottom: solid black 1px;
-      padding-bottom: 40px;
-
-      .work-section-header {
-        // margin-bottom: 0;
-        text-align: left;
-      }
-    }
-  }
-}
+// @import "variables";
+//
+// .work.two-column .work-header-two-column-container {
+//   align-items: center;
+//   border-bottom: solid #bbb 1px;
+//   // display: flex;
+//   display: block;
+//   justify-content: space-between;
+//   margin-bottom: 30px;
+//   padding-bottom: 30px;
+//   // padding: 40px;
+//   position: relative;
+//   text-align: left;
+//
+//   .header-left {
+//     flex-basis: 2
+//   }
+//
+//   .header-right {
+//     flex-basis: 1
+//   }
+//
+//   // .work-header {
+//   //   margin-bottom: 5px;
+//   // }
+//
+//   .lede-image {
+//     height: 400px;
+//
+//     img {
+//       height: 100%;
+//     }
+//   }
+//
+//   .work-header-artist {
+//     font-size: 1.4em;
+//     font-weight: 200;
+//     height: 1em;
+//     margin-bottom: 5px;
+//
+//     a {
+//       color: $light-grey;
+//     }
+//   }
+//
+//   .work-header-title {
+//     font-size: 1.6em;
+//     font-weight: 400;
+//     height: 1.0em;
+//     margin: 0;
+//   }
+//
+//   // .work-section {
+//     .work-cta-container {
+//       border-bottom: 0;
+//       flex-direction: column;
+//       height: 100%;
+//       justify-content: flex-start;
+//       position: absolute;
+//       right: 0;
+//       top: 0;
+//
+//       .work-cta-item {
+//         height: 28px;
+//         margin-right: 0;
+//         margin-top: 6px;
+//         padding-bottom: 28px;
+//       }
+//
+//       .cta-content {
+//         height: 100%;
+//
+//         * {
+//           font-size: 12px;
+//         }
+//       }
+//     }
+//
+//     .work-details-container {
+//       height: 100%;
+//       margin-top: 40px;
+//       // position: absolute;
+//       // left: 60%;
+//       // top: 0;
+//       width: auto;
+//
+//       .work-section-header {
+//         display: none;
+//       }
+//       .work-detail-label {
+//         display: inline;
+//       }
+//       .work-details {
+//         // flex-direction: column;
+//         // float: right;
+//       }
+//     }
+//
+//   // }
+//   // margin-bottom: 0;
+//   margin-top: 0;
+//   position: relative;
+//
+//   .add-work-to-cart {
+//     display: none; // temp
+//     font-size: 1.4rem;
+//     height: 50px;
+//     letter-spacing: 0;
+//     // position: absolute;
+//     margin-top: 40px;
+//     // right: 0;
+//     width: 180px;
+//     // top: 0;
+//     // top: 8px; // needs refactor
+//   }
+//
+//   .add-work-to-player .button-primary {
+//     height: 50px;
+//     width: 50px;
+//     padding-right: 20px;
+//   }
+//
+//   .work-section-header {
+//     // border-bottom: none;
+//     // margin-bottom: 20px;
+//     // text-align: center;
+//   }
+//
+//   & > div {
+//     padding-bottom: 5px;
+//   }
+//
+//   // temporary styling for adding player to header
+//   .add-work-to-player {
+//     background: none;
+//     font-size: 40px;
+//     float: left;
+//     height: 65px;
+//     // position: absolute;
+//   }
+//
+//   .work-section-header {
+//     // margin-left: 80px;
+//   }
+//
+//
+//   @media screen and (min-width: $large) {
+//     .work-header-container {
+//       // margin-bottom: 25px;
+//       margin-top: 40px;
+//       // border-bottom: solid black 1px;
+//       padding-bottom: 40px;
+//
+//       .work-section-header {
+//         // margin-bottom: 0;
+//         text-align: left;
+//       }
+//     }
+//   }
+// }
