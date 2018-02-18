@@ -1,0 +1,8 @@
+<% if @work.additional_media.length > 0 %>
+<div class="work-additional-container work-section<%= ' small' if small %>">
+  <h5 class="work-section-header">Additional Media</h5>
+  <% @work.additional_media.each_with_index do |url, i| %>
+    <img src="<%= url %>"</img>
+  <% end %>
+</div>
+<% end %>

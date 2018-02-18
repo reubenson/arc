@@ -18,7 +18,9 @@ eli_keszler.works.create({
   end_date: Date.new(2016,11,17),
   price: 10.00,
   image_urls: [
-    'https://f4.bcbits.com/img/a2347488006_10.jpg',
+    'https://f4.bcbits.com/img/a2347488006_10.jpg'
+  ],
+  additional_media: [
     'https://static1.squarespace.com/static/55af1d12e4b0f7c1c9b88ce8/57f654409de4bb3836ae7c1e/57f654409de4bb3836ae7c1d/1474044418930/Empty+Editions+%28EE01%29+3.jpg',
     'https://static1.squarespace.com/static/55af1d12e4b0f7c1c9b88ce8/57f654409de4bb3836ae7c1e/57f654409de4bb3836ae7c21/1474221416438/eli+10+.jpg'
   ],
@@ -231,8 +233,9 @@ fure.works.create({
   title: 'Anima',
   end_date: Date.new(2017),
   price: 5.00,
-  layout: 'two-column-album',
-  image_urls: [
+  layout: 'two-column',
+  image_urls: [],
+  additional_media: [
     'https://static1.squarespace.com/static/56526d95e4b0cb70601347bf/t/569e66659cadb6436a9394c2/1453221480110/Something_to_hunt_p8.png',
     'https://static1.squarespace.com/static/56526d95e4b0cb70601347bf/t/5652768ae4b0b746f0ea8e2b/1448244876992/IMG_6770.JPG'
   ],
